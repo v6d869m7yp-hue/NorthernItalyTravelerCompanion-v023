@@ -1,4 +1,3 @@
-Northern Italy Traveler's Companion
-Version 023
-Build date: 2026-07-15
-Status: working baseline
+Northern Italy Traveler’s Companion
+Version 024
+Publication interface release

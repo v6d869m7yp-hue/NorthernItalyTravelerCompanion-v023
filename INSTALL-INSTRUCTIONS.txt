@@ -1,0 +1,7 @@
+NORTHERN ITALY TRAVELER'S COMPANION — v024 FIXED
+
+This folder is the clean repository content. It contains one root and one assets folder.
+Do not drag the outer folder itself into the repository.
+Open this folder, select everything inside it, and copy those items into the existing local repository root.
+
+Important: Do not delete or replace the hidden .git folder in your repository.
