@@ -1,23 +1,11 @@
-# Northern Italy Traveler's Companion — Version 025
+# Northern Italy Traveler’s Companion — Version 026
 
-Working baseline of the interactive Traveler's Edition for August 31–September 10, 2026.
+Version 026 adds a practical insider layer to all five destination chapters while preserving every illustrated chapter page from prior releases.
 
-Included:
-- Dashboard and complete itinerary
-- Route map and hotel workspace
-- Venice, Dolomites, Cinque Terre, Lake Como, and Lake Maggiore chapters
-- Offline service-worker cache
-- iPad Home Screen support
-- Print-friendly styling
+## New in v026
+- Today’s Plan panels for Venice, Ortisei, Cinque Terre, Varenna and Stresa
+- Arrival rhythm, crowd strategy, moderate walking guidance and weather fallbacks
+- Current-operation reminders for Venice access rules, Val Gardena lifts, Cinque Terre trails/ferries and Lake Como boats
+- Responsive cards designed for quick use on a phone
 
-Deployment: upload the contents of this folder—not the enclosing folder—to the root of the GitHub Pages repository.
-
-Version 025 establishes the repaired working baseline. Future changes should increment the version number so cached files update reliably.
-
-
-## Version 025
-Adds a publication-style cover and dashboard, responsive navigation, redesigned daily timeline, and practical-reference page while preserving all destination chapters.
-
-
-## Version 025
-Adds a self-contained interactive route map, transfer-day selector, live-navigation links, arrival notes, parking/ZTL reminders, and mobile map refinements.
+Deploy the contents of this folder at the repository root.
