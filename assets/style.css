@@ -1038,7 +1038,7 @@ body.lightbox-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.lightbox.open{animation:none}}
 
 
-/* v027.3a polish */
+/* v027.4 polish */
 :root{--content-max:1180px}
 main, .container{max-width:var(--content-max)}
 section{scroll-margin-top:90px}
@@ -1052,7 +1052,7 @@ img{height:auto}
 p{line-height:1.7}
 h2,h3{letter-spacing:.01em}
 
-/* v027.3a — destination browse correction: restore density and photography */
+/* v027.4 — destination browse correction: restore density and photography */
 .destination-deck{
   gap:14px;
   margin-bottom:62px;
@@ -1102,4 +1102,111 @@ h2,h3{letter-spacing:.01em}
   .destination-deck{gap:14px}
   .destination-tile,.destination-tile.large{min-height:330px}
   .destination-tile h3{font-size:clamp(2.35rem,11vw,3.3rem)}
+}
+
+/* v027.4 — focused Venice chapter refinement; no new features */
+.venice-chapter .venice-complete-hero{
+  background:
+    radial-gradient(circle at 78% 18%,rgba(91,156,186,.24),transparent 38%),
+    linear-gradient(145deg,#082d4a 0%,#0d3c5d 58%,#174f70 100%);
+}
+.venice-chapter .venice-complete-hero .destination-inner{
+  grid-template-columns:minmax(310px,.78fr) minmax(500px,1.22fr);
+  gap:clamp(30px,4vw,54px);
+}
+.venice-chapter .venice-complete-hero .destination-copy p{
+  max-width:54ch;
+  line-height:1.58;
+}
+.venice-chapter .venice-complete-hero .mini-fact{
+  background:rgba(255,255,255,.085);
+  border-color:rgba(255,255,255,.2);
+}
+.venice-chapter .book-window{
+  max-width:780px;
+  transform:none;
+  box-shadow:0 26px 66px rgba(0,0,0,.32);
+}
+.venice-chapter .book-window img{
+  max-height:520px;
+}
+.venice-chapter .insider-brief{
+  margin-top:20px;
+  margin-bottom:50px;
+}
+.venice-chapter .venice-action-grid{
+  margin-bottom:34px;
+}
+.venice-chapter .venice-action{
+  min-height:86px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transition:transform .16s ease,box-shadow .16s ease,background-color .16s ease;
+}
+.venice-chapter .venice-action:hover{
+  transform:translateY(-2px);
+  background:#fff;
+  box-shadow:0 11px 24px rgba(8,45,74,.1);
+}
+.venice-chapter .chapter-index{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-bottom:58px;
+}
+.venice-chapter .chapter-index a{
+  min-height:94px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:15px 16px;
+  line-height:1.25;
+}
+.venice-chapter .chapter-index small{
+  line-height:1.42;
+}
+.venice-chapter .editorial-section{
+  position:relative;
+  margin-block:clamp(48px,6vw,76px);
+  padding-top:4px;
+}
+.venice-chapter .editorial-section + .editorial-section::before{
+  content:"";
+  position:absolute;
+  top:calc(clamp(48px,6vw,76px) / -2);
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent);
+}
+.venice-chapter .editorial-section h2{
+  max-width:22ch;
+  margin-bottom:8px;
+}
+.venice-chapter .editorial-section>p{
+  margin-top:0;
+  max-width:68ch;
+}
+.venice-chapter .page-spread{
+  margin-top:20px;
+  margin-bottom:24px;
+}
+.venice-chapter .page-spread figcaption{
+  min-height:42px;
+}
+@media(max-width:980px){
+  .venice-chapter .venice-complete-hero .destination-inner{grid-template-columns:1fr}
+  .venice-chapter .book-window{max-width:860px;justify-self:start}
+  .venice-chapter .book-window img{max-height:none}
+}
+@media(max-width:820px){
+  .venice-chapter .chapter-index{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .venice-chapter .chapter-index{grid-template-columns:1fr;gap:9px}
+  .venice-chapter .chapter-index a{min-height:0}
+  .venice-chapter .venice-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .venice-chapter .venice-action{min-height:80px}
+  .venice-chapter .editorial-section{margin-block:44px}
 }
