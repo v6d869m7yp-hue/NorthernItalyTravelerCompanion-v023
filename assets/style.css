@@ -847,7 +847,7 @@ body{overflow-x:hidden}
   .magazine-cover{min-height:520px}
 }
 
-/* v026.2 — iPad landscape stabilization (no feature changes) */
+/* v026.3 — iPad landscape stabilization (no feature changes) */
 @media (max-width:1400px){
   .menu-toggle{display:block}
   .topbar-inner{position:relative;flex-direction:row;align-items:center;padding:11px 18px;gap:12px}
