@@ -1036,3 +1036,18 @@ body.lightbox-open{overflow:hidden}
   .lightbox img{max-width:100%;max-height:84svh;border-radius:4px}
 }
 @media(prefers-reduced-motion:reduce){.lightbox.open{animation:none}}
+
+
+/* v027.3 polish */
+:root{--content-max:1180px}
+main, .container{max-width:var(--content-max)}
+section{scroll-margin-top:90px}
+.card,.info-card,.hotel-card,.restaurant-card{
+ transition:transform .18s ease, box-shadow .18s ease;
+}
+.card:hover,.info-card:hover,.hotel-card:hover,.restaurant-card:hover{
+ transform:translateY(-2px);
+}
+img{height:auto}
+p{line-height:1.7}
+h2,h3{letter-spacing:.01em}
