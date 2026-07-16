@@ -1,8 +1,7 @@
-NORTHERN ITALY TRAVELER'S COMPANION — v027.2
+NORTHERN ITALY TRAVELER'S COMPANION — v028.0
 
-1. Unzip NorthernItalyTravelerCompanion-v027.2.zip.
-2. Open your local GitHub repository folder.
-3. Replace its contents with everything INSIDE the v027.2 folder.
-4. Commit with: Build v027.2: refine destination imagery and card consistency
-5. Push the commit to GitHub.
-6. Reload the published site. If an installed copy briefly shows the prior version, close and reopen it once so the new service-worker cache takes control.
+1. Unzip NorthernItalyTravelerCompanion-v028.0.zip.
+2. Open the local GitHub repository folder using GitHub Desktop > Repository > Show in Finder.
+3. Replace the repository contents with everything INSIDE the v028.0 folder.
+4. Commit with: Build v028.0: unify editorial design and refine Lake Maggiore
+5. Push origin.

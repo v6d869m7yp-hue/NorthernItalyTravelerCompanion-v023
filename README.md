@@ -1,12 +1,5 @@
-# Northern Italy Traveler’s Companion — Version 027.2
+# Northern Italy Traveler’s Companion — Version 028.0
 
-Version 027.2 is a focused visual-consistency release built from v027.1. It adds no new feature modules.
+Version 028.0 is a substantive editorial-design release built from the stable v027.8 baseline.
 
-## Refinements
-
-- Standardized destination guide-card and villa-card image proportions.
-- Unified chapter-spread borders, captions, radii, and shadows.
-- Improved image rendering and restrained hover treatment.
-- Improved full-screen image viewing on phones and tablets.
-- Added keyboard access, focus handling, and accurate accessibility state to existing lightboxes.
-- Normalized destination footer version labels.
+It adds no feature modules. The release unifies page hierarchy and card treatment, redesigns the daily itinerary for faster scanning, completes the Lake Maggiore chapter refinement, and brings the maps, hotels, and practical pages into the same publication-style visual system.
