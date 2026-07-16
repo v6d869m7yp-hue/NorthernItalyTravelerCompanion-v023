@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="stylesheet" href="assets/style.css?v=025"><meta name="theme-color" content="#082d4a">
+<title>Interactive Route Map · Northern Italy</title></head>
+<body class="map-page">
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html">THE TRAVELER’S COMPANION <small>v026.1</small></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button><nav class="nav"><a href="index.html">Home</a><a href="itinerary.html">Daily guide</a><a class="active" href="map.html">Maps</a><a href="hotels.html">Hotels</a><a href="practical.html">Practical</a><div class="nav-destinations"><a href="venice.html">Venice</a><a href="dolomites.html">Dolomites</a><a href="cinque-terre.html">Cinque Terre</a><a href="lake-como.html">Lake Como</a><a href="lake-maggiore.html">Lake Maggiore</a></div></nav></div></header>
+<section class="page-masthead map-masthead"><div class="kicker">Version 026.1 · Route & logistics</div><h1>The journey, mapped.</h1><p>Select a transfer day to highlight the route, open its navigation link, and review the practical arrival notes.</p></section>
+<main class="wrap map-wrap" id="main">
+<section class="map-control-panel" aria-label="Map controls">
+  <div class="map-tabs" role="tablist" aria-label="Choose a route">
+    <button class="map-tab active" data-route="all" role="tab" aria-selected="true">Full journey</button>
+    <button class="map-tab" data-route="venice-ortisei" role="tab">Venice → Ortisei</button>
+    <button class="map-tab" data-route="ortisei-cinque" role="tab">Ortisei → Cinque Terre</button>
+    <button class="map-tab" data-route="cinque-varenna" role="tab">Cinque Terre → Varenna</button>
+    <button class="map-tab" data-route="varenna-stresa" role="tab">Varenna → Stresa</button>
+    <button class="map-tab" data-route="stresa-mxp" role="tab">Stresa → Malpensa</button>
+  </div>
+</section>
+<section class="interactive-map-shell">
+  <div class="italy-map" id="tripMap" aria-label="Interactive route map of Northern Italy">
+    <svg viewBox="0 0 900 610" role="img" aria-labelledby="mapTitle mapDesc">
+      <title id="mapTitle">Northern Italy road trip route</title>
+      <desc id="mapDesc">A stylized map connecting Venice, Ortisei, Cinque Terre, Varenna, Stresa and Milan Malpensa.</desc>
+      <defs>
+        <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dceef2"/><stop offset="1" stop-color="#bcdbe3"/></linearGradient>
+        <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#082d4a" flood-opacity=".18"/></filter>
+      </defs>
+      <rect width="900" height="610" rx="28" fill="url(#sea)"/>
+      <path class="land-shape" d="M54 40 L410 35 L525 83 L605 78 L790 145 L840 230 L785 303 L730 335 L660 400 L610 515 L530 578 L390 550 L322 480 L245 470 L170 385 L95 320 L55 230 Z"/>
+      <path class="mountains" d="M250 120 L310 70 L352 130 L400 58 L455 125 L510 76 L575 145"/>
+      <path class="lake lake-como-shape" d="M504 302 C480 320,486 365,515 382 C540 350,541 315,522 288 Z"/>
+      <path class="lake lake-maggiore-shape" d="M425 330 C402 355,404 405,432 438 C458 402,458 355,440 322 Z"/>
+      <path class="route-segment" data-route="venice-ortisei" d="M690 275 C650 228,590 190,505 145"/>
+      <path class="route-segment" data-route="ortisei-cinque" d="M505 145 C440 178,370 240,270 382"/>
+      <path class="route-segment" data-route="cinque-varenna" d="M270 382 C340 335,420 300,515 342"/>
+      <path class="route-segment" data-route="varenna-stresa" d="M515 342 C490 355,468 370,435 382"/>
+      <path class="route-segment" data-route="stresa-mxp" d="M435 382 C470 408,495 432,520 455"/>
+      <g class="map-stop" data-stop="venice" data-routes="all venice-ortisei" tabindex="0" role="button" aria-label="Venice"><circle cx="690" cy="275" r="11"/><circle class="pulse" cx="690" cy="275" r="20"/><text x="710" y="267">Venice</text><text class="map-date" x="710" y="286">Aug 31–Sept 2</text></g>
+      <g class="map-stop" data-stop="ortisei" data-routes="all venice-ortisei ortisei-cinque" tabindex="0" role="button" aria-label="Ortisei"><circle cx="505" cy="145" r="11"/><text x="525" y="137">Ortisei</text><text class="map-date" x="525" y="156">Sept 2–4</text></g>
+      <g class="map-stop" data-stop="cinque" data-routes="all ortisei-cinque cinque-varenna" tabindex="0" role="button" aria-label="Cinque Terre"><circle cx="270" cy="382" r="11"/><text x="155" y="370">Cinque Terre</text><text class="map-date" x="178" y="390">Sept 4–6</text></g>
+      <g class="map-stop" data-stop="varenna" data-routes="all cinque-varenna varenna-stresa" tabindex="0" role="button" aria-label="Varenna"><circle cx="515" cy="342" r="11"/><text x="540" y="335">Varenna</text><text class="map-date" x="540" y="354">Sept 6–8</text></g>
+      <g class="map-stop" data-stop="stresa" data-routes="all varenna-stresa stresa-mxp" tabindex="0" role="button" aria-label="Stresa"><circle cx="435" cy="382" r="11"/><text x="355" y="418">Stresa</text><text class="map-date" x="350" y="437">Sept 8–10</text></g>
+      <g class="map-stop" data-stop="mxp" data-routes="all stresa-mxp" tabindex="0" role="button" aria-label="Milan Malpensa Airport"><circle cx="520" cy="455" r="11"/><text x="540" y="450">Malpensa</text><text class="map-date" x="540" y="469">Sept 10</text></g>
+      <text class="map-label" x="70" y="85">NORTHERN ITALY</text><text class="map-sea-label" x="680" y="500">ADRIATIC</text><text class="map-sea-label" x="98" y="505">LIGURIAN SEA</text>
+    </svg>
+    <div class="map-legend"><span><i class="legend-route"></i>Selected drive</span><span><i class="legend-stop"></i>Overnight base</span><span>Tap a marker for its chapter</span></div>
+  </div>
+  <aside class="route-detail" id="routeDetail" aria-live="polite"></aside>
+</section>
+<section class="route-cards" aria-label="Transfer day quick reference">
+  <article class="route-card" data-route-card="venice-ortisei"><div class="route-card-number">03</div><div><small>Sept 2</small><h3>Venice → Ortisei</h3><p>Collect the car outside historic Venice, then head north toward Val Gardena.</p></div></article>
+  <article class="route-card" data-route-card="ortisei-cinque"><div class="route-card-number">05</div><div><small>Sept 4</small><h3>Ortisei → Cinque Terre</h3><p>The longest transfer. Start early and treat the journey as the day’s principal activity.</p></div></article>
+  <article class="route-card" data-route-card="cinque-varenna"><div class="route-card-number">07</div><div><small>Sept 6</small><h3>Cinque Terre → Varenna</h3><p>Leave the Ligurian coast and approach Lake Como from the eastern shore.</p></div></article>
+  <article class="route-card" data-route-card="varenna-stresa"><div class="route-card-number">09</div><div><small>Sept 8</small><h3>Varenna → Stresa</h3><p>A cross-Lombardy transfer linking the two lake stays.</p></div></article>
+  <article class="route-card" data-route-card="stresa-mxp"><div class="route-card-number">11</div><div><small>Sept 10</small><h3>Stresa → Malpensa</h3><p>A conservative airport run with fuel, rental return and terminal time built in.</p></div></article>
+</section>
+<section class="map-tools-grid">
+  <article class="map-tool"><span class="tool-icon">P</span><h3>Parking & ZTL</h3><p>Historic centers frequently restrict traffic. Use the named arrival parking in each chapter and never follow navigation blindly into a ZTL.</p><a href="practical.html#driving">Review driving rules →</a></article>
+  <article class="map-tool"><span class="tool-icon">⛴</span><h3>Lake Como ferry</h3><p>Leave the car in Varenna for the central-lake triangle. Ferry timetables are seasonal, so confirm the operating day before departure.</p><a href="lake-como.html">Open Lake Como chapter →</a></article>
+  <article class="map-tool"><span class="tool-icon">↗</span><h3>Live navigation</h3><p>The route panel opens each transfer in Google Maps. Treat displayed times as planning estimates and check traffic immediately before leaving.</p><button class="text-button" data-route-open="all">Choose a drive above</button></article>
+</section>
+</main>
+<div class="bottomnav"><a href="index.html">Home</a><a href="itinerary.html">Plan</a><a class="active" href="map.html">Map</a><a href="venice.html">Venice</a><a href="dolomites.html">Dolomites</a><a href="cinque-terre.html">Cinque Terre</a><a href="lake-como.html">Lake Como</a><a href="lake-maggiore.html">Lake Maggiore</a></div>
+<footer>Northern Italy Traveler’s Companion · Version 026.1</footer>
+<script src="assets/app.js?v=025"></script><script src="assets/map.js?v=025"></script></body></html>

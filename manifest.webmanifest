@@ -1,0 +1,18 @@
+{
+  "name": "Northern Italy Traveler's Companion v026.1",
+  "short_name": "Italy v026.1",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f2e8",
+  "theme_color": "#082d4a",
+  "icons": [
+    {
+      "src": "assets/images/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "description": "A personal interactive guide for Northern Italy, August 31\u2013September 10, 2026.",
+  "scope": "./"
+}
