@@ -1038,7 +1038,7 @@ body.lightbox-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.lightbox.open{animation:none}}
 
 
-/* v027.5 polish */
+/* v027.6 polish */
 :root{--content-max:1180px}
 main, .container{max-width:var(--content-max)}
 section{scroll-margin-top:90px}
@@ -1052,7 +1052,7 @@ img{height:auto}
 p{line-height:1.7}
 h2,h3{letter-spacing:.01em}
 
-/* v027.5 — destination browse correction: restore density and photography */
+/* v027.6 — destination browse correction: restore density and photography */
 .destination-deck{
   gap:14px;
   margin-bottom:62px;
@@ -1104,7 +1104,7 @@ h2,h3{letter-spacing:.01em}
   .destination-tile h3{font-size:clamp(2.35rem,11vw,3.3rem)}
 }
 
-/* v027.5 — focused Venice chapter refinement; no new features */
+/* v027.6 — focused Venice chapter refinement; no new features */
 .venice-chapter .venice-complete-hero{
   background:
     radial-gradient(circle at 78% 18%,rgba(91,156,186,.24),transparent 38%),
@@ -1211,10 +1211,10 @@ h2,h3{letter-spacing:.01em}
   .venice-chapter .editorial-section{margin-block:44px}
 }
 
-/* v027.5 — restore home-cover brightness after Venice refinement */
+/* v027.6 — restore home-cover brightness after Venice refinement */
 .magazine-cover>img{filter:saturate(1.04) brightness(1.08)}
 
-/* v027.5 — focused Dolomites chapter refinement; no feature expansion */
+/* v027.6 — focused Dolomites chapter refinement; no feature expansion */
 .dolomites-chapter .dolomites-complete-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(164,201,174,.20),transparent 38%),
@@ -1319,4 +1319,115 @@ h2,h3{letter-spacing:.01em}
   .dolomites-chapter .alpine-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .dolomites-chapter .alpine-action{min-height:80px}
   .dolomites-chapter .editorial-section{margin-block:44px}
+}
+
+/* v027.6 — focused Cinque Terre chapter refinement; no feature expansion */
+.cinque-terre-chapter .cinque-hero{
+  background:
+    radial-gradient(circle at 76% 16%,rgba(95,181,204,.22),transparent 38%),
+    linear-gradient(145deg,#075b78 0%,#064a66 58%,#043a53 100%);
+}
+.cinque-terre-chapter .cinque-hero .destination-inner{
+  grid-template-columns:minmax(310px,.8fr) minmax(500px,1.2fr);
+  gap:clamp(30px,4vw,54px);
+}
+.cinque-terre-chapter .cinque-hero .destination-copy p{
+  max-width:55ch;
+  line-height:1.58;
+}
+.cinque-terre-chapter .cinque-hero .mini-fact{
+  background:rgba(255,255,255,.085);
+  border-color:rgba(255,255,255,.21);
+}
+.cinque-terre-chapter .book-window{
+  max-width:780px;
+  transform:none;
+  box-shadow:0 26px 66px rgba(0,0,0,.30);
+}
+.cinque-terre-chapter .book-window img{
+  max-height:520px;
+}
+.cinque-terre-chapter .insider-brief{
+  margin-top:20px;
+  margin-bottom:50px;
+}
+.cinque-terre-chapter .tool-strip{
+  gap:10px;
+  margin-top:24px;
+  margin-bottom:48px;
+}
+.cinque-terre-chapter .tool-button{
+  min-height:88px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transition:transform .16s ease,box-shadow .16s ease,background-color .16s ease;
+}
+.cinque-terre-chapter .tool-button:hover{
+  transform:translateY(-2px);
+  background:#fff;
+  box-shadow:0 11px 24px rgba(7,91,120,.10);
+}
+.cinque-terre-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){
+  position:relative;
+  margin-block:clamp(48px,6vw,76px);
+  padding-top:4px;
+}
+.cinque-terre-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer) + section:not(.departure-card)::before{
+  content:"";
+  position:absolute;
+  top:calc(clamp(48px,6vw,76px) / -2);
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent);
+}
+.cinque-terre-chapter .section-heading h2{
+  max-width:24ch;
+  margin-bottom:8px;
+}
+.cinque-terre-chapter .section-heading>p{
+  margin-top:0;
+  max-width:68ch;
+}
+.cinque-terre-chapter .village-grid{
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+}
+.cinque-terre-chapter .village-card{
+  min-height:150px;
+  padding:18px;
+}
+.cinque-terre-chapter .transport-grid,
+.cinque-terre-chapter .hike-grid{
+  gap:12px;
+}
+.cinque-terre-chapter .viewer{
+  margin-top:clamp(52px,7vw,84px);
+}
+.cinque-terre-chapter .spread{
+  margin-top:20px;
+  margin-bottom:24px;
+}
+.cinque-terre-chapter .spread figcaption{
+  min-height:42px;
+}
+@media(max-width:1100px){
+  .cinque-terre-chapter .village-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:980px){
+  .cinque-terre-chapter .cinque-hero .destination-inner{grid-template-columns:1fr}
+  .cinque-terre-chapter .book-window{max-width:860px;justify-self:start}
+  .cinque-terre-chapter .book-window img{max-height:none}
+}
+@media(max-width:720px){
+  .cinque-terre-chapter .village-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .cinque-terre-chapter .tool-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cinque-terre-chapter .tool-button{min-height:80px}
+  .cinque-terre-chapter .village-grid{grid-template-columns:1fr}
+  .cinque-terre-chapter .village-card{min-height:0}
+  .cinque-terre-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:44px}
 }
