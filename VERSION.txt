@@ -1,4 +1,1 @@
-Northern Italy Traveler's Companion
-Version 027.2
-
-Focused destination imagery and card-consistency release.
+027.3a
