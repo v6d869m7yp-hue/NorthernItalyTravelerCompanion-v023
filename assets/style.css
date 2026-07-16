@@ -1038,7 +1038,7 @@ body.lightbox-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.lightbox.open{animation:none}}
 
 
-/* v027.7aa polish */
+/* v027.8a polish */
 :root{--content-max:1180px}
 main, .container{max-width:var(--content-max)}
 section{scroll-margin-top:90px}
@@ -1052,7 +1052,7 @@ img{height:auto}
 p{line-height:1.7}
 h2,h3{letter-spacing:.01em}
 
-/* v027.7aa — destination browse correction: restore density and photography */
+/* v027.8a — destination browse correction: restore density and photography */
 .destination-deck{
   gap:14px;
   margin-bottom:62px;
@@ -1104,7 +1104,7 @@ h2,h3{letter-spacing:.01em}
   .destination-tile h3{font-size:clamp(2.35rem,11vw,3.3rem)}
 }
 
-/* v027.7aa — focused Venice chapter refinement; no new features */
+/* v027.8a — focused Venice chapter refinement; no new features */
 .venice-chapter .venice-complete-hero{
   background:
     radial-gradient(circle at 78% 18%,rgba(91,156,186,.24),transparent 38%),
@@ -1211,10 +1211,10 @@ h2,h3{letter-spacing:.01em}
   .venice-chapter .editorial-section{margin-block:44px}
 }
 
-/* v027.7aa — restore home-cover brightness after Venice refinement */
+/* v027.8a — restore home-cover brightness after Venice refinement */
 .magazine-cover>img{filter:saturate(1.04) brightness(1.08)}
 
-/* v027.7aa — focused Dolomites chapter refinement; no feature expansion */
+/* v027.8a — focused Dolomites chapter refinement; no feature expansion */
 .dolomites-chapter .dolomites-complete-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(164,201,174,.20),transparent 38%),
@@ -1321,7 +1321,7 @@ h2,h3{letter-spacing:.01em}
   .dolomites-chapter .editorial-section{margin-block:44px}
 }
 
-/* v027.7aa — focused Cinque Terre chapter refinement; no feature expansion */
+/* v027.8a — focused Cinque Terre chapter refinement; no feature expansion */
 .cinque-terre-chapter .cinque-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(95,181,204,.22),transparent 38%),
@@ -1432,7 +1432,7 @@ h2,h3{letter-spacing:.01em}
   .cinque-terre-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:44px}
 }
 
-/* v027.7aa — focused Lake Como chapter refinement; no feature expansion */
+/* v027.8a — focused Lake Como chapter refinement; no feature expansion */
 .lake-como-chapter .como-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(151,193,204,.22),transparent 38%),
@@ -1532,7 +1532,7 @@ h2,h3{letter-spacing:.01em}
   .lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:44px}
 }
 
-/* v027.7aaa — Lake Como hierarchy correction */
+/* v027.8aa — Lake Como hierarchy correction */
 .lake-como-chapter main.wrap{
   max-width:1120px;
   padding-top:42px;
