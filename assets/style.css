@@ -846,3 +846,43 @@ body{overflow-x:hidden}
   .nav{max-height:70vh}
   .magazine-cover{min-height:520px}
 }
+
+/* v026.2 — iPad landscape stabilization (no feature changes) */
+@media (max-width:1400px){
+  .menu-toggle{display:block}
+  .topbar-inner{position:relative;flex-direction:row;align-items:center;padding:11px 18px;gap:12px}
+  .brand{max-width:calc(100vw - 120px);white-space:nowrap}
+  .nav{
+    display:none;position:absolute;top:100%;left:0;right:0;width:100%;
+    background:#082d4a;padding:12px 18px 16px;border-radius:0 0 14px 14px;
+    box-shadow:0 20px 40px rgba(0,0,0,.25);max-height:78vh;overflow:auto;
+    flex-direction:column;z-index:30
+  }
+  .nav.open{display:flex}
+  .nav-destinations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+
+  .magazine-cover{min-height:min(760px,calc(100svh - 58px))}
+  .cover-copy{
+    width:100%;margin:0;padding:50px 52% 170px max(32px,env(safe-area-inset-left));
+  }
+  .cover-copy h1{
+    font-size:clamp(4.5rem,8.4vw,7.25rem);line-height:.79;
+    max-width:100%;overflow-wrap:normal;word-break:normal
+  }
+  .cover-copy p{font-size:clamp(1rem,1.55vw,1.25rem)}
+  .cover-copy .cta-row{flex-wrap:wrap;gap:10px}
+  .cover-copy .cta{padding:13px 16px}
+  .cover-dates{display:none}
+}
+
+@media (max-width:980px){
+  .cover-copy{padding-right:44%;padding-bottom:135px}
+  .cover-copy h1{font-size:clamp(4rem,10vw,6rem)}
+}
+
+@media (max-width:740px){
+  .cover-copy{padding:44px 15px 70px}
+  .cover-copy h1{font-size:clamp(3.35rem,17vw,5rem)}
+  .cover-copy p{max-width:34rem}
+  .nav-destinations{grid-template-columns:1fr}
+}

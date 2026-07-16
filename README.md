@@ -1,6 +1,6 @@
-# Northern Italy Traveler’s Companion — Version 026.1
+# Northern Italy Traveler’s Companion — Version 026.2
 
-Version 026.1 is a locked-scope responsive correction release built from v026.
+Version 026.2 is a locked-scope responsive correction release built from v026.
 
 ## Five responsive fixes
 1. Stable header and mobile navigation across window widths.
