@@ -1038,7 +1038,7 @@ body.lightbox-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.lightbox.open{animation:none}}
 
 
-/* v027.7 polish */
+/* v027.7aa polish */
 :root{--content-max:1180px}
 main, .container{max-width:var(--content-max)}
 section{scroll-margin-top:90px}
@@ -1052,7 +1052,7 @@ img{height:auto}
 p{line-height:1.7}
 h2,h3{letter-spacing:.01em}
 
-/* v027.7 — destination browse correction: restore density and photography */
+/* v027.7aa — destination browse correction: restore density and photography */
 .destination-deck{
   gap:14px;
   margin-bottom:62px;
@@ -1104,7 +1104,7 @@ h2,h3{letter-spacing:.01em}
   .destination-tile h3{font-size:clamp(2.35rem,11vw,3.3rem)}
 }
 
-/* v027.7 — focused Venice chapter refinement; no new features */
+/* v027.7aa — focused Venice chapter refinement; no new features */
 .venice-chapter .venice-complete-hero{
   background:
     radial-gradient(circle at 78% 18%,rgba(91,156,186,.24),transparent 38%),
@@ -1211,10 +1211,10 @@ h2,h3{letter-spacing:.01em}
   .venice-chapter .editorial-section{margin-block:44px}
 }
 
-/* v027.7 — restore home-cover brightness after Venice refinement */
+/* v027.7aa — restore home-cover brightness after Venice refinement */
 .magazine-cover>img{filter:saturate(1.04) brightness(1.08)}
 
-/* v027.7 — focused Dolomites chapter refinement; no feature expansion */
+/* v027.7aa — focused Dolomites chapter refinement; no feature expansion */
 .dolomites-chapter .dolomites-complete-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(164,201,174,.20),transparent 38%),
@@ -1321,7 +1321,7 @@ h2,h3{letter-spacing:.01em}
   .dolomites-chapter .editorial-section{margin-block:44px}
 }
 
-/* v027.7 — focused Cinque Terre chapter refinement; no feature expansion */
+/* v027.7aa — focused Cinque Terre chapter refinement; no feature expansion */
 .cinque-terre-chapter .cinque-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(95,181,204,.22),transparent 38%),
@@ -1432,7 +1432,7 @@ h2,h3{letter-spacing:.01em}
   .cinque-terre-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:44px}
 }
 
-/* v027.7 — focused Lake Como chapter refinement; no feature expansion */
+/* v027.7aa — focused Lake Como chapter refinement; no feature expansion */
 .lake-como-chapter .como-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(151,193,204,.22),transparent 38%),
@@ -1530,4 +1530,99 @@ h2,h3{letter-spacing:.01em}
   .lake-como-chapter .villa-grid{grid-template-columns:1fr}
   .lake-como-chapter .ferry-card{min-height:0}
   .lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:44px}
+}
+
+/* v027.7aaa — Lake Como hierarchy correction */
+.lake-como-chapter main.wrap{
+  max-width:1120px;
+  padding-top:42px;
+}
+.lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){
+  margin-block:clamp(38px,4.5vw,58px);
+}
+.lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer) + section:not(.departure-card)::before{
+  top:calc(clamp(38px,4.5vw,58px) / -2);
+}
+.lake-como-chapter .section-heading{
+  grid-template-columns:minmax(0,.92fr) minmax(300px,.62fr);
+  gap:clamp(24px,3vw,44px);
+  align-items:center;
+  margin-bottom:18px;
+}
+.lake-como-chapter .section-heading h2{
+  max-width:18ch;
+  font-size:clamp(2.25rem,4.15vw,3.55rem);
+  line-height:1.02;
+}
+.lake-como-chapter .section-heading>p{
+  max-width:50ch;
+  font-size:1rem;
+  line-height:1.55;
+}
+.lake-como-chapter .guide-grid{
+  max-width:1040px;
+  margin-inline:auto;
+  gap:18px;
+}
+.lake-como-chapter .guide-image{
+  aspect-ratio:16/8.7;
+}
+.lake-como-chapter .guide-body,
+.lake-como-chapter .villa-card>div{
+  padding:16px 20px 19px;
+}
+.lake-como-chapter .guide-body h3,
+.lake-como-chapter .villa-card h3{
+  font-size:clamp(1.35rem,2vw,1.65rem);
+  margin-bottom:6px;
+}
+.lake-como-chapter .guide-body p,
+.lake-como-chapter .villa-card p{
+  font-size:.96rem;
+  line-height:1.45;
+}
+.lake-como-chapter .ferry-grid{
+  gap:14px;
+  margin:18px 0 36px;
+}
+.lake-como-chapter .ferry-card{
+  min-height:126px;
+  padding:18px;
+}
+.lake-como-chapter .ferry-card h3{
+  font-size:1.4rem;
+}
+.lake-como-chapter .ferry-card p{
+  margin-bottom:0;
+  font-size:.95rem;
+  line-height:1.45;
+}
+.lake-como-chapter .villa-grid{
+  gap:14px;
+  margin:18px 0 38px;
+}
+.lake-como-chapter .villa-card img{
+  aspect-ratio:16/8.8;
+  object-position:center 42%;
+}
+.lake-como-chapter .departure-card{
+  margin-top:44px;
+  padding:clamp(24px,3.3vw,36px);
+}
+.lake-como-chapter .departure-card h2{
+  font-size:clamp(1.95rem,3.4vw,2.65rem);
+}
+@media(max-width:980px){
+  .lake-como-chapter .section-heading{
+    grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);
+  }
+}
+@media(max-width:760px){
+  .lake-como-chapter .section-heading{grid-template-columns:1fr;gap:12px;align-items:start}
+  .lake-como-chapter .section-heading h2{max-width:20ch;font-size:clamp(2rem,9vw,3rem)}
+  .lake-como-chapter .guide-image,
+  .lake-como-chapter .villa-card img{aspect-ratio:4/3}
+}
+@media(max-width:620px){
+  .lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:38px}
 }
