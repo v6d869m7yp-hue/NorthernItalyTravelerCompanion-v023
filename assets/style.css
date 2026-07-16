@@ -770,3 +770,79 @@ footer{text-align:center;padding:30px 18px 100px;color:var(--muted)}
 /* v026 insider destination layer */
 .insider-brief{margin:32px 0 62px;padding:clamp(24px,4vw,42px);background:linear-gradient(145deg,#fffdf7,#f3efe4);border:1px solid var(--line);border-radius:26px;box-shadow:0 18px 45px rgba(8,45,74,.08)}
 .brief-title{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:end;margin-bottom:24px}.brief-title h2{font:700 clamp(2.4rem,5vw,4.4rem)/.95 Georgia,serif;color:var(--navy);margin:.15em 0}.brief-title p{line-height:1.65;color:#59656c}.today-plan{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}.today-plan>div{background:#082d4a;color:#fff;border-radius:17px;padding:21px}.today-plan span{display:block;text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;font-weight:850;color:#f0cf8d}.today-plan strong{display:block;font:700 1.45rem/1.1 Georgia,serif;margin:.45em 0}.today-plan p{font-size:.93rem;line-height:1.5;opacity:.82}.insider-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.insider-grid article{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.insider-grid h3{font:700 1.35rem Georgia,serif;color:var(--navy);margin:0 0 8px}.insider-grid p{margin:0;color:#55616a;line-height:1.58}.live-note{margin-top:16px;background:#e4ece6;border-left:5px solid #496a55;border-radius:12px;padding:16px 18px;line-height:1.55;color:#31484a}.live-note strong{color:#163f3a}@media(max-width:800px){.brief-title{grid-template-columns:1fr}.today-plan{grid-template-columns:1fr}.insider-grid{grid-template-columns:1fr}}
+
+/* v026.1 — locked responsive correction layer (five fixes only) */
+
+/* 1. Stable header/navigation at every window width. */
+.topbar-inner{min-width:0}
+.brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.nav,.nav-destinations{min-width:0}
+@media(max-width:900px){
+  .topbar-inner{flex-direction:row;align-items:center;padding:11px 15px;gap:12px}
+  .brand{font-size:.92rem;max-width:calc(100vw - 105px)}
+  .menu-toggle{display:block;flex:0 0 auto;margin-left:auto}
+  .nav{top:100%;left:0;right:0;width:100%;border-radius:0 0 14px 14px;padding:12px 15px}
+}
+
+/* 2. Fluid hero and masthead type without clipping or oversized gaps. */
+.home-copy,.destination-copy,.cover-copy,.page-masthead>*{min-width:0}
+.home-copy h1,.destination-copy h1,.cover-copy h1,.page-masthead h1{overflow-wrap:anywhere}
+@media(max-width:650px){
+  .magazine-cover{min-height:min(680px,82svh)}
+  .cover-copy{padding:46px 15px 38px}
+  .cover-copy h1{font-size:clamp(3.35rem,17vw,5rem);line-height:.82}
+  .home-copy h1,.destination-copy h1{font-size:clamp(2.75rem,14vw,4.65rem);line-height:.91}
+  .page-masthead{padding:48px 15px}
+  .page-masthead h1{font-size:clamp(2.85rem,14vw,4.75rem)}
+}
+
+/* 3. Predictable grid/card reflow with no squeezed columns. */
+.home-hero-inner,.destination-inner,.section-heading,.briefing-head,.brief-title,
+.dashboard,.dashboard-panels,.feature-grid,.guide-grid,.morning-grid,
+.destination-deck,.journey-summary,.reference-grid,.today-plan,.insider-grid,
+.interactive-map-shell,.route-cards,.map-tools-grid{min-width:0}
+.home-hero-inner>*,.destination-inner>*,.section-heading>*,.briefing-head>*,
+.brief-title>*,.dashboard>*,.dashboard-panels>*,.feature-grid>*,.guide-grid>*,
+.morning-grid>*,.destination-deck>*,.journey-summary>*,.reference-grid>*,
+.today-plan>*,.insider-grid>*,.interactive-map-shell>*,.route-cards>*{min-width:0}
+@media(max-width:720px){
+  .timeline,.journey-summary,.chapter-index,.quick-actions{grid-template-columns:1fr 1fr}
+  .traveler-strip{padding:25px}
+  .traveler-strip h2{font-size:clamp(2.1rem,10vw,3rem)}
+}
+@media(max-width:430px){
+  .timeline,.journey-summary,.chapter-index{grid-template-columns:1fr}
+  .day-copy,.morning-card,.reference-card,.route-detail,.insider-brief{padding-left:18px;padding-right:18px}
+}
+
+/* 4. Media, maps and tables stay inside the viewport. */
+img,svg,video,canvas,iframe{max-width:100%}
+.book-window,.feature,.guide-card,.page-spread,.spread,.italy-map,.map-board{min-width:0}
+.fact-table{display:table;table-layout:fixed;max-width:100%}
+.fact-table th,.fact-table td{overflow-wrap:anywhere}
+@media(max-width:620px){
+  .fact-table,.fact-table tbody,.fact-table tr,.fact-table th,.fact-table td{display:block;width:100%}
+  .fact-table th{border-bottom:0;padding-bottom:5px}
+  .fact-table td{padding-top:5px}
+  .italy-map,.italy-map svg{min-height:360px}
+  .map-stop text{font-size:20px}
+  .map-stop .map-date{font-size:12px}
+}
+
+/* 5. Consistent edge spacing and safe-area behavior on narrow/short screens. */
+body{overflow-x:hidden}
+.topbar{padding-top:env(safe-area-inset-top)}
+.wrap,.cover-copy,.page-masthead,.dashboard-hero,.home-hero,.destination-hero,
+.venice-complete-hero,.dolomites-complete-hero,.dolomites-hero,.cinque-hero,.como-hero,.maggiore-hero{
+  padding-left:max(15px,env(safe-area-inset-left));
+  padding-right:max(15px,env(safe-area-inset-right));
+}
+@media(max-width:650px){
+  .wrap{padding-top:36px;padding-bottom:84px}
+  .v024-wrap{padding-top:42px}
+  .editorial-section{scroll-margin-top:82px;margin:34px 0}
+}
+@media(max-height:520px) and (orientation:landscape){
+  .nav{max-height:70vh}
+  .magazine-cover{min-height:520px}
+}
