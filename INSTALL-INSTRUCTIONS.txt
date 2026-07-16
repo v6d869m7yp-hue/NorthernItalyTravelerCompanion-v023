@@ -1,8 +1,0 @@
-VERSION 026 INSTALLATION
-
-1. In GitHub Desktop choose Repository > Show in Finder.
-2. Delete all visible files and folders in the repository folder. Do not delete the hidden .git folder.
-3. Copy everything INSIDE this v026.1 folder into the repository folder.
-4. In GitHub Desktop commit with: v026.1: Add insider destination briefs and today plans
-5. Click Push origin.
-6. After GitHub Pages updates, hard-refresh or open the site in a private tab.
