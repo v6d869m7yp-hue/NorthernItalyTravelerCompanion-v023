@@ -1,3 +1,3 @@
 Northern Italy Traveler's Companion
-Version 027.0
+Version 027.1
 Production polish release

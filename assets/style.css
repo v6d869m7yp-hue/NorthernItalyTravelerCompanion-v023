@@ -847,7 +847,7 @@ body{overflow-x:hidden}
   .magazine-cover{min-height:520px}
 }
 
-/* v027.0 — iPad landscape stabilization (no feature changes) */
+/* v027.1 — iPad landscape stabilization (no feature changes) */
 @media (max-width:1400px){
   .menu-toggle{display:block}
   .topbar-inner{position:relative;flex-direction:row;align-items:center;padding:11px 18px;gap:12px}
@@ -887,7 +887,7 @@ body{overflow-x:hidden}
   .nav-destinations{grid-template-columns:1fr}
 }
 
-/* v027.0 — production polish: consistency, rhythm, readability (no new features) */
+/* v027.1 — production polish: consistency, rhythm, readability (no new features) */
 :root{
   --content-max:1180px;
   --reading-max:760px;
@@ -944,4 +944,34 @@ footer{padding-inline:20px;text-align:center}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+
+
+/* v027.1 — navigation and reading polish; no new features */
+body.nav-open{overflow:hidden}
+.menu-toggle{min-width:76px;min-height:44px;border-radius:10px}
+.nav a{min-height:40px;display:flex;align-items:center}
+.nav a[aria-current="page"]{box-shadow:inset 0 -2px 0 #f5cf75}
+:focus-visible{outline:3px solid #d6a544;outline-offset:3px}
+.page-masthead p,.destination-copy p,.cover-copy p{max-width:62ch}
+.reference-card dd,.day-copy p,.guide-body p,.route-detail p{line-height:1.62}
+.page-spread img{content-visibility:auto}
+@media(max-width:1400px){
+  .nav{overscroll-behavior:contain}
+  .nav a{padding:.72rem .8rem;min-height:46px}
+  .nav a[aria-current="page"]{box-shadow:inset 4px 0 0 #f5cf75}
+}
+@media(max-width:760px){
+  .topbar-inner{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+  .brand{font-size:.78rem;letter-spacing:.09em;overflow:hidden;text-overflow:ellipsis}
+  .brand small{font-size:.66rem}
+  .bottomnav{padding-bottom:env(safe-area-inset-bottom)}
+  footer{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+}
+@media print{
+  .topbar,.bottomnav,.menu-toggle,.cta-row,.page-actions{display:none!important}
+  body{background:#fff;color:#111;font-size:11pt}
+  .wrap,.v026-wrap,.editorial-wrap{width:100%;max-width:none}
+  .page-spread,.day-card,.reference-card{box-shadow:none;break-inside:avoid}
+  a{color:inherit;text-decoration:none}
 }

@@ -1,6 +1,6 @@
-# Northern Italy Traveler’s Companion — Version 027.0
+# Northern Italy Traveler’s Companion — Version 027.1
 
-Version 027.0 is a focused production-polish release built from the stable v026.3 baseline.
+Version 027.1 is a focused navigation and reading-polish release built from the previous stable release. It adds no new feature modules.
 
 ## Scope
 - Standardized content widths and page rhythm
