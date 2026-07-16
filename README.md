@@ -1,13 +1,12 @@
-# Northern Italy Traveler’s Companion — Version 027.1
+# Northern Italy Traveler’s Companion — Version 027.2
 
-Version 027.1 is a focused navigation and reading-polish release built from the previous stable release. It adds no new feature modules.
+Version 027.2 is a focused visual-consistency release built from v027.1. It adds no new feature modules.
 
-## Scope
-- Standardized content widths and page rhythm
-- Refined typography and readable line lengths
-- Unified card, image, caption, button, and table treatment
-- Improved active navigation and keyboard focus behavior
-- Tightened phone and tablet spacing
-- Preserved all existing content, routes, and features
+## Refinements
 
-No new feature modules were added.
+- Standardized destination guide-card and villa-card image proportions.
+- Unified chapter-spread borders, captions, radii, and shadows.
+- Improved image rendering and restrained hover treatment.
+- Improved full-screen image viewing on phones and tablets.
+- Added keyboard access, focus handling, and accurate accessibility state to existing lightboxes.
+- Normalized destination footer version labels.

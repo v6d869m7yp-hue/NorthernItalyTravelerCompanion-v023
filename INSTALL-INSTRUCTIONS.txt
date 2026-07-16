@@ -1,8 +1,8 @@
-VERSION 026 INSTALLATION
+NORTHERN ITALY TRAVELER'S COMPANION — v027.2
 
-1. In GitHub Desktop choose Repository > Show in Finder.
-2. Delete all visible files and folders in the repository folder. Do not delete the hidden .git folder.
-3. Copy everything INSIDE this v027.1 folder into the repository folder.
-4. In GitHub Desktop commit with: Build v027.1: refine navigation and reading experience
-5. Click Push origin.
-6. After GitHub Pages updates, hard-refresh or open the site in a private tab.
+1. Unzip NorthernItalyTravelerCompanion-v027.2.zip.
+2. Open your local GitHub repository folder.
+3. Replace its contents with everything INSIDE the v027.2 folder.
+4. Commit with: Build v027.2: refine destination imagery and card consistency
+5. Push the commit to GitHub.
+6. Reload the published site. If an installed copy briefly shows the prior version, close and reopen it once so the new service-worker cache takes control.

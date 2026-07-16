@@ -48,4 +48,44 @@
       });
     }
   }, { passive: true });
+
+  // Make existing chapter-spread lightboxes keyboard and screen-reader friendly.
+  const zoomableImages = document.querySelectorAll('.spread img, .page-spread img');
+  zoomableImages.forEach((image) => {
+    image.setAttribute('role', 'button');
+    image.setAttribute('tabindex', '0');
+    image.setAttribute('aria-label', `View larger: ${image.alt || 'chapter image'}`);
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        image.click();
+      }
+    });
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    const closeButton = lightbox.querySelector('button');
+    let returnFocus = null;
+
+    const syncLightboxState = () => {
+      const open = lightbox.classList.contains('open');
+      lightbox.setAttribute('aria-hidden', String(!open));
+      document.body.classList.toggle('lightbox-open', open);
+      if (open) {
+        returnFocus = document.activeElement;
+        closeButton?.focus({ preventScroll: true });
+      } else if (returnFocus instanceof HTMLElement) {
+        returnFocus.focus({ preventScroll: true });
+        returnFocus = null;
+      }
+    };
+
+    new MutationObserver(syncLightboxState).observe(lightbox, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    syncLightboxState();
+  }
+
 })();
