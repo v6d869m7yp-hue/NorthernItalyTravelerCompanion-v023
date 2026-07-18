@@ -847,7 +847,7 @@ body{overflow-x:hidden}
   .magazine-cover{min-height:520px}
 }
 
-/* v028.0 — iPad landscape stabilization (no feature changes) */
+/* v027.2 — iPad landscape stabilization (no feature changes) */
 @media (max-width:1400px){
   .menu-toggle{display:block}
   .topbar-inner{position:relative;flex-direction:row;align-items:center;padding:11px 18px;gap:12px}
@@ -887,7 +887,7 @@ body{overflow-x:hidden}
   .nav-destinations{grid-template-columns:1fr}
 }
 
-/* v028.0 — production polish: consistency, rhythm, readability (no new features) */
+/* v027.2 — production polish: consistency, rhythm, readability (no new features) */
 :root{
   --content-max:1180px;
   --reading-max:760px;
@@ -947,7 +947,7 @@ footer{padding-inline:20px;text-align:center}
 }
 
 
-/* v028.0 — navigation and reading polish; no new features */
+/* v027.2 — navigation and reading polish; no new features */
 body.nav-open{overflow:hidden}
 .menu-toggle{min-width:76px;min-height:44px;border-radius:10px}
 .nav a{min-height:40px;display:flex;align-items:center}
@@ -976,7 +976,7 @@ body.nav-open{overflow:hidden}
   a{color:inherit;text-decoration:none}
 }
 
-/* v028.0 — destination imagery and card consistency; no new features */
+/* v027.2 — destination imagery and card consistency; no new features */
 :root{
   --image-radius:16px;
   --caption-bg:#fffdf8;
@@ -1532,7 +1532,7 @@ h2,h3{letter-spacing:.01em}
   .lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:44px}
 }
 
-/* v028.0 — Lake Como hierarchy correction */
+/* v028.0a — Lake Como hierarchy correction */
 .lake-como-chapter main.wrap{
   max-width:1120px;
   padding-top:42px;
@@ -1627,142 +1627,7 @@ h2,h3{letter-spacing:.01em}
   .lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:38px}
 }
 
-
-/* v028.0 — cohesive editorial design pass; no new features */
-:root{
-  --editorial-width:1160px;
-  --editorial-shadow:0 14px 34px rgba(26,49,61,.09);
-  --editorial-shadow-hover:0 20px 42px rgba(26,49,61,.14);
-}
-html{scroll-padding-top:88px}
-body{background:#f7f4ee}
-.topbar{box-shadow:0 1px 0 rgba(255,255,255,.06),0 8px 24px rgba(5,30,48,.12)}
-.topbar-inner{max-width:1280px}
-.brand{letter-spacing:.075em}
-.brand small{opacity:.76;font-weight:700}
-.nav>a,.nav-destinations>a{border-radius:999px;padding:8px 10px}
-.nav a[aria-current="page"]{background:rgba(255,255,255,.12);color:#fff}
-.wrap{max-width:var(--editorial-width)}
-.page-masthead{padding-block:clamp(58px,7vw,92px);border-bottom:1px solid rgba(255,255,255,.12)}
-.page-masthead>*,.page-masthead h1,.page-masthead p{max-width:var(--editorial-width);margin-inline:auto}
-.page-masthead h1{font-size:clamp(3rem,7vw,5.8rem);line-height:.94;letter-spacing:-.035em;max-width:15ch}
-.page-masthead p{font-size:clamp(1.05rem,1.45vw,1.24rem);max-width:60ch;line-height:1.62}
-.section-heading{align-items:end;gap:clamp(24px,4vw,54px);margin-bottom:22px}
-.section-heading h2{font-size:clamp(2.15rem,4.5vw,3.75rem);line-height:1;letter-spacing:-.025em;max-width:18ch}
-.section-heading>p{font-size:1rem;line-height:1.58;max-width:54ch}
-.guide-card,.villa-card,.island-card,.day-card,.reference-card,.route-card,.hotel-card,.morning-card{
-  border-color:rgba(37,68,80,.14);box-shadow:var(--editorial-shadow)
-}
-.guide-card,.villa-card,.island-card,.reference-card,.route-card,.hotel-card,.morning-card{
-  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease
-}
-.guide-card:hover,.villa-card:hover,.island-card:hover,.reference-card:hover,.route-card:hover,.hotel-card:hover,.morning-card:hover{
-  transform:translateY(-3px);box-shadow:var(--editorial-shadow-hover);border-color:rgba(37,68,80,.23)
-}
-.guide-body p,.villa-card p,.island-card p,.reference-card dd{color:#42545d}
-.spread{box-shadow:var(--editorial-shadow);border-color:rgba(37,68,80,.14)}
-.spread figcaption{font-size:.82rem;letter-spacing:.035em;text-transform:uppercase;color:#52636b}
-footer{border-top:1px solid rgba(37,68,80,.12);padding-block:28px}
-
-/* Daily guide: denser, clearer editorial timeline */
-.itinerary-page .page-masthead{background:linear-gradient(135deg,#123d58 0%,#082d4a 60%,#06243a 100%)}
-.itinerary-page .journey-summary{
-  margin-top:-34px;position:relative;z-index:2;background:#fff;border:1px solid rgba(37,68,80,.13);
-  box-shadow:0 18px 42px rgba(18,50,68,.12);border-radius:18px;padding:8px
-}
-.itinerary-page .journey-summary>div{padding:16px 14px;border-radius:12px}
-.itinerary-page .journey-summary>div+div{border-left:1px solid rgba(37,68,80,.11)}
-.itinerary-page .day-timeline{max-width:980px;margin:52px auto 0}
-.itinerary-page .day-card{
-  grid-template-columns:58px 92px minmax(0,1fr);min-height:0;margin-bottom:12px;padding:18px 22px;
-  border-radius:16px;background:rgba(255,255,255,.94)
-}
-.itinerary-page .day-node{width:42px;height:42px}
-.itinerary-page .day-date{font-size:.86rem;letter-spacing:.055em;text-transform:uppercase}
-.itinerary-page .day-copy{display:grid;grid-template-columns:minmax(150px,.42fr) minmax(0,1fr) auto;gap:18px;align-items:center}
-.itinerary-page .day-copy small{grid-column:1;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#6c7b82}
-.itinerary-page .day-copy h3{grid-column:1;margin:1.1rem 0 0;font-size:1.55rem}
-.itinerary-page .day-copy p{grid-column:2;grid-row:1/3;margin:0;line-height:1.48}
-.itinerary-page .day-copy a{grid-column:3;grid-row:1/3;white-space:nowrap}
-
-/* Lake Maggiore: complete the destination-series design language */
-.lake-maggiore-chapter .maggiore-hero{
-  background:radial-gradient(circle at 78% 15%,rgba(196,214,185,.22),transparent 40%),linear-gradient(145deg,#527b72 0%,#3e665f 56%,#2f534e 100%)
-}
-.lake-maggiore-chapter .maggiore-hero .destination-inner{
-  grid-template-columns:minmax(310px,.8fr) minmax(500px,1.2fr);gap:clamp(30px,4vw,54px)
-}
-.lake-maggiore-chapter .destination-copy p{max-width:54ch;line-height:1.58}
-.lake-maggiore-chapter .mini-fact{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.22)}
-.lake-maggiore-chapter .book-window{max-width:780px;transform:none;box-shadow:0 26px 66px rgba(0,0,0,.27)}
-.lake-maggiore-chapter .book-window img{max-height:520px}
-.lake-maggiore-chapter main.wrap{max-width:1120px;padding-top:42px}
-.lake-maggiore-chapter .insider-brief{margin-top:20px;margin-bottom:48px}
-.lake-maggiore-chapter .tool-strip{gap:10px;margin-top:22px;margin-bottom:42px}
-.lake-maggiore-chapter .tool-button{min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.lake-maggiore-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){
-  position:relative;margin-block:clamp(38px,4.5vw,58px);padding-top:4px
-}
-.lake-maggiore-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer)+section:not(.departure-card)::before{
-  content:"";position:absolute;top:calc(clamp(38px,4.5vw,58px)/-2);left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent)
-}
-.lake-maggiore-chapter .section-heading{grid-template-columns:minmax(0,.92fr) minmax(300px,.62fr);align-items:center;margin-bottom:18px}
-.lake-maggiore-chapter .section-heading h2{max-width:18ch;font-size:clamp(2.25rem,4.15vw,3.55rem)}
-.lake-maggiore-chapter .section-heading>p{max-width:50ch}
-.lake-maggiore-chapter .day-grid,.lake-maggiore-chapter .guide-grid,.lake-maggiore-chapter .island-grid{gap:16px}
-.lake-maggiore-chapter .guide-grid{max-width:1040px;margin-inline:auto}
-.lake-maggiore-chapter .guide-image{aspect-ratio:16/8.7}
-.lake-maggiore-chapter .guide-body{padding:16px 20px 19px}
-.lake-maggiore-chapter .guide-body h3,.lake-maggiore-chapter .island-card h3{font-size:clamp(1.32rem,2vw,1.62rem);margin-bottom:6px}
-.lake-maggiore-chapter .guide-body p,.lake-maggiore-chapter .island-card p{font-size:.96rem;line-height:1.45}
-.lake-maggiore-chapter .island-grid{margin:18px 0 38px}
-.lake-maggiore-chapter .island-card img{aspect-ratio:16/9;object-fit:cover;object-position:center 44%}
-.lake-maggiore-chapter .island-card>div{padding:16px 18px 19px}
-.lake-maggiore-chapter .departure-card{margin-top:44px;padding:clamp(24px,3.3vw,36px)}
-.lake-maggiore-chapter .departure-card h2{font-size:clamp(1.95rem,3.4vw,2.65rem)}
-.lake-maggiore-chapter .viewer{margin-top:clamp(52px,7vw,84px)}
-.lake-maggiore-chapter .spread{margin-top:18px;margin-bottom:22px}
-
-/* Practical, hotels and maps: shared publication-like card system */
-.practical-page .reference-grid,.hotels-page .hotel-grid{gap:16px}
-.practical-page .reference-card{padding:clamp(22px,3vw,30px);border-radius:17px;background:rgba(255,255,255,.95)}
-.practical-page .reference-card h2{font-size:1.62rem;margin-bottom:18px}
-.practical-page .reference-card dl{display:grid;grid-template-columns:minmax(86px,.32fr) 1fr;gap:11px 18px}
-.practical-page .reference-card dt{font-weight:800;color:#294f5e}
-.practical-page .reference-card dd{margin:0;line-height:1.48}
-.map-page-shell .route-cards{gap:12px}
-.map-page-shell .route-card{border-radius:15px;padding:17px}
-.map-page-shell .map-control-panel{box-shadow:var(--editorial-shadow)}
-
-@media(max-width:980px){
-  .itinerary-page .day-copy{grid-template-columns:1fr auto}
-  .itinerary-page .day-copy small,.itinerary-page .day-copy h3{grid-column:1}
-  .itinerary-page .day-copy p{grid-column:1;grid-row:auto}
-  .itinerary-page .day-copy a{grid-column:2;grid-row:1/4}
-  .lake-maggiore-chapter .maggiore-hero .destination-inner{grid-template-columns:1fr}
-  .lake-maggiore-chapter .book-window{max-width:860px;justify-self:start}
-  .lake-maggiore-chapter .book-window img{max-height:none}
-}
-@media(max-width:760px){
-  .page-masthead h1{font-size:clamp(2.8rem,13vw,4.5rem)}
-  .section-heading,.lake-maggiore-chapter .section-heading{grid-template-columns:1fr;gap:11px;align-items:start}
-  .itinerary-page .journey-summary{margin-top:-24px;overflow-x:auto;display:flex;scroll-snap-type:x proximity}
-  .itinerary-page .journey-summary>div{min-width:155px;scroll-snap-align:start}
-  .itinerary-page .journey-summary>div+div{border-left:1px solid rgba(37,68,80,.11)}
-  .itinerary-page .day-card{grid-template-columns:44px 1fr;padding:16px}
-  .itinerary-page .day-date{grid-column:2}
-  .itinerary-page .day-copy{grid-column:2;display:block}
-  .itinerary-page .day-copy h3{margin:.15rem 0 .35rem}
-  .itinerary-page .day-copy p{margin:0 0 .55rem}
-  .lake-maggiore-chapter .guide-image,.lake-maggiore-chapter .island-card img{aspect-ratio:4/3}
-}
-@media(max-width:560px){
-  .nav>a,.nav-destinations>a{border-radius:10px;padding:10px 12px}
-  .practical-page .reference-card dl{grid-template-columns:1fr;gap:3px}
-  .practical-page .reference-card dd{margin-bottom:11px}
-  .lake-maggiore-chapter .tool-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(prefers-reduced-motion:reduce){
-  .guide-card,.villa-card,.island-card,.reference-card,.route-card,.hotel-card,.morning-card{transition:none}
-}
+/* v028.0 Explorer modules */
+.milan-hero{height:min(76vh,760px);min-height:560px;position:relative;overflow:hidden;background:#18394b}.milan-hero>img{width:100%;height:100%;object-fit:cover}.milan-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,25,37,.82),rgba(5,25,37,.18) 64%,rgba(5,25,37,.05))}.milan-hero-copy{position:absolute;left:max(5vw,32px);bottom:11%;max-width:690px;color:#fff}.milan-hero-copy h1{font-family:Georgia,serif;font-size:clamp(72px,11vw,150px);font-weight:400;line-height:.82;margin:.12em 0}.milan-hero-copy p{font-size:clamp(18px,2vw,25px);line-height:1.45;max-width:650px}.milan-choice,.milan-section,.milan-neighborhoods,.milan-itinerary{margin:80px 0}.milan-plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.milan-plan-grid article{padding:32px;border:1px solid #d9d3c7;background:#fff;min-height:260px;display:flex;flex-direction:column}.milan-plan-grid article.featured{background:#163846;color:#fff;transform:translateY(-12px)}.milan-plan-grid span{font-size:52px;font-family:Georgia,serif;opacity:.35}.milan-plan-grid h3{font-size:28px;margin:10px 0}.milan-plan-grid a{margin-top:auto;font-weight:700;color:inherit}.milan-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.milan-card-grid article{padding:28px;background:#f3efe7;border-top:4px solid #ad7d4e;min-height:250px}.milan-card-grid b{font-family:Georgia,serif;font-size:40px;color:#ad7d4e}.milan-card-grid h3{font-size:24px}.milan-card-grid small{display:block;margin-top:18px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.milan-neighborhoods{background:#173943;color:#fff;padding:55px;display:grid;grid-template-columns:.7fr 1.3fr;gap:55px}.neighborhood-list{display:grid;grid-template-columns:1fr 1fr;gap:0}.neighborhood-list article{padding:20px;border-left:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25)}.neighborhood-list em{color:#dcc49f}.milan-itinerary{display:grid;grid-template-columns:170px 1fr;gap:35px;padding:45px;border:1px solid #d8d1c5;background:#fff}.day-number{font-family:Georgia,serif;font-size:150px;line-height:.8;color:#c4a271}.milan-itinerary li{padding:12px 0;border-bottom:1px solid #e3ddd2;font-size:18px}.interest-grid,.food-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.interest-grid span,.food-strip article{padding:22px;background:#f1ede5}.interest-grid strong{display:block;font-size:20px;margin-bottom:6px}.explorer-heading{margin-top:85px}.explorer-deck{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:18px;margin-bottom:70px}.explorer-tile{position:relative;min-height:330px;background:#e9e3d8;overflow:hidden;text-decoration:none;color:inherit}.explorer-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.explorer-tile.live:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,35,46,.88),rgba(8,35,46,.08) 70%)}.explorer-tile>div{position:absolute;z-index:2;left:25px;right:25px;bottom:25px}.explorer-tile.live>div{color:#fff}.explorer-tile.soon>div{position:static;padding:32px}.explorer-tile h3{font-size:30px;margin:8px 0}.explorer-tile small,.explorer-tile span{text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:12px}
+@media(max-width:850px){.milan-plan-grid,.milan-card-grid,.explorer-deck{grid-template-columns:1fr}.milan-plan-grid article.featured{transform:none}.milan-neighborhoods{grid-template-columns:1fr;padding:32px}.milan-itinerary{grid-template-columns:1fr;padding:28px}.day-number{font-size:80px}.interest-grid,.food-strip{grid-template-columns:1fr 1fr}.explorer-tile{min-height:290px}}
+@media(max-width:520px){.milan-hero{min-height:600px}.milan-hero-copy{left:22px;right:22px}.neighborhood-list,.interest-grid,.food-strip{grid-template-columns:1fr}.milan-card-grid{grid-template-columns:1fr}}
