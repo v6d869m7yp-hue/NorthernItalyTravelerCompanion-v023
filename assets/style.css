@@ -1038,7 +1038,7 @@ body.lightbox-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.lightbox.open{animation:none}}
 
 
-/* v028.3 polish */
+/* v028.4 polish */
 :root{--content-max:1180px}
 main, .container{max-width:var(--content-max)}
 section{scroll-margin-top:90px}
@@ -1052,7 +1052,7 @@ img{height:auto}
 p{line-height:1.7}
 h2,h3{letter-spacing:.01em}
 
-/* v028.3 — destination browse correction: restore density and photography */
+/* v028.4 — destination browse correction: restore density and photography */
 .destination-deck{
   gap:14px;
   margin-bottom:62px;
@@ -1104,7 +1104,7 @@ h2,h3{letter-spacing:.01em}
   .destination-tile h3{font-size:clamp(2.35rem,11vw,3.3rem)}
 }
 
-/* v028.3 — focused Venice chapter refinement; no new features */
+/* v028.4 — focused Venice chapter refinement; no new features */
 .venice-chapter .venice-complete-hero{
   background:
     radial-gradient(circle at 78% 18%,rgba(91,156,186,.24),transparent 38%),
@@ -1211,10 +1211,10 @@ h2,h3{letter-spacing:.01em}
   .venice-chapter .editorial-section{margin-block:44px}
 }
 
-/* v028.3 — restore home-cover brightness after Venice refinement */
+/* v028.4 — restore home-cover brightness after Venice refinement */
 .magazine-cover>img{filter:saturate(1.04) brightness(1.08)}
 
-/* v028.3 — focused Dolomites chapter refinement; no feature expansion */
+/* v028.4 — focused Dolomites chapter refinement; no feature expansion */
 .dolomites-chapter .dolomites-complete-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(164,201,174,.20),transparent 38%),
@@ -1321,7 +1321,7 @@ h2,h3{letter-spacing:.01em}
   .dolomites-chapter .editorial-section{margin-block:44px}
 }
 
-/* v028.3 — focused Cinque Terre chapter refinement; no feature expansion */
+/* v028.4 — focused Cinque Terre chapter refinement; no feature expansion */
 .cinque-terre-chapter .cinque-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(95,181,204,.22),transparent 38%),
@@ -1432,7 +1432,7 @@ h2,h3{letter-spacing:.01em}
   .cinque-terre-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:44px}
 }
 
-/* v028.3 — focused Lake Como chapter refinement; no feature expansion */
+/* v028.4 — focused Lake Como chapter refinement; no feature expansion */
 .lake-como-chapter .como-hero{
   background:
     radial-gradient(circle at 76% 16%,rgba(151,193,204,.22),transparent 38%),
@@ -1532,7 +1532,7 @@ h2,h3{letter-spacing:.01em}
   .lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:44px}
 }
 
-/* v028.3a — Lake Como hierarchy correction */
+/* v028.4a — Lake Como hierarchy correction */
 .lake-como-chapter main.wrap{
   max-width:1120px;
   padding-top:42px;
@@ -1627,20 +1627,20 @@ h2,h3{letter-spacing:.01em}
   .lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:38px}
 }
 
-/* v028.3 Explorer modules */
+/* v028.4 Explorer modules */
 .milan-hero{height:min(76vh,760px);min-height:560px;position:relative;overflow:hidden;background:#18394b}.milan-hero>img{width:100%;height:100%;object-fit:cover}.milan-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,25,37,.82),rgba(5,25,37,.18) 64%,rgba(5,25,37,.05))}.milan-hero-copy{position:absolute;left:max(5vw,32px);bottom:11%;max-width:690px;color:#fff}.milan-hero-copy h1{font-family:Georgia,serif;font-size:clamp(72px,11vw,150px);font-weight:400;line-height:.82;margin:.12em 0}.milan-hero-copy p{font-size:clamp(18px,2vw,25px);line-height:1.45;max-width:650px}.milan-choice,.milan-section,.milan-neighborhoods,.milan-itinerary{margin:80px 0}.milan-plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.milan-plan-grid article{padding:32px;border:1px solid #d9d3c7;background:#fff;min-height:260px;display:flex;flex-direction:column}.milan-plan-grid article.featured{background:#163846;color:#fff;transform:translateY(-12px)}.milan-plan-grid span{font-size:52px;font-family:Georgia,serif;opacity:.35}.milan-plan-grid h3{font-size:28px;margin:10px 0}.milan-plan-grid a{margin-top:auto;font-weight:700;color:inherit}.milan-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.milan-card-grid article{padding:28px;background:#f3efe7;border-top:4px solid #ad7d4e;min-height:250px}.milan-card-grid b{font-family:Georgia,serif;font-size:40px;color:#ad7d4e}.milan-card-grid h3{font-size:24px}.milan-card-grid small{display:block;margin-top:18px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.milan-neighborhoods{background:#173943;color:#fff;padding:55px;display:grid;grid-template-columns:.7fr 1.3fr;gap:55px}.neighborhood-list{display:grid;grid-template-columns:1fr 1fr;gap:0}.neighborhood-list article{padding:20px;border-left:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25)}.neighborhood-list em{color:#dcc49f}.milan-itinerary{display:grid;grid-template-columns:170px 1fr;gap:35px;padding:45px;border:1px solid #d8d1c5;background:#fff}.day-number{font-family:Georgia,serif;font-size:150px;line-height:.8;color:#c4a271}.milan-itinerary li{padding:12px 0;border-bottom:1px solid #e3ddd2;font-size:18px}.interest-grid,.food-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.interest-grid span,.food-strip article{padding:22px;background:#f1ede5}.interest-grid strong{display:block;font-size:20px;margin-bottom:6px}.explorer-heading{margin-top:85px}.explorer-deck{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:18px;margin-bottom:70px}.explorer-tile{position:relative;min-height:330px;background:#e9e3d8;overflow:hidden;text-decoration:none;color:inherit}.explorer-tile img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.explorer-tile.live:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,35,46,.88),rgba(8,35,46,.08) 70%)}.explorer-tile>div{position:absolute;z-index:2;left:25px;right:25px;bottom:25px}.explorer-tile.live>div{color:#fff}.explorer-tile.soon>div{position:static;padding:32px}.explorer-tile h3{font-size:30px;margin:8px 0}.explorer-tile small,.explorer-tile span{text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:12px}
 @media(max-width:850px){.milan-plan-grid,.milan-card-grid,.explorer-deck{grid-template-columns:1fr}.milan-plan-grid article.featured{transform:none}.milan-neighborhoods{grid-template-columns:1fr;padding:32px}.milan-itinerary{grid-template-columns:1fr;padding:28px}.day-number{font-size:80px}.interest-grid,.food-strip{grid-template-columns:1fr 1fr}.explorer-tile{min-height:290px}}
 @media(max-width:520px){.milan-hero{min-height:600px}.milan-hero-copy{left:22px;right:22px}.neighborhood-list,.interest-grid,.food-strip{grid-template-columns:1fr}.milan-card-grid{grid-template-columns:1fr}}
 
 
-/* v028.3 — Milan Explorer planning depth */
+/* v028.4 — Milan Explorer planning depth */
 .milan-quickdeck{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0 72px}.milan-quickdeck a{display:flex;flex-direction:column;min-height:150px;padding:22px;background:#fff;border:1px solid #d9d3c7;text-decoration:none;color:inherit;transition:transform .16s ease,box-shadow .16s ease}.milan-quickdeck a:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(23,57,67,.10)}.milan-quickdeck span,.route-tag{font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:800;color:#9a6a3f}.milan-quickdeck strong{font-family:Georgia,serif;font-size:21px;line-height:1.15;margin:10px 0}.milan-quickdeck small{margin-top:auto;color:#55646a;line-height:1.45}.milan-reserve,.milan-routeboard,.milan-mobility,.milan-decider{margin:80px 0}.reserve-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.reserve-grid article{display:grid;grid-template-columns:62px 1fr;gap:16px;padding:24px;background:#f5f1e9;border:1px solid #ded7ca}.reserve-grid span{font-family:Georgia,serif;font-size:50px;color:#b68b58;line-height:1}.reserve-grid h3{margin:0 0 6px;font-size:23px}.reserve-grid p{margin:0 0 12px;line-height:1.5}.reserve-grid b{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:#8c633b}.route-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.route-grid article{padding:24px;background:#173943;color:#fff;min-height:210px;display:flex;flex-direction:column}.route-grid .route-tag{color:#d8bd91}.route-grid h3{font-size:24px;margin:14px 0 8px}.route-grid p{line-height:1.5}.route-grid small{margin-top:auto;color:#d8bd91;font-weight:700}.milan-mobility{display:grid;grid-template-columns:.75fr 1.25fr;gap:46px;padding:44px;background:#ece5d9}.mobility-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mobility-grid article{padding:20px;background:#fff}.mobility-grid strong{font-family:Georgia,serif;font-size:22px}.mobility-grid p{margin-bottom:0}.milan-decider{padding:42px;border-top:1px solid #d8d1c5;border-bottom:1px solid #d8d1c5}.decider-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}.decider-grid span{padding:15px 18px;background:#f3efe7;font-weight:700}.milan-itinerary ol{padding-left:0;list-style:none}.milan-itinerary li strong{display:inline-block;min-width:110px;color:#8d633e}.milan-card-grid article,.milan-plan-grid article{transition:transform .16s ease,box-shadow .16s ease}.milan-card-grid article:hover,.milan-plan-grid article:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(23,57,67,.09)}
 @media(max-width:980px){.milan-quickdeck,.route-grid{grid-template-columns:1fr 1fr}.milan-mobility{grid-template-columns:1fr}.decider-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.milan-quickdeck,.reserve-grid,.route-grid,.mobility-grid,.decider-grid{grid-template-columns:1fr}.milan-quickdeck a{min-height:125px}.milan-reserve,.milan-routeboard,.milan-mobility,.milan-decider{margin:56px 0}.milan-mobility,.milan-decider{padding:27px}.milan-itinerary li strong{display:block;min-width:0;margin-bottom:3px}.milan-hero-copy h1{font-size:clamp(64px,22vw,100px)}}
-/* Milan photo editorial — v028.3 */
+/* Milan photo editorial — v028.4 */
 .milan-photo-hero{min-height:72vh}.milan-photo-hero>img{width:100%;height:72vh;object-fit:cover;object-position:center 48%}.milan-photo-hero .milan-hero-shade{background:linear-gradient(90deg,rgba(3,20,34,.82),rgba(3,20,34,.25) 65%,rgba(3,20,34,.08))}.milan-editorial .section-intro{max-width:780px;font-size:1.08rem;line-height:1.75;color:#45545d;margin:-.25rem 0 2.4rem}.feature-story{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:clamp(2rem,5vw,5rem);align-items:center;margin:0 0 5rem;padding:0 0 5rem;border-bottom:1px solid rgba(8,45,74,.14)}.feature-story.reverse{grid-template-columns:minmax(320px,.92fr) minmax(0,1.08fr)}.feature-story.reverse figure{order:2}.feature-story figure{margin:0}.feature-story figure img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;box-shadow:0 22px 55px rgba(5,31,48,.18);background:#dfe6e8}.feature-story figcaption{font-size:.78rem;line-height:1.5;color:#68777e;margin-top:.7rem}.feature-copy h3{font-family:var(--serif,Georgia,serif);font-size:clamp(2rem,4vw,3.3rem);line-height:1.02;margin:.35rem 0 1.3rem;color:#082d4a}.feature-copy p{font-size:1.03rem;line-height:1.78;color:#394b55}.story-number{font-family:var(--serif,Georgia,serif);font-size:3.4rem;line-height:1;color:rgba(31,115,93,.28);margin-bottom:.4rem}.practical-pills{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.4rem 0}.practical-pills span{padding:.62rem .8rem;border:1px solid rgba(8,45,74,.16);background:#f5f3ed;font-size:.8rem}.insider-note{margin:1.2rem 0;padding:1rem 1.15rem;border-left:4px solid #2f8069;background:#eef5f1;line-height:1.6;color:#29423d}.story-link{display:inline-block;margin-top:.5rem;font-weight:700}.photo-credits{padding:1.3rem 1.5rem;background:#f6f3eb;border:1px solid rgba(8,45,74,.12);font-size:.82rem;line-height:1.55}.photo-credits h3{margin:0 0 .35rem}.photo-credits p{margin:0;color:#5a666b}@media(max-width:820px){.milan-photo-hero,.milan-photo-hero>img{min-height:62vh;height:62vh}.feature-story,.feature-story.reverse{grid-template-columns:1fr;gap:1.5rem;margin-bottom:3.5rem;padding-bottom:3.5rem}.feature-story.reverse figure{order:0}.feature-copy h3{font-size:2.15rem}.feature-story figure img{aspect-ratio:16/11}}
 
-/* v028.3 — Milan day trips */
+/* v028.4 — Milan day trips */
 .milan-quickdeck{grid-template-columns:repeat(5,minmax(0,1fr))}
 .milan-daytrips{margin:5rem 0 3rem}
 .daytrip-decision{display:flex;flex-wrap:wrap;gap:.65rem;margin:1.5rem 0 2rem;padding:1rem 1.2rem;border:1px solid rgba(8,45,74,.13);background:#f4f0e7}
@@ -1663,3 +1663,22 @@ h2,h3{letter-spacing:.01em}
 .daytrip-warning{margin:2rem 0;padding:1.2rem 1.4rem;border-left:5px solid #a47b43;background:#f4f0e7;line-height:1.65}
 @media(max-width:900px){.milan-quickdeck{grid-template-columns:repeat(2,1fr)}.daytrip-feature{grid-template-columns:1fr}.daytrip-feature figure{min-height:320px}.daytrip-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.milan-quickdeck{grid-template-columns:1fr}.daytrip-feature{padding:.7rem}.daytrip-feature h3,.daytrip-grid h3{font-size:1.65rem}.daytrip-grid article>img{height:220px}}
+
+
+/* Milan dining and stay guide — v028.4 */
+.milan-dining-guide,.milan-stay-guide{padding-top:5rem;padding-bottom:5rem}
+.dining-strategy{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2.2rem 0}
+.dining-strategy article{background:#0d3551;color:#fff;padding:1.5rem;border-radius:18px;position:relative;min-height:190px}
+.dining-strategy span{font:700 2rem/1 Georgia,serif;opacity:.35}.dining-strategy h3{margin:.8rem 0 .45rem;color:#fff}.dining-strategy p{margin:0;color:#dbe6ec}
+.restaurant-list,.hotel-picks{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:2rem 0}
+.restaurant-list article,.hotel-picks article,.cafe-row article{border:1px solid rgba(8,45,74,.16);border-radius:16px;padding:1.4rem;background:#fff}
+.recommendation-label{text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:800;color:#64815d;margin-bottom:.6rem}
+.recommendation-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0}.recommendation-meta span{background:#eef2ec;border-radius:99px;padding:.35rem .65rem;font-size:.78rem}
+.restaurant-list a,.hotel-picks a{font-weight:700;text-decoration:none;color:#0b577a}
+.aperitivo-guide{display:grid;grid-template-columns:.75fr 1.25fr;gap:2rem;background:#f1ede3;border-radius:22px;padding:2rem;margin:2.5rem 0}
+.aperitivo-options{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}.aperitivo-options article{background:rgba(255,255,255,.72);padding:1rem;border-radius:14px}.aperitivo-options strong,.aperitivo-options span{display:block}.aperitivo-options span{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:#64815d;margin:.3rem 0}.aperitivo-options p{margin:.45rem 0 0}
+.cafe-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.stay-neighborhoods{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2rem 0}.stay-neighborhoods article{background:#eef2f3;padding:1.3rem;border-radius:16px}.stay-neighborhoods p{margin:.55rem 0}
+.stay-decision{background:#0d3551;color:#fff;padding:1.3rem 1.5rem;border-radius:16px;margin-top:1.5rem}
+@media(max-width:900px){.dining-strategy,.cafe-row{grid-template-columns:1fr}.restaurant-list,.hotel-picks,.aperitivo-guide,.stay-neighborhoods{grid-template-columns:1fr}.aperitivo-options{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.aperitivo-options{grid-template-columns:1fr}.milan-dining-guide,.milan-stay-guide{padding-top:3rem;padding-bottom:3rem}}
