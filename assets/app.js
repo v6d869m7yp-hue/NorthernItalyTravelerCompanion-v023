@@ -136,7 +136,7 @@
   });
 
 
-  // v029.0: resilient images, current-page navigation and back-to-top control.
+  // v030.0: resilient images, current-page navigation and back-to-top control.
   const fallbackImage = 'assets/images/milan-hero.svg';
   document.querySelectorAll('img').forEach((image) => {
     image.addEventListener('error', () => {

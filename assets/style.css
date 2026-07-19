@@ -1697,7 +1697,7 @@ h2,h3{letter-spacing:.01em}
 @media(max-width:560px){.perfect-day-timeline article{grid-template-columns:1fr;gap:.55rem}.decision-grid,.field-grid{grid-template-columns:1fr}.field-panel{margin-inline:-16px}.perfect-day-timeline time{font-size:1.2rem}}
 
 
-/* v029.0 — reliability and mobile polish */
+/* v030.0 — reliability and mobile polish */
 .remote-image-fallback{
   min-height:260px;object-fit:cover;background:linear-gradient(135deg,#dce8ec,#efe3cf);
   border:1px solid rgba(8,45,74,.12)
@@ -1727,7 +1727,7 @@ h2,h3{letter-spacing:.01em}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.back-to-top{transition:none}}
 
 
-/* v029.0 — Lake Como Signature Guide */
+/* v030.0 — Lake Como Signature Guide */
 .signature-guide{background:#f5f1e8}
 .signature-hero{position:relative;min-height:76vh;display:flex;align-items:flex-end;overflow:hidden;background:#183b4b}
 .signature-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
@@ -1753,3 +1753,16 @@ h2,h3{letter-spacing:.01em}
 .signature-gallery{padding:70px 0}.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.gallery-grid figure{margin:0;background:#fff;border:1px solid #ddd2be}.gallery-grid img{width:100%;aspect-ratio:16/10;object-fit:cover}.gallery-grid figcaption{padding:13px 15px;font-weight:800;color:#31576a}
 @media(max-width:850px){.signature-hero{min-height:70vh}.signature-hero-copy{padding-bottom:38px}.editorial-intro,.signature-heading,.feature-split,.feature-split.reverse{grid-template-columns:1fr}.feature-split.reverse img{order:0}.feature-split img{height:380px}.decision-grid,.villa-signature-grid,.experience-grid{grid-template-columns:1fr 1fr}.signature-heading{gap:16px}.signature-heading>p{max-width:650px}.practical-ledger{grid-template-columns:1fr}.practical-ledger>div:nth-child(odd),.practical-ledger>div:nth-child(even){padding:20px 0;border-left:0}.ferry-route{grid-template-columns:1fr}.ferry-route>span{transform:rotate(90deg);text-align:center}}
 @media(max-width:560px){.signature-hero-copy h1{font-size:4.15rem}.signature-facts{display:grid;grid-template-columns:1fr 1fr}.signature-facts span{border-radius:12px}.editorial-intro{padding-top:48px}.editorial-intro>p{font-size:1.2rem}.signature-section{padding-bottom:58px}.signature-itinerary article{grid-template-columns:74px 1fr}.signature-itinerary time{font-size:1.25rem}.decision-grid,.villa-signature-grid,.experience-grid,.gallery-grid{grid-template-columns:1fr}.feature-split img{height:300px}.practical-ledger>div{grid-template-columns:1fr;gap:6px}.chapter-jumps{top:0}}
+
+
+/* v030.0 — Venice Signature Guide */
+.venice-signature{--venice-blue:#315d67;--venice-red:#8c493d;--venice-gold:#b18a4b}
+.venice-signature .signature-hero>img{object-position:center 44%}
+.venice-signature .chapter-jumps a:hover,.venice-signature .chapter-jumps a:focus{background:var(--venice-blue)}
+.venice-signature .signature-heading>div>span,.venice-signature .signature-itinerary time,.venice-signature .practical-ledger b{color:var(--venice-blue)}
+.venice-signature .signature-heading>div>span{border-color:var(--venice-blue)}
+.venice-signature .worth{color:var(--venice-red);background:#f5eae7}
+.venice-signature .ferry-signature{background:#e8f0f0}
+.venice-signature .tip-box{background:#edf1e8;border-left-color:#71805f}
+.venice-signature .signature-callout{border-left-color:var(--venice-red)}
+.venice-signature .gallery-grid img{object-position:center top}
