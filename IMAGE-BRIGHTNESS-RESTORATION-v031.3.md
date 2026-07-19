@@ -1,4 +1,4 @@
-# v031.3 Image Brightness Restoration
+# v032.0 Image Brightness Restoration
 
 The source photographs remain unchanged. A final CSS correction layer now overrides accumulated darkening from older releases.
 

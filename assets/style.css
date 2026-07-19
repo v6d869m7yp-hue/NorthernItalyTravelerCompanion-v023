@@ -1767,7 +1767,7 @@ h2,h3{letter-spacing:.01em}
 .venice-signature .signature-callout{border-left-color:var(--venice-red)}
 .venice-signature .gallery-grid img{object-position:center top}
 
-/* v031.3 — global image-light restoration and overlay normalization */
+/* v032.0 — global image-light restoration and overlay normalization */
 .dashboard-hero>img,
 .signature-hero>img,
 .milan-hero>img,
@@ -1801,3 +1801,18 @@ h2,h3{letter-spacing:.01em}
   .dashboard-hero-shade{background:linear-gradient(90deg,rgba(5,29,47,.62),rgba(5,29,47,.18) 78%,rgba(5,29,47,.06));}
   .signature-hero-shade{background:linear-gradient(180deg,rgba(3,20,30,.02) 8%,rgba(3,20,30,.13) 48%,rgba(3,20,30,.58) 100%);}
 }
+
+/* v032.0 — Dolomites Signature Guide */
+.dolomites-signature{--alpine:#365c48;--alpine-dark:#17382d;--alpine-gold:#b68a46;background:#f4f1e7}
+.dolomites-signature .signature-hero{background:#29483b}
+.dolomites-signature .signature-hero>img{object-position:center 46%;filter:saturate(1.05) brightness(1.10) contrast(.97)}
+.dolomites-signature .signature-hero-shade{background:linear-gradient(180deg,rgba(9,31,24,.02) 5%,rgba(9,31,24,.08) 46%,rgba(9,31,24,.62) 100%)}
+.dolomites-signature .chapter-jumps a:hover,.dolomites-signature .chapter-jumps a:focus{background:var(--alpine)}
+.dolomites-signature .signature-heading>div>span,.dolomites-signature .signature-itinerary time,.dolomites-signature .practical-ledger b{color:var(--alpine)}
+.dolomites-signature .signature-heading>div>span{border-color:var(--alpine)}
+.dolomites-signature .tip-box{background:#e8eee8;border-left-color:var(--alpine)}
+.dolomites-signature .signature-callout{border-left-color:var(--alpine-gold)}
+.dolomites-signature .ferry-signature{background:#e9eee7}
+.dolomites-signature .worth{color:var(--alpine-dark);background:#e4ece5}
+.dolomites-signature .villa-signature-grid img{object-position:center top;background:#eee}
+.dolomites-signature .gallery-grid img{object-position:center top}
