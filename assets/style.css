@@ -1766,26 +1766,3 @@ h2,h3{letter-spacing:.01em}
 .venice-signature .tip-box{background:#edf1e8;border-left-color:#71805f}
 .venice-signature .signature-callout{border-left-color:var(--venice-red)}
 .venice-signature .gallery-grid img{object-position:center top}
-
-/* v031.1 — restore natural image brightness after accumulated overlay darkening */
-.dashboard-hero-shade{
-  background:linear-gradient(90deg,rgba(5,29,47,.48),rgba(5,29,47,.16) 58%,rgba(5,29,47,0) 78%);
-}
-.signature-hero-shade{
-  background:linear-gradient(180deg,rgba(3,20,30,0) 20%,rgba(3,20,30,.18) 58%,rgba(3,20,30,.48) 100%);
-}
-.milan-photo-hero .milan-hero-shade{
-  background:linear-gradient(90deg,rgba(3,20,34,.48),rgba(3,20,34,.13) 62%,rgba(3,20,34,0));
-}
-.destination-tile:after{
-  background:linear-gradient(0deg,rgba(3,22,36,.66),rgba(3,22,36,.12) 48%,transparent 76%);
-}
-.explorer-tile.live:after{
-  background:linear-gradient(0deg,rgba(8,35,46,.62),rgba(8,35,46,.06) 64%,transparent 82%);
-}
-.cover-shade{
-  background:linear-gradient(90deg,rgba(2,18,30,.14) 0%,rgba(2,18,30,.05) 44%,rgba(2,18,30,0) 72%),linear-gradient(0deg,rgba(2,18,30,.08),transparent 44%);
-}
-.dashboard-hero-copy,.signature-hero-copy,.cover-copy{
-  text-shadow:0 2px 12px rgba(0,0,0,.42);
-}
