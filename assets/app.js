@@ -173,7 +173,7 @@
   syncBackToTop();
 
 
-  // v033.0: editorial reveal and active chapter navigation.
+  // v034.0: editorial reveal and active chapter navigation.
   document.documentElement.classList.add('js');
   const revealTargets = document.querySelectorAll([
     '.dashboard-card','.guide-card','.quick-card','.route-card','.reference-card',
