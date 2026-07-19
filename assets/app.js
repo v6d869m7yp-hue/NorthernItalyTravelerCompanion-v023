@@ -172,4 +172,38 @@
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   syncBackToTop();
 
+
+  // v033.0: editorial reveal and active chapter navigation.
+  document.documentElement.classList.add('js');
+  const revealTargets = document.querySelectorAll([
+    '.dashboard-card','.guide-card','.quick-card','.route-card','.reference-card',
+    '.signature-section','.feature-split','.villa-signature-grid article',
+    '.gallery-grid figure','.destination-tile','.explorer-tile','.milan-section'
+  ].join(','));
+  revealTargets.forEach(el => el.classList.add('reveal-on-scroll'));
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealTargets.forEach(el => revealObserver.observe(el));
+  } else {
+    revealTargets.forEach(el => el.classList.add('is-visible'));
+  }
+
+  const jumpLinks = [...document.querySelectorAll('.chapter-jumps a[href^="#"]')];
+  const jumpSections = jumpLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+  if (jumpLinks.length && jumpSections.length && 'IntersectionObserver' in window) {
+    const chapterObserver = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      jumpLinks.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === '#' + visible.target.id));
+    }, { rootMargin: '-22% 0px -58% 0px', threshold: [0.05,0.2,0.45] });
+    jumpSections.forEach(section => chapterObserver.observe(section));
+  }
+
 })();

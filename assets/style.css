@@ -1816,3 +1816,84 @@ h2,h3{letter-spacing:.01em}
 .dolomites-signature .worth{color:var(--alpine-dark);background:#e4ece5}
 .dolomites-signature .villa-signature-grid img{object-position:center top;background:#eee}
 .dolomites-signature .gallery-grid img{object-position:center top}
+
+/* v033.0 — Signature Visual Refresh */
+:root{
+  --paper:#f4f0e8;
+  --cream:#fffdfa;
+  --ink:#16232b;
+  --muted:#607078;
+  --line:rgba(19,52,65,.14);
+  --shadow-soft:0 12px 34px rgba(13,40,52,.10);
+  --shadow-lift:0 24px 60px rgba(13,40,52,.16);
+  --radius:20px;
+}
+body{font-size:16px;line-height:1.62;background:linear-gradient(180deg,#f8f5ef 0,#f4f0e8 42%,#f1ede5 100%);text-rendering:optimizeLegibility}
+p{max-width:74ch}
+.wrap,.dashboard-wrap,.milan-wrap,.signature-wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+.topbar{background:rgba(8,38,55,.88);border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 7px 28px rgba(5,25,34,.14)}
+.topbar-inner{max-width:1320px;padding:12px 24px}
+.brand{font-size:1.02rem;letter-spacing:.075em}
+.nav a{background:transparent;border:1px solid transparent;transition:background .2s,border-color .2s,transform .2s}
+.nav a:hover,.nav a:focus{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.18);transform:translateY(-1px)}
+.nav a[aria-current="page"]{background:#d4a451;color:#10283c;border-color:#e4c17f;box-shadow:0 5px 16px rgba(0,0,0,.15)}
+
+/* Brighter, editorial hero treatment */
+.dashboard-hero,.signature-hero,.milan-hero,.milan-photo-hero,.cinque-hero,.dolomites-hero,.maggiore-hero{border-radius:0 0 28px 28px;box-shadow:0 22px 60px rgba(9,35,47,.16)}
+.dashboard-hero>img,.signature-hero>img,.milan-hero>img,.milan-photo-hero>img,.magazine-cover>img,.destination-card img,.destination-tile img,.explorer-tile img{filter:saturate(1.04) brightness(1.12) contrast(.97)}
+.signature-hero-shade{background:linear-gradient(180deg,rgba(3,20,30,0) 4%,rgba(3,20,30,.035) 48%,rgba(3,20,30,.40) 100%)}
+.dashboard-hero-shade{background:linear-gradient(90deg,rgba(5,29,47,.47),rgba(5,29,47,.09) 68%,transparent)}
+.milan-hero-shade,.milan-photo-hero .milan-hero-shade{background:linear-gradient(90deg,rgba(3,20,34,.48),rgba(3,20,34,.08) 66%,transparent)}
+.signature-hero-copy,.dashboard-hero-copy,.milan-hero-copy{filter:drop-shadow(0 3px 16px rgba(0,0,0,.34))}
+.signature-hero-copy h1{font-weight:500;letter-spacing:-.045em;text-wrap:balance}
+.signature-hero-copy>p,.dashboard-hero-copy>p,.milan-hero-copy>p{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.08rem,2vw,1.42rem);line-height:1.55}
+.signature-facts span{background:rgba(8,43,57,.32);border-color:rgba(255,255,255,.52);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+
+/* Editorial rhythm */
+.section-heading h2,.dashboard-heading h2,.signature-heading h2,.editorial-intro h2,.milan-section h2{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.025em;text-wrap:balance}
+.section-intro,.signature-heading>p,.editorial-intro>p{color:#53656d}
+.signature-section{padding:54px 0 92px}
+.signature-heading{margin-bottom:42px}
+.signature-callout{border-radius:0 16px 16px 0;box-shadow:var(--shadow-soft);background:rgba(255,253,247,.92)}
+.chapter-jumps{top:0;background:rgba(255,253,249,.92);backdrop-filter:blur(16px);border-bottom-color:rgba(19,52,65,.12)}
+.chapter-jumps a{background:transparent;border:1px solid rgba(31,71,84,.15);transition:.2s ease}
+.chapter-jumps a:hover,.chapter-jumps a:focus,.chapter-jumps a.is-active{background:#31576a;color:#fff;border-color:#31576a}
+
+/* Unified cards */
+.dashboard-card,.guide-card,.quick-card,.route-card,.reservation-card,.reference-card,.day-card,.decision-grid article,.experience-grid article,.villa-signature-grid article,.island-card,.hike-card,.destination-tile,.explorer-tile,.daytrip-feature,.morning-card,.departure-card{
+  border:1px solid rgba(28,64,76,.12);border-radius:var(--radius);box-shadow:var(--shadow-soft);background:rgba(255,253,249,.94);overflow:hidden;transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease
+}
+.dashboard-card:hover,.guide-card:hover,.quick-card:hover,.route-card:hover,.reference-card:hover,.decision-grid article:hover,.experience-grid article:hover,.villa-signature-grid article:hover,.destination-tile:hover,.explorer-tile:hover,.hike-card:hover{
+  transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:rgba(35,83,99,.24)
+}
+.destination-tile img,.explorer-tile img,.guide-image img,.villa-signature-grid img,.gallery-grid img{transition:transform .55s ease,filter .35s ease}
+.destination-tile:hover img,.explorer-tile:hover img,.guide-card:hover img,.villa-signature-grid article:hover img,.gallery-grid figure:hover img{transform:scale(1.025)}
+.gallery-grid figure{border-radius:18px;overflow:hidden;box-shadow:var(--shadow-soft);border-color:rgba(28,64,76,.10)}
+.gallery-grid figcaption{background:#fffdfa}
+.feature-split img{border-radius:18px;box-shadow:var(--shadow-lift)}
+.tip-box{border-radius:0 16px 16px 0;box-shadow:var(--shadow-soft)}
+
+/* Buttons and controls */
+.cta,.action,.primary,.text-button,.story-link{border-radius:999px;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.cta:hover,.action:hover,.primary:hover,.text-button:hover,.story-link:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(8,45,74,.16)}
+.back-to-top{background:rgba(8,45,74,.92);backdrop-filter:blur(8px);box-shadow:0 12px 30px rgba(0,0,0,.2)}
+
+/* Gentle reveal enhancement; content remains visible without JS */
+.js .reveal-on-scroll{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal-on-scroll.is-visible{opacity:1;transform:none}
+
+/* Mobile refinement */
+@media(max-width:850px){
+  .wrap,.dashboard-wrap,.milan-wrap,.signature-wrap{width:min(100% - 28px,1180px)}
+  .signature-hero-copy{width:min(100% - 28px,1180px)}
+  .signature-section{padding:42px 0 68px}
+  .dashboard-hero,.signature-hero,.milan-hero,.milan-photo-hero,.cinque-hero,.dolomites-hero,.maggiore-hero{border-radius:0 0 20px 20px}
+}
+@media(max-width:620px){
+  .topbar-inner{padding:10px 12px}.brand{font-size:.88rem}.nav a{padding:8px 10px}
+  .signature-hero-shade{background:linear-gradient(180deg,transparent 3%,rgba(3,20,30,.05) 40%,rgba(3,20,30,.47) 100%)}
+  .dashboard-hero-shade{background:linear-gradient(90deg,rgba(5,29,47,.51),rgba(5,29,47,.12) 82%,transparent)}
+  .signature-hero-copy h1{font-size:clamp(3.35rem,16vw,4.8rem)}
+  .signature-facts{gap:7px}.signature-facts span{padding:9px 10px}
+}
+@media(prefers-reduced-motion:reduce){.js .reveal-on-scroll{opacity:1;transform:none;transition:none}.destination-tile img,.explorer-tile img,.guide-image img,.villa-signature-grid img,.gallery-grid img{transition:none}}
