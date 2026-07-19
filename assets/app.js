@@ -88,4 +88,51 @@
     syncLightboxState();
   }
 
+
+
+  // v028.5a trip dashboard and locally saved reservation checklist.
+  const countdown = document.querySelector('[data-trip-countdown]');
+  const dashboard = document.querySelector('[data-trip-dashboard]');
+  const tripDays = [
+    {start:'2026-08-31',end:'2026-09-01',title:'Venice',summary:'Arrive, settle in and explore the Grand Canal, San Marco and quieter evening streets.',link:'venice.html'},
+    {start:'2026-09-02',end:'2026-09-03',title:'Ortisei · Dolomites',summary:'Mountain lifts, moderate walks and broad views across Val Gardena.',link:'dolomites.html'},
+    {start:'2026-09-04',end:'2026-09-05',title:'Cinque Terre',summary:'Move among the five villages by train, ferry and coastal paths.',link:'cinque-terre.html'},
+    {start:'2026-09-06',end:'2026-09-07',title:'Varenna · Lake Como',summary:'Villa Monastero, Bellagio ferries and relaxed lakefront evenings.',link:'lake-como.html'},
+    {start:'2026-09-08',end:'2026-09-09',title:'Stresa · Lake Maggiore',summary:'Borromean Islands, gardens and an easy final lakeside chapter.',link:'lake-maggiore.html'},
+    {start:'2026-09-10',end:'2026-09-10',title:'Malpensa departure',summary:'Early departure for Milan Malpensa Airport.',link:'practical.html'}
+  ];
+  const localDate = (value) => new Date(value + 'T12:00:00');
+  const today = new Date(); today.setHours(12,0,0,0);
+  if (countdown) {
+    const start = localDate(countdown.dataset.start);
+    const days = Math.ceil((start - today) / 86400000);
+    const strong = countdown.querySelector('strong'); const label = countdown.querySelector('span');
+    if (days > 0) { strong.textContent = days; label.textContent = days === 1 ? 'day until Venice' : 'days until Venice'; }
+    else if (days >= -10) { strong.textContent = 'Now'; label.textContent = 'your journey is underway'; }
+    else { strong.textContent = '2026'; label.textContent = 'journey archive'; }
+  }
+  if (dashboard) {
+    const current = tripDays.find(d => today >= localDate(d.start) && today <= localDate(d.end));
+    const upcoming = tripDays.find(d => today < localDate(d.start));
+    const selected = current || upcoming || tripDays[tripDays.length-1];
+    const dateEl = dashboard.querySelector('[data-today-date]');
+    const titleEl = dashboard.querySelector('[data-today-title]');
+    const summaryEl = dashboard.querySelector('[data-today-summary]');
+    const linkEl = dashboard.querySelector('[data-today-link]');
+    const overnightEl = dashboard.querySelector('[data-next-overnight]');
+    if (dateEl) dateEl.textContent = current ? 'Today on your journey' : (upcoming ? 'Next destination' : 'Journey complete');
+    if (titleEl) titleEl.textContent = selected.title;
+    if (summaryEl) summaryEl.textContent = selected.summary;
+    if (linkEl) linkEl.href = selected.link;
+    if (overnightEl) overnightEl.textContent = selected.title.replace(' · Dolomites','').replace(' · Lake Como','').replace(' · Lake Maggiore','');
+    document.querySelectorAll('[data-route-day]').forEach(el => {
+      const day = tripDays.find(d => d.start === el.dataset.routeDay);
+      if (day && today >= localDate(day.start) && today <= localDate(day.end)) el.classList.add('is-current');
+    });
+  }
+  document.querySelectorAll('[data-save-check]').forEach(box => {
+    const key = 'nitc-check-' + box.dataset.saveCheck;
+    try { box.checked = localStorage.getItem(key) === '1'; box.addEventListener('change',()=>localStorage.setItem(key,box.checked?'1':'0')); } catch(e) {}
+  });
+
 })();

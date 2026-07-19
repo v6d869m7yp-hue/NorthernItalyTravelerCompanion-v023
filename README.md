@@ -12,20 +12,20 @@ Version 027.2 is a focused visual-consistency release built from v027.1. It adds
 - Normalized destination footer version labels.
 
 
-## v028.4
+## v028.5a
 - Added Milan Explorer as the first optional regional module.
 - Added 1-, 2-, and 3-day Milan plans, neighborhood guide, essentials and dining sections.
 - Added Explorer Guide cards to the home page for Milan, Verona & Lake Garda, and Piedmont.
-- Updated displayed and internal version references to v028.4.
+- Updated displayed and internal version references to v028.5a.
 
 
-## v028.4
+## v028.5a
 - Expanded Milan Explorer into a practical planning module.
 - Added reservation priorities, geographic route clusters, mobility guidance, and destination-fit guidance.
 - Improved mobile navigation and card hierarchy.
 
 
-## v028.4
+## v028.5a
 - Expanded Milan dining into a practical restaurant, aperitivo and café guide.
 - Added neighborhood-based Milan hotel guidance and selected hotel recommendations.
 - Added mobile-responsive dining and lodging components.
