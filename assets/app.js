@@ -135,4 +135,41 @@
     try { box.checked = localStorage.getItem(key) === '1'; box.addEventListener('change',()=>localStorage.setItem(key,box.checked?'1':'0')); } catch(e) {}
   });
 
+
+  // v028.5c: resilient images, current-page navigation and back-to-top control.
+  const fallbackImage = 'assets/images/milan-hero.svg';
+  document.querySelectorAll('img').forEach((image) => {
+    image.addEventListener('error', () => {
+      if (image.dataset.fallbackApplied === '1') return;
+      image.dataset.fallbackApplied = '1';
+      image.classList.add('remote-image-fallback');
+      image.src = fallbackImage;
+      image.alt = image.alt ? `${image.alt} — photograph unavailable offline` : 'Photograph unavailable offline';
+      const parent = image.closest('figure, .feature-media, .guide-image, .villa-card, .island-card');
+      if (parent && !parent.querySelector('.image-fallback-note')) {
+        const note = document.createElement('span');
+        note.className = 'image-fallback-note';
+        note.textContent = 'Photo unavailable; the guide content remains available.';
+        parent.appendChild(note);
+      }
+    }, { once: true });
+  });
+
+  const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('.nav a, .bottomnav a').forEach((link) => {
+    const target = (link.getAttribute('href') || '').split('#')[0].split('/').pop().toLowerCase();
+    if (target && target === currentFile) link.setAttribute('aria-current', 'page');
+  });
+
+  const backToTop = document.createElement('button');
+  backToTop.type = 'button';
+  backToTop.className = 'back-to-top';
+  backToTop.setAttribute('aria-label', 'Back to top');
+  backToTop.textContent = '↑';
+  document.body.appendChild(backToTop);
+  const syncBackToTop = () => backToTop.classList.toggle('visible', window.scrollY > 700);
+  window.addEventListener('scroll', syncBackToTop, { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  syncBackToTop();
+
 })();
