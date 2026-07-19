@@ -1766,3 +1766,38 @@ h2,h3{letter-spacing:.01em}
 .venice-signature .tip-box{background:#edf1e8;border-left-color:#71805f}
 .venice-signature .signature-callout{border-left-color:var(--venice-red)}
 .venice-signature .gallery-grid img{object-position:center top}
+
+/* v031.3 — global image-light restoration and overlay normalization */
+.dashboard-hero>img,
+.signature-hero>img,
+.milan-hero>img,
+.milan-photo-hero>img,
+.magazine-cover>img,
+.destination-card img,
+.destination-tile img,
+.explorer-tile img{
+  filter:saturate(1.03) brightness(1.08) contrast(.98);
+}
+.dashboard-hero-shade{
+  background:linear-gradient(90deg,rgba(5,29,47,.58),rgba(5,29,47,.16) 66%,rgba(5,29,47,.03));
+}
+.signature-hero-shade{
+  background:linear-gradient(180deg,rgba(3,20,30,.015) 8%,rgba(3,20,30,.10) 54%,rgba(3,20,30,.52) 100%);
+}
+.milan-hero-shade,
+.milan-photo-hero .milan-hero-shade{
+  background:linear-gradient(90deg,rgba(3,20,34,.57),rgba(3,20,34,.13) 64%,rgba(3,20,34,.025));
+}
+.explorer-tile.live:after{
+  background:linear-gradient(0deg,rgba(8,35,46,.58),rgba(8,35,46,.025) 68%);
+}
+.dashboard-hero-copy,
+.signature-hero-copy,
+.milan-hero-copy,
+.explorer-tile.live>div{
+  text-shadow:0 2px 12px rgba(0,0,0,.52),0 1px 2px rgba(0,0,0,.65);
+}
+@media(max-width:620px){
+  .dashboard-hero-shade{background:linear-gradient(90deg,rgba(5,29,47,.62),rgba(5,29,47,.18) 78%,rgba(5,29,47,.06));}
+  .signature-hero-shade{background:linear-gradient(180deg,rgba(3,20,30,.02) 8%,rgba(3,20,30,.13) 48%,rgba(3,20,30,.58) 100%);}
+}
