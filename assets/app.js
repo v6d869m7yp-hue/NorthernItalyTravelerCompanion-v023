@@ -212,7 +212,7 @@
     const toolbar = document.createElement('nav');
     toolbar.className = 'companion-toolbar'; toolbar.setAttribute('aria-label', 'Trip companion shortcuts');
     const hasMap = document.getElementById('interactive-map');
-    toolbar.innerHTML = `<a class="tool-today" href="today.html">Today</a><a class="tool-map" href="${hasMap ? '#interactive-map' : 'map.html'}">Map</a><a class="tool-hotels" href="hotels.html">Hotels</a><a class="tool-practical" href="practical.html">Practical</a><a class="tool-check" href="my-trip.html">My Trip</a>`;
+    toolbar.innerHTML = `<a class="tool-today" href="today.html">Today</a><a class="tool-map" href="${hasMap ? '#interactive-map' : 'map.html'}">Map</a><a class="tool-reservations" href="reservations.html">Bookings</a><a class="tool-practical" href="practical.html">Practical</a><a class="tool-check" href="my-trip.html">My Trip</a>`;
     document.body.appendChild(toolbar);
   }
 
@@ -451,7 +451,7 @@
   updateProgress();
 
 
-  // v040.0 — home journey command center.
+  // v041.0 — home journey command center.
   const homeProgress = document.querySelector('[data-home-progress]');
   if (homeProgress) {
     const progressKeys = ['venice','dolomites','cinque-terre','lake-como','lake-maggiore','malpensa'];
@@ -504,7 +504,7 @@
 
 })();
 
-  // v040.0: focused travel-day mode with persistent checklist and notes.
+  // v041.0: focused travel-day mode with persistent checklist and notes.
   const todaySelect = document.querySelector('[data-today-select]');
   if (todaySelect) {
     const tripDays = [
@@ -559,3 +559,67 @@
     document.querySelectorAll('[data-day-shift]').forEach(button=>button.addEventListener('click',()=>renderDay(Number(todaySelect.value)+Number(button.dataset.dayShift))));
     renderDay(inferTripDay());
   }
+
+// v041.0 — Private reservation wallet stored locally in the browser.
+(() => {
+  const form = document.querySelector('[data-reservation-form]');
+  if (!form) return;
+  const list = document.querySelector('[data-reservation-list]');
+  const filter = document.querySelector('[data-reservation-filter]');
+  const reset = document.querySelector('[data-reservation-reset]');
+  const status = document.querySelector('[data-reservation-status]');
+  const count = document.querySelector('[data-reservation-count]');
+  const upcomingCount = document.querySelector('[data-reservation-upcoming]');
+  const confirmedCount = document.querySelector('[data-reservation-confirmed]');
+  const key = 'nitc-reservations-v1';
+  const load = () => { try { return JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) { return []; } };
+  const save = items => { try { localStorage.setItem(key, JSON.stringify(items)); } catch (_) {} };
+  const escapeHTML = value => String(value || '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const validURL = value => { try { const u = new URL(value); return /^https?:$/.test(u.protocol) ? u.href : ''; } catch (_) { return ''; } };
+  const dateKey = item => item.date || '9999-12-31';
+  const isUpcoming = item => !item.date || new Date(item.date + 'T23:59:59') >= new Date();
+  const resetForm = () => { form.reset(); form.elements.id.value = ''; status.textContent = 'Ready for a new reservation.'; };
+  const render = () => {
+    const items = load().sort((a,b) => dateKey(a).localeCompare(dateKey(b)) || (a.time || '').localeCompare(b.time || ''));
+    count.textContent = items.length;
+    upcomingCount.textContent = items.filter(isUpcoming).length;
+    confirmedCount.textContent = items.filter(item => item.status === 'Confirmed').length;
+    const mode = filter.value;
+    const shown = items.filter(item => mode === 'all' || (mode === 'upcoming' && isUpcoming(item)) || item.status.toLowerCase() === mode);
+    if (!shown.length) {
+      list.innerHTML = '<div class="reservation-empty"><h3>No reservations here yet</h3><p>Add a hotel, ticket, restaurant or transportation booking using the form.</p></div>';
+      return;
+    }
+    list.innerHTML = shown.map(item => {
+      const d = item.date ? new Date(item.date + 'T12:00:00') : null;
+      const day = d ? d.getDate() : '—';
+      const month = d ? d.toLocaleDateString(undefined,{month:'short'}) : 'Any';
+      const statusClass = item.status.toLowerCase().replace(/\s+/g,'-');
+      const url = validURL(item.url);
+      return `<article class="reservation-entry" data-reservation-id="${escapeHTML(item.id)}"><div class="reservation-date"><strong>${day}</strong><span>${escapeHTML(month)}</span></div><div><span class="reservation-badge ${statusClass}">${escapeHTML(item.status)}</span><h3>${escapeHTML(item.name)}</h3><div class="reservation-meta"><span>${escapeHTML(item.type)}</span>${item.time?`<span>${escapeHTML(item.time)}</span>`:''}${item.location?`<span>${escapeHTML(item.location)}</span>`:''}${item.contact?`<span>${escapeHTML(item.contact)}</span>`:''}</div>${item.confirmation?`<span class="reservation-code">${escapeHTML(item.confirmation)}</span>`:''}${item.notes?`<p class="reservation-note">${escapeHTML(item.notes)}</p>`:''}</div><div class="reservation-actions">${url?`<a href="${escapeHTML(url)}" target="_blank" rel="noopener">Open link</a>`:''}<button type="button" data-edit>Edit</button><button type="button" class="delete" data-delete>Delete</button></div></article>`;
+    }).join('');
+  };
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    const items = load();
+    const item = { id: data.id || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())), type:data.type, status:data.status, name:data.name.trim(), date:data.date, time:data.time, location:data.location.trim(), confirmation:data.confirmation.trim(), contact:data.contact.trim(), url:data.url.trim(), notes:data.notes.trim() };
+    const index = items.findIndex(existing => existing.id === item.id);
+    if (index >= 0) items[index] = item; else items.push(item);
+    save(items); resetForm(); status.textContent = 'Reservation saved on this device.'; render();
+  });
+  reset.addEventListener('click', resetForm);
+  filter.addEventListener('change', render);
+  list.addEventListener('click', event => {
+    const card = event.target.closest('[data-reservation-id]'); if (!card) return;
+    const items = load(); const item = items.find(entry => entry.id === card.dataset.reservationId); if (!item) return;
+    if (event.target.closest('[data-delete]')) { if (confirm(`Delete ${item.name}?`)) { save(items.filter(entry => entry.id !== item.id)); render(); } return; }
+    if (event.target.closest('[data-edit]')) {
+      Object.entries(item).forEach(([name,value]) => { if (form.elements[name]) form.elements[name].value = value || ''; });
+      status.textContent = `Editing ${item.name}.`;
+      form.scrollIntoView({behavior:'smooth',block:'start'});
+      form.elements.name.focus({preventScroll:true});
+    }
+  });
+  render();
+})();
