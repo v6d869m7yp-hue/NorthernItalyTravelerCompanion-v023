@@ -668,3 +668,32 @@
   markCurrent();
   requestAnimationFrame(markCurrent);
 })();
+
+
+// v1.0 Beta 1: global navigation, image and accessibility polish.
+(() => {
+  const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('.nav a, .companion-toolbar a').forEach(link => {
+    const raw = link.getAttribute('href') || '';
+    const target = raw.split('#')[0].split('/').pop().toLowerCase();
+    if (target && target === current) link.setAttribute('aria-current', 'page');
+  });
+
+  document.querySelectorAll('a[target="_blank"]').forEach(link => {
+    const rel = new Set((link.getAttribute('rel') || '').split(/\s+/).filter(Boolean));
+    rel.add('noopener'); rel.add('noreferrer');
+    link.setAttribute('rel', [...rel].join(' '));
+  });
+
+  document.querySelectorAll('img:not([loading])').forEach((image, index) => {
+    if (index > 1 && !image.closest('.dashboard-hero,.destination-hero,.page-masthead')) image.loading = 'lazy';
+    image.decoding = image.decoding || 'async';
+  });
+
+  document.querySelectorAll('.chapter-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.chapter-nav a').forEach(item => item.removeAttribute('aria-current'));
+      link.setAttribute('aria-current', 'true');
+    });
+  });
+})();

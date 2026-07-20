@@ -1,9 +1,9 @@
 {
-  "name": "Northern Italy Traveler's Companion v043.0",
-  "short_name": "Italy v043.0",
+  "name": "Northern Italy Traveler's Companion — v1.0 Beta 1",
+  "short_name": "Italy Beta 1",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f7f2e8",
+  "background_color": "#f7f3eb",
   "theme_color": "#082d4a",
   "icons": [
     {
@@ -13,6 +13,6 @@
       "purpose": "any maskable"
     }
   ],
-  "description": "A personal interactive guide for Northern Italy, August 31\u2013September 10, 2026.",
+  "description": "A personal interactive guide for Northern Italy, August 31–September 10, 2026.",
   "scope": "./"
 }
