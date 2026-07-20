@@ -2847,3 +2847,11 @@ table{max-width:100%}
   }
   .dashboard-home .dashboard-hero-shade{display:none!important}
 }
+
+
+/* v1.0 Beta 1.4 — Verona side-trip guide */
+.verona-hero .signature-hero-shade{background:linear-gradient(90deg,rgba(19,35,45,.74) 0%,rgba(19,35,45,.48) 46%,rgba(19,35,45,.08) 75%)}
+.verona-hero>img{object-position:center center;filter:brightness(1.02) saturate(1.02)}
+.verona-teaser .feature-split>img{object-fit:contain;background:#eee8dd;height:auto;max-height:none}
+.verona-signature .decision-score{background:#8a6c50;color:#fff}
+@media(max-width:850px){.verona-hero>img{object-position:36% center}.verona-teaser .feature-split>img{height:auto}}
