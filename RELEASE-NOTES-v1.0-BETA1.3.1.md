@@ -1,4 +1,4 @@
-# v1.0 Beta 1.3.1
+# v1.0 Beta 1.3.2
 
 - Rebuilt the home hero title into two deliberate lines.
 - Removed duplicate overlay titles from illustrated destination artwork.
