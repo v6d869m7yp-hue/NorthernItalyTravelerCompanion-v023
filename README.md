@@ -1,6 +1,6 @@
-# Northern Italy Traveler’s Companion — Version 028.1
+# Northern Italy Traveler’s Companion — Version 028.2
 
-Version 028.1 completes the first itinerary conversion and removes outdated route data from the former trip plan.
+Version 028.2 completes the first itinerary conversion and removes outdated route data from the former trip plan.
 
 ## Corrections and refinements
 

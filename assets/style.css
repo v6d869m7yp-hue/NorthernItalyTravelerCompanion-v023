@@ -1626,3 +1626,78 @@ h2,h3{letter-spacing:.01em}
 @media(max-width:620px){
   .lake-como-chapter main.wrap>section:not(.insider-brief):not(.departure-card):not(.viewer){margin-block:38px}
 }
+
+/* v028.2 — hero brightness and cover collision repair */
+.magazine-cover>img{
+  filter:saturate(1.06) brightness(1.16) contrast(.96);
+  object-position:center 48%;
+}
+.cover-shade{
+  background:
+    linear-gradient(90deg,rgba(2,18,30,.15) 0%,rgba(2,18,30,.07) 43%,rgba(2,18,30,0) 72%),
+    linear-gradient(0deg,rgba(2,18,30,.09),transparent 45%);
+}
+.cover-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-end;
+  gap:0;
+}
+.cover-copy h1{
+  font-size:clamp(4.6rem,10.2vw,8.6rem);
+  line-height:.88;
+  letter-spacing:-.045em;
+  margin:.22em 0 .22em;
+  overflow-wrap:normal;
+  word-break:normal;
+  text-wrap:balance;
+  text-shadow:0 2px 18px rgba(0,0,0,.24);
+}
+.cover-copy p{
+  margin:.15rem 0 0;
+  text-shadow:0 2px 14px rgba(0,0,0,.28);
+}
+.cover-copy .cta-row{margin-top:22px}
+
+.venice-chapter .venice-complete-hero{
+  background:
+    radial-gradient(circle at 80% 12%,rgba(184,222,235,.34),transparent 42%),
+    linear-gradient(145deg,#174f70 0%,#1d6082 56%,#397b98 100%);
+}
+.venice-chapter .venice-complete-hero .book-window{
+  background:#f3ede3;
+  box-shadow:0 24px 54px rgba(0,0,0,.22);
+}
+.venice-chapter .venice-complete-hero .book-window img{
+  filter:brightness(1.09) saturate(1.04) contrast(.97);
+}
+.venice-chapter .venice-complete-hero .destination-copy p{color:rgba(255,255,255,.94)}
+
+@media (max-width:1400px){
+  .cover-copy{
+    padding:clamp(42px,6vw,76px) clamp(24px,4vw,58px) clamp(72px,9vw,120px);
+    max-width:min(760px,72vw);
+  }
+  .cover-copy h1{font-size:clamp(4.25rem,9vw,7rem);line-height:.88}
+}
+@media (max-width:980px){
+  .cover-copy{max-width:min(680px,82vw);padding-right:28px;padding-bottom:92px}
+  .cover-copy h1{font-size:clamp(4rem,11vw,6.1rem)}
+}
+@media (max-width:740px){
+  .magazine-cover{align-items:flex-end;min-height:min(720px,86svh)}
+  .magazine-cover>img{object-position:58% center}
+  .cover-shade{
+    background:
+      linear-gradient(0deg,rgba(2,18,30,.28) 0%,rgba(2,18,30,.08) 54%,transparent 78%);
+  }
+  .cover-copy{max-width:100%;padding:40px 15px 54px}
+  .cover-copy h1{font-size:clamp(3.35rem,16vw,5rem);line-height:.9;margin-bottom:.28em}
+  .cover-copy p{font-size:1rem;line-height:1.45}
+  .cover-copy .cta-row{margin-top:17px}
+}
+@media (max-width:390px){
+  .cover-copy h1{font-size:clamp(3rem,15.5vw,4.35rem)}
+  .cover-copy .cta{width:100%}
+}

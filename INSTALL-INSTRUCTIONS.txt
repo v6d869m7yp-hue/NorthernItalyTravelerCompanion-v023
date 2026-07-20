@@ -1,9 +1,9 @@
-NORTHERN ITALY TRAVELER'S COMPANION — v028.1
+NORTHERN ITALY TRAVELER'S COMPANION — v028.2
 
-1. Unzip NorthernItalyTravelerCompanion-v028.1.zip.
+1. Unzip NorthernItalyTravelerCompanion-v028.2.zip.
 2. Open your existing GitHub project folder.
-3. Replace its contents with everything INSIDE the NorthernItalyTravelerCompanion-v028.1 folder.
-4. Commit with: Build v028.1: complete revised itinerary routes and Stresa plan
+3. Replace its contents with everything INSIDE the NorthernItalyTravelerCompanion-v028.2 folder.
+4. Commit with: Build v028.2: complete revised itinerary routes and Stresa plan
 5. Push the commit and allow GitHub Pages to redeploy.
 
 This build keeps the optional destination chapters while making Venice, Lake Como, Stresa and Milan the primary journey.
