@@ -212,7 +212,7 @@
     const toolbar = document.createElement('nav');
     toolbar.className = 'companion-toolbar'; toolbar.setAttribute('aria-label', 'Trip companion shortcuts');
     const hasMap = document.getElementById('interactive-map');
-    toolbar.innerHTML = `<a class="tool-today" href="itinerary.html">Today</a><a class="tool-map" href="${hasMap ? '#interactive-map' : 'map.html'}">Map</a><a class="tool-hotels" href="hotels.html">Hotels</a><a class="tool-practical" href="practical.html">Practical</a><a class="tool-check" href="my-trip.html">My Trip</a>`;
+    toolbar.innerHTML = `<a class="tool-today" href="today.html">Today</a><a class="tool-map" href="${hasMap ? '#interactive-map' : 'map.html'}">Map</a><a class="tool-hotels" href="hotels.html">Hotels</a><a class="tool-practical" href="practical.html">Practical</a><a class="tool-check" href="my-trip.html">My Trip</a>`;
     document.body.appendChild(toolbar);
   }
 
@@ -450,9 +450,61 @@
   }
   updateProgress();
 
+
+  // v040.0 — home journey command center.
+  const homeProgress = document.querySelector('[data-home-progress]');
+  if (homeProgress) {
+    const progressKeys = ['venice','dolomites','cinque-terre','lake-como','lake-maggiore','malpensa'];
+    let completed = 0;
+    try {
+      completed = progressKeys.filter(key => localStorage.getItem('nitc-progress-' + key) === '1').length;
+      // Support the JSON progress store used by earlier My Trip builds.
+      const stored = JSON.parse(localStorage.getItem('nitc-trip-progress-v1') || '{}');
+      if (stored && typeof stored === 'object') completed = Math.max(completed, progressKeys.filter(key => stored[key]).length);
+    } catch (error) {}
+    const percent = Math.round((completed / progressKeys.length) * 100);
+    homeProgress.textContent = percent + '%';
+    const count = document.querySelector('[data-home-progress-count]');
+    if (count) count.textContent = completed + ' of ' + progressKeys.length;
+
+    let favorites = [];
+    try { favorites = JSON.parse(localStorage.getItem('nitc-favorites-v1') || '[]'); } catch (error) {}
+    const favoriteValue = document.querySelector('[data-home-favorites]');
+    if (favoriteValue) favoriteValue.textContent = Array.isArray(favorites) ? favorites.length : 0;
+
+    const days = [
+      {date:'Aug 31',title:'Venice arrival',summary:'Arrive, settle in and take the first Grand Canal walk.',href:'today.html?day=0'},
+      {date:'Sep 1',title:'Venice icons',summary:'San Marco, Rialto and a quieter evening neighborhood.',href:'today.html?day=1'},
+      {date:'Sep 2',title:'Drive to Ortisei',summary:'Leave the lagoon and enter the Dolomites.',href:'today.html?day=2'},
+      {date:'Sep 3',title:'Seceda or Alpe di Siusi',summary:'Choose the mountain day according to weather.',href:'today.html?day=3'},
+      {date:'Sep 4',title:'Drive to Cinque Terre',summary:'A transfer day ending with a coastal evening.',href:'today.html?day=4'},
+      {date:'Sep 5',title:'Cinque Terre villages',summary:'Train, ferry and a moderate stretch of trail.',href:'today.html?day=5'},
+      {date:'Sep 6',title:'Drive to Varenna',summary:'Cross northern Italy for a Lake Como evening.',href:'today.html?day=6'},
+      {date:'Sep 7',title:'Como ferries and villas',summary:'Varenna, Bellagio and one carefully chosen villa.',href:'today.html?day=7'},
+      {date:'Sep 8',title:'Drive to Stresa',summary:'A relaxed transfer to Lake Maggiore.',href:'today.html?day=8'},
+      {date:'Sep 9',title:'Borromean Islands',summary:'Palaces, gardens and the final celebratory dinner.',href:'today.html?day=9'},
+      {date:'Sep 10',title:'Malpensa departure',summary:'Conservative timing for fuel, car return and check-in.',href:'today.html?day=10'}
+    ];
+    let selected = 0;
+    try { selected = Math.max(0, Math.min(10, Number(localStorage.getItem('nitc-today-day-v1') || 0))); } catch (error) {}
+    const title = document.querySelector('[data-home-day-title]');
+    const summary = document.querySelector('[data-home-day-summary]');
+    if (title) title.textContent = 'Day ' + (selected + 1) + ' · ' + days[selected].title;
+    if (summary) summary.textContent = days[selected].summary;
+    const upcoming = document.querySelector('[data-home-upcoming]');
+    if (upcoming) {
+      upcoming.innerHTML = days.slice(selected, Math.min(days.length, selected + 4)).map((day, offset) =>
+        `<a href="${day.href}" data-home-day="${selected + offset}"><span>${day.date}</span><strong>${day.title}</strong><small>${day.summary}</small></a>`
+      ).join('');
+      upcoming.querySelectorAll('[data-home-day]').forEach(link => link.addEventListener('click', () => {
+        try { localStorage.setItem('nitc-today-day-v1', link.dataset.homeDay); } catch (error) {}
+      }));
+    }
+  }
+
 })();
 
-  // v039.0: focused travel-day mode with persistent checklist and notes.
+  // v040.0: focused travel-day mode with persistent checklist and notes.
   const todaySelect = document.querySelector('[data-today-select]');
   if (todaySelect) {
     const tripDays = [
