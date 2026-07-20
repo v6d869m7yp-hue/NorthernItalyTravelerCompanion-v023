@@ -1,27 +1,27 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<link rel="stylesheet" href="assets/style.css?v=1.0-beta1.4"><meta name="theme-color" content="#082d4a"><meta name="color-scheme" content="light"><meta name="description" content="A private, offline-ready Northern Italy travel companion for August 31–September 10, 2026.">
+<link rel="stylesheet" href="assets/style.css?v=028.0"><meta name="theme-color" content="#082d4a">
 <title>Hotels · Northern Italy</title></head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html">THE TRAVELER’S COMPANION <small>v1.0 Beta 1.4</small></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button><nav class="nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="today.html">Today</a><a href="itinerary.html">Daily guide</a><a href="my-trip.html">My Trip</a><a href="reservations.html">Reservations</a><a href="map.html">Maps</a><a href="hotels.html" aria-current="page">Hotels</a><a href="practical.html">Practical</a><div class="nav-destinations"><a href="venice.html">Venice</a><a href="verona.html">Verona side trip</a><a href="dolomites.html">Dolomites</a><a href="cinque-terre.html">Cinque Terre</a><a href="lake-como.html">Lake Como</a><a href="lake-maggiore.html">Lake Maggiore</a><a href="milan.html">Milan Explorer</a></div></nav></div></header>
-<main id="main-content" class="wrap" id="main">
-<section class="section-heading"><div><div class="kicker" style="color:#496a55">Private trip details</div><h2>Your hotel workspace.</h2></div>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html">THE TRAVELER’S COMPANION <small>v028.0</small></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button><nav class="nav"><a href="index.html">Home</a><a href="itinerary.html">Daily guide</a><a href="map.html">Maps</a><a href="hotels.html">Stays</a><a href="practical.html">Practical</a><div class="nav-destinations"><a href="venice.html">Venice</a><a href="lake-como.html">Lake Como</a><a href="lake-maggiore.html">Stresa</a><a href="milan.html">Milan</a><a href="piedmont.html">Piedmont day trip</a><a href="dolomites.html">More destinations</a></div></nav></div></header>
+<main class="wrap" id="main">
+<section class="section-heading"><div><div class="kicker" style="color:#496a55">Private trip details</div><h2>Your confirmed-stay workspace.</h2></div>
 <p>Enter booking details here. They stay only in this browser and are not published back to GitHub.</p></section>
 <div class="hotel-grid" id="hotelGrid">
 </div>
 <div class="callout"><h3>Privacy note</h3><p>Do not enter passport numbers or payment-card details. Hotel names, addresses, parking notes and confirmation reminders are appropriate.</p></div>
 </main>
 <div class="bottomnav"><a href="index.html">Home</a><a href="itinerary.html">Plan</a><a href="map.html">Map</a><a href="hotels.html">Hotels</a></div>
-<footer>Northern Italy Traveler’s Companion · Version v1.0 Beta 1.4</footer>
+<footer>Northern Italy Traveler’s Companion · Version 028.0</footer>
 <script>
 const stops=[
-  ['venice','Venice','Aug 31–Sept 2'],
-  ['dolomites','Ortisei · Dolomites','Sept 2–4'],
-  ['cinque','Cinque Terre','Sept 4–6'],
-  ['como','Varenna · Lake Como','Sept 6–8'],
-  ['maggiore','Stresa · Lake Maggiore','Sept 8–10']
+  ['ship','Viking ship · Marghera','Aug 31–Sept 1'],
+  ['venice','Hotel al Sotoportego · Venice','Sept 1–3'],
+  ['como','Lake Como rental','Sept 3–6'],
+  ['stresa','Stresa rental','Sept 6–9'],
+  ['milan','Milan stay','Sept 9–10']
 ];
 const grid=document.getElementById('hotelGrid');
 stops.forEach(([key,title,dates])=>{
@@ -44,4 +44,4 @@ stops.forEach(([key,title,dates])=>{
   });
 });
 </script>
-<script src="assets/app.js?v=1.0-beta1.4"></script></body></html>
+<script src="assets/app.js?v=028.0"></script></body></html>

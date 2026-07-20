@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
-<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#18394b"/><stop offset=".55" stop-color="#a87c59"/><stop offset="1" stop-color="#e6c79e"/></linearGradient><linearGradient id="glass"><stop stop-color="#d6e7e8"/><stop offset="1" stop-color="#7897a0"/></linearGradient></defs>
-<rect width="1600" height="900" fill="url(#sky)"/><circle cx="1280" cy="190" r="82" fill="#f0d7ad" opacity=".82"/>
-<path d="M0 700H1600V900H0z" fill="#173039"/><path d="M0 730H1600" stroke="#cfaa74" stroke-width="8" opacity=".65"/>
-<!-- cathedral silhouette -->
-<g fill="#d9d0bd"><path d="M210 700V420h430v280z"/><path d="M230 420l35-120 35 120 38-170 38 170 50-230 50 230 43-170 43 170 35-120 35 120z"/><path d="M405 190l21-112 21 112z"/><rect x="420" y="82" width="12" height="115"/><path d="M275 500h300v200H275z" fill="#b9ad98"/><g fill="#203540"><path d="M315 700V535q0-70 55-70t55 70v165z"/><path d="M435 700V535q0-70 55-70t55 70v165z"/></g></g>
-<!-- galleria arch --> <g transform="translate(720 290)"><path d="M0 410V110Q0 0 110 0h350q110 0 110 110v300h-80V135q0-55-55-55H135q-55 0-55 55v275z" fill="#736657"/><path d="M100 410V150q0-45 45-45h280q45 0 45 45v260z" fill="url(#glass)" opacity=".86"/><path d="M285 105v305M100 210h370" stroke="#6b6157" stroke-width="14"/></g>
-<!-- tram --> <g transform="translate(1020 625)"><rect x="0" y="0" width="300" height="105" rx="18" fill="#d6b04e"/><rect x="25" y="18" width="65" height="48" fill="#28424a"/><rect x="105" y="18" width="65" height="48" fill="#28424a"/><rect x="185" y="18" width="85" height="48" fill="#28424a"/><circle cx="65" cy="105" r="25" fill="#17262b"/><circle cx="245" cy="105" r="25" fill="#17262b"/><path d="M110 0l45-70 45 70" fill="none" stroke="#222" stroke-width="8"/></g>
-<text x="90" y="825" fill="#f4ead9" font-family="Georgia,serif" font-size="64" letter-spacing="8">MILANO</text></svg>
