@@ -1,3 +1,1 @@
-Northern Italy Traveler Companion
-v1.0 Beta 1
-Build date: 2026-07-20
+v1.0 Beta 1.1

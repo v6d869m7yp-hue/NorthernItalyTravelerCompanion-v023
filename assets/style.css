@@ -2238,3 +2238,138 @@ input:focus,select:focus,textarea:focus{border-color:#9b6a25;box-shadow:0 0 0 3p
   .kicker,.muted,.guide-body p,.feature p{color:#334952}
   .nav a{border:1px solid rgba(255,255,255,.32)}
 }
+
+/* v1.0 Beta 1.1 — sitewide responsive layout stabilization */
+:root{
+  --stable-gutter:clamp(16px,3vw,40px);
+  --toolbar-clearance:0px;
+}
+html,body{max-width:100%;overflow-x:hidden}
+main{overflow:visible;max-width:none}
+*,*::before,*::after{box-sizing:border-box}
+img,svg,video,canvas{max-width:100%}
+
+/* Preserve complete illustrated spreads. These assets are composed pages, not crop photography. */
+.signature-hero{
+  min-height:0;
+  aspect-ratio:1672/941;
+  align-items:flex-end;
+  background:#132f3a;
+}
+.signature-hero>img{
+  object-fit:contain;
+  object-position:center !important;
+  background:#132f3a;
+}
+.signature-hero-copy{
+  width:min(var(--content-max),calc(100% - (var(--stable-gutter) * 2)));
+  padding:clamp(42px,7vw,96px) 0 clamp(28px,4.5vw,58px);
+}
+.signature-hero-copy h1{
+  max-width:min(8.8ch,72%);
+  font-size:clamp(3.1rem,7.2vw,7rem);
+  line-height:.84;
+  letter-spacing:-.045em;
+  overflow-wrap:normal;
+  word-break:normal;
+  hyphens:none;
+}
+.signature-hero-copy>p{max-width:min(760px,68%)}
+.signature-facts{max-width:72%}
+
+/* Paired editorial layouts must never collide or crop their page art. */
+.feature-split,.feature-split.reverse{
+  grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);
+  gap:clamp(26px,4vw,54px);
+  align-items:start;
+}
+.feature-split.reverse{grid-template-columns:minmax(320px,.9fr) minmax(0,1fr)}
+.feature-split>img,.feature-split.reverse>img{
+  order:0;
+  width:100%;
+  height:auto;
+  aspect-ratio:1672/941;
+  object-fit:contain;
+  object-position:center;
+  background:#f1ede4;
+}
+.feature-split>div{min-width:0;padding-inline:0}
+.feature-split h3,.signature-heading h2,.editorial-intro h2{
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+
+/* Full-spread cards retain their true 16:9 artwork without missing edges. */
+.gallery-grid figure{grid-template-rows:auto auto;min-width:0}
+.gallery-grid img,
+.page-spread img,
+.spread img,
+.villa-signature-grid img,
+.guide-image img{
+  object-position:center;
+}
+.gallery-grid img{
+  width:100%;
+  height:auto;
+  aspect-ratio:1672/941;
+  object-fit:contain !important;
+  background:#f2eee5;
+}
+.villa-signature-grid img{
+  height:auto;
+  aspect-ratio:1672/941;
+  object-fit:contain;
+  background:#f2eee5;
+}
+.guide-image{height:auto;aspect-ratio:1672/941}
+.guide-image img{height:100%;object-fit:contain;background:#f2eee5}
+
+/* Prevent headings, labels and ledger rows from beginning outside the viewport. */
+.signature-wrap,.wrap,.editorial-wrap,.v026-wrap{
+  width:min(var(--content-max),calc(100% - (var(--stable-gutter) * 2)));
+  min-width:0;
+}
+.signature-heading{grid-template-columns:minmax(0,1.05fr) minmax(260px,.95fr)}
+.signature-heading>*{min-width:0}
+.signature-heading h2{font-size:clamp(2.25rem,4.5vw,4rem)}
+.practical-ledger{min-width:0}
+.practical-ledger>div{min-width:0;grid-template-columns:minmax(100px,130px) minmax(0,1fr)}
+.practical-ledger p,.signature-list li,.experience-grid article,.decision-grid article{overflow-wrap:break-word}
+.ferry-signature{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding-left:max(var(--stable-gutter),calc((100vw - var(--content-max))/2));
+  padding-right:max(var(--stable-gutter),calc((100vw - var(--content-max))/2));
+}
+
+/* The travel toolbar no longer covers tablet and desktop content. */
+@media(min-width:901px){.bottomnav{display:none}}
+@media(max-width:900px){
+  :root{--toolbar-clearance:104px}
+  body{padding-bottom:calc(var(--toolbar-clearance) + env(safe-area-inset-bottom))}
+  footer{padding-bottom:24px}
+  .signature-hero{aspect-ratio:auto;min-height:620px}
+  .signature-hero>img{object-fit:cover}
+  .signature-hero-copy h1{max-width:10ch;font-size:clamp(3rem,10vw,5.6rem)}
+  .signature-hero-copy>p,.signature-facts{max-width:100%}
+  .signature-heading,.feature-split,.feature-split.reverse{grid-template-columns:1fr}
+  .feature-split>img,.feature-split.reverse>img{width:100%;max-height:none}
+  .signature-heading>p{max-width:68ch}
+  .practical-ledger{grid-template-columns:1fr}
+  .practical-ledger>div:nth-child(odd),.practical-ledger>div:nth-child(even){
+    padding:18px 0;border-left:0;
+  }
+}
+@media(max-width:680px){
+  .signature-hero{min-height:560px}
+  .signature-hero-copy{padding:68px 0 34px}
+  .signature-hero-copy h1{max-width:100%;font-size:clamp(3rem,16vw,4.8rem)}
+  .signature-facts{display:grid;grid-template-columns:1fr 1fr}
+  .gallery-grid,.decision-grid,.experience-grid,.villa-signature-grid{grid-template-columns:1fr}
+  .practical-ledger>div{grid-template-columns:1fr;gap:5px}
+}
+@media(max-width:430px){
+  .signature-facts{grid-template-columns:1fr}
+  .signature-hero{min-height:520px}
+}
