@@ -2803,3 +2803,47 @@ table{max-width:100%}
   }
 }
 \n\n/* v1.0 Beta 1.3.4 — restore complete Venice spread and brighten home hero */\n.dashboard-home .dashboard-hero>img{\n  width:100%;\n  height:100%;\n  object-fit:contain;\n  object-position:center center;\n  background:#eee8dd;\n  filter:brightness(1.08) saturate(1.03) contrast(.98);\n  transform:none;\n}\n.dashboard-home .dashboard-hero-shade{\n  background:linear-gradient(90deg,\n    rgba(3,24,39,.34) 0%,\n    rgba(3,24,39,.22) 30%,\n    rgba(3,24,39,.07) 47%,\n    rgba(3,24,39,0) 54%);\n}\n.dashboard-home .dashboard-hero-copy::before{display:none!important;content:none!important}\n.dashboard-home .dashboard-hero-copy{\n  text-shadow:0 3px 14px rgba(0,0,0,.62),0 1px 2px rgba(0,0,0,.75);\n}\n@media(max-width:760px){\n  .dashboard-home .dashboard-hero>img{object-fit:cover;object-position:30% center}\n  .dashboard-home .dashboard-hero-shade{\n    background:linear-gradient(0deg,rgba(3,24,39,.34),rgba(3,24,39,.06) 74%);\n  }\n}\n
+
+/* v1.0 Beta 1.3.5 — bright, unmasked home hero */
+.dashboard-home .dashboard-hero{
+  background:#eee8dd;
+}
+.dashboard-home .dashboard-hero>img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center center;
+  transform:none!important;
+  filter:brightness(1.12) saturate(1.04) contrast(.98)!important;
+}
+.dashboard-home .dashboard-hero-shade{
+  display:none!important;
+  background:none!important;
+  opacity:0!important;
+}
+.dashboard-home .dashboard-hero-copy::before,
+.dashboard-home .dashboard-hero-copy::after{
+  display:none!important;
+  content:none!important;
+  background:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.dashboard-home .dashboard-hero-copy{
+  background:transparent!important;
+  box-shadow:none!important;
+  text-shadow:0 2px 5px rgba(0,0,0,.48),0 1px 1px rgba(0,0,0,.55)!important;
+}
+.dashboard-home .edition-mark{
+  background:rgba(8,45,74,.18)!important;
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
+@media(max-width:760px){
+  .dashboard-home .dashboard-hero>img{
+    object-fit:cover;
+    object-position:30% center;
+    filter:brightness(1.08) saturate(1.03) contrast(.99)!important;
+  }
+  .dashboard-home .dashboard-hero-shade{display:none!important}
+}
