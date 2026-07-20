@@ -451,7 +451,7 @@
   updateProgress();
 
 
-  // v041.0 — home journey command center.
+  // v042.0 — home journey command center.
   const homeProgress = document.querySelector('[data-home-progress]');
   if (homeProgress) {
     const progressKeys = ['venice','dolomites','cinque-terre','lake-como','lake-maggiore','malpensa'];
@@ -504,7 +504,7 @@
 
 })();
 
-  // v041.0: focused travel-day mode with persistent checklist and notes.
+  // v042.0: focused travel-day mode with persistent checklist and notes.
   const todaySelect = document.querySelector('[data-today-select]');
   if (todaySelect) {
     const tripDays = [
@@ -560,7 +560,7 @@
     renderDay(inferTripDay());
   }
 
-// v041.0 — Private reservation wallet stored locally in the browser.
+// v042.0 — Private reservation wallet stored locally in the browser.
 (() => {
   const form = document.querySelector('[data-reservation-form]');
   if (!form) return;
@@ -622,4 +622,18 @@
     }
   });
   render();
+})();
+
+// v042.0: synchronize the adaptive app toolbar with the open page.
+(() => {
+  const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  const markCurrent = () => {
+    document.querySelectorAll('.companion-toolbar a').forEach(link => {
+      const target = (link.getAttribute('href') || '').split('#')[0].split('/').pop().toLowerCase();
+      if (target && target === current) link.setAttribute('aria-current','page');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  markCurrent();
+  requestAnimationFrame(markCurrent);
 })();

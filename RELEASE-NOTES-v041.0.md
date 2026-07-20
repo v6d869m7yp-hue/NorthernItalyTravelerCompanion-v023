@@ -1,4 +1,4 @@
-# v041.0 — Reservations Wallet
+# v042.0 — Reservations Wallet
 
 - Added a dedicated offline-friendly Reservations page.
 - Store hotels, restaurants, tickets, transportation, tours and other bookings locally.

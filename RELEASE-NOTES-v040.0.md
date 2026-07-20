@@ -1,4 +1,4 @@
-# Northern Italy Traveler’s Companion v041.0
+# Northern Italy Traveler’s Companion v042.0
 
 ## Home Journey Command Center
 

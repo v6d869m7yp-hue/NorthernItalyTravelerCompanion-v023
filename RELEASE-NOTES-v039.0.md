@@ -1,4 +1,4 @@
-# v041.0 — Today Mode
+# v042.0 — Today Mode
 
 - Added a focused day-by-day travel mode for all 11 itinerary days.
 - Added previous/next day controls and a full trip-day selector.
