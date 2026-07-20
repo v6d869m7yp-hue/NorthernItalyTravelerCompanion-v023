@@ -1898,7 +1898,7 @@ p{max-width:74ch}
 }
 @media(prefers-reduced-motion:reduce){.js .reveal-on-scroll{opacity:1;transform:none;transition:none}.destination-tile img,.explorer-tile img,.guide-image img,.villa-signature-grid img,.gallery-grid img{transition:none}}
 
-/* v034.0 — layout alignment and illustrated-page fidelity */
+/* v035.0 — layout alignment and illustrated-page fidelity */
 :root{
   --content-max:1180px;
   --page-gutter:clamp(18px,3vw,40px);
@@ -1987,3 +1987,28 @@ p{max-width:74ch}
   .gallery-grid figcaption{min-height:52px}
   .chapter-jumps{padding-inline:14px}
 }
+
+
+/* v035.0 — Interactive Companion */
+.interactive-map-section{padding:clamp(46px,6vw,78px) 0 18px;scroll-margin-top:112px}
+.interactive-map-copy{display:grid;grid-template-columns:minmax(0,.8fr) minmax(280px,1.2fr);gap:28px;align-items:end;margin-bottom:26px}
+.interactive-map-copy h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2.1rem,4.8vw,4rem);line-height:.98;margin:.25rem 0 0;color:var(--ink,#163342)}
+.interactive-map-copy p{max-width:56ch;margin:0;color:#52656d;font-size:1.02rem}
+.route-map{position:relative;min-height:500px;border:1px solid rgba(27,73,83,.13);border-radius:26px;overflow:hidden;background:linear-gradient(145deg,#eef5f2,#f8f3e9);box-shadow:0 24px 60px rgba(17,52,63,.12)}
+.route-map svg{position:absolute;inset:0;width:100%;height:100%}
+.map-water{fill:#b9dce3;stroke:#82bdc9;stroke-width:4}.map-route{fill:none;stroke:#fff;stroke-width:5;stroke-dasharray:12 9;filter:drop-shadow(0 1px 1px rgba(0,0,0,.18))}.map-route.faint{opacity:.72}
+.map-land{fill:#e4dec8;stroke:#c6b997;stroke-width:4}.map-water-line{fill:none;stroke:#7db8c7;stroke-width:34;stroke-linecap:round}.map-water-line.thin{stroke-width:16;opacity:.85}
+.map-coast{fill:#dfd8b9;stroke:#bcae82;stroke-width:4}.map-rail{fill:none;stroke:#273c48;stroke-width:8;stroke-dasharray:16 8}.map-trail{fill:none;stroke:#a25d37;stroke-width:5;stroke-dasharray:7 8}.map-ferry{fill:none;stroke:#3d8ca2;stroke-width:5;stroke-dasharray:18 10}
+.map-pin{position:absolute;z-index:2;display:flex;flex-direction:column;gap:2px;min-width:112px;padding:10px 13px 10px 34px;border-radius:15px;background:rgba(255,255,255,.94);color:#173746;text-decoration:none;box-shadow:0 8px 22px rgba(20,58,70,.18);border:1px solid rgba(30,77,88,.13);transition:transform .18s ease,box-shadow .18s ease}
+.map-pin:before{content:'';position:absolute;left:13px;top:15px;width:11px;height:11px;border-radius:50%;background:#c66f48;box-shadow:0 0 0 5px rgba(198,111,72,.17)}
+.map-pin b{font-size:.92rem}.map-pin span{font-size:.73rem;color:#617078}.map-pin:hover,.map-pin:focus-visible{transform:translateY(-4px);box-shadow:0 13px 28px rgba(20,58,70,.24);outline:3px solid rgba(57,132,151,.24);outline-offset:2px}
+.pin-varenna{left:43%;top:32%}.pin-bellagio{left:55%;top:50%}.pin-menaggio{left:27%;top:52%}.pin-monastero{left:47%;top:20%}.pin-carlotta{left:20%;top:68%}.pin-balbianello{left:61%;top:74%}
+.pin-san-marco{left:61%;top:51%}.pin-rialto{left:49%;top:38%}.pin-dorsoduro{left:38%;top:67%}.pin-cannaregio{left:28%;top:24%}.pin-accademia{left:44%;top:56%}.pin-islands{left:73%;top:21%}
+.pin-monterosso{left:8%;top:18%}.pin-vernazza{left:24%;top:39%}.pin-corniglia{left:42%;top:46%}.pin-manarola{left:59%;top:57%}.pin-riomaggiore{left:76%;top:67%}
+.map-key{position:absolute;bottom:16px;padding:7px 12px;border-radius:999px;background:#fff;color:#173746;text-decoration:none;font-size:.78rem;font-weight:700;box-shadow:0 5px 14px rgba(0,0,0,.12)}.map-key-rail{left:18px}.map-key-ferry{left:90px}.map-key-trail{left:162px}
+.companion-toolbar{position:fixed;z-index:1200;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:4px;padding:7px;border-radius:18px;background:rgba(8,45,74,.94);box-shadow:0 16px 44px rgba(0,0,0,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.companion-toolbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:65px;min-height:48px;padding:5px 9px;border-radius:12px;color:#fff;text-decoration:none;font-size:.69rem;letter-spacing:.02em}.companion-toolbar a:before{font-size:1.05rem;margin-bottom:2px}.companion-toolbar a:hover,.companion-toolbar a:focus-visible{background:rgba(255,255,255,.15);outline:none}.tool-today:before{content:'◷'}.tool-map:before{content:'⌖'}.tool-hotels:before{content:'▣'}.tool-practical:before{content:'+'}.tool-check:before{content:'✓'}
+body{padding-bottom:78px}
+.companion-lightbox{position:fixed;z-index:2000;inset:0;display:none;align-items:center;justify-content:center;padding:30px;background:rgba(5,20,28,.93)}.companion-lightbox.open{display:flex}.companion-lightbox img{max-width:min(95vw,1500px);max-height:88vh;object-fit:contain;box-shadow:0 24px 70px #000}.companion-lightbox button{position:absolute;right:22px;top:18px;border:0;border-radius:999px;background:#fff;color:#173746;width:44px;height:44px;font-size:1.55rem;cursor:pointer}.gallery-grid img,.villa-signature-grid img,.feature-split>img{cursor:zoom-in}
+@media(max-width:760px){.interactive-map-copy{grid-template-columns:1fr;gap:10px}.route-map{min-height:590px}.map-pin{min-width:96px;padding:9px 10px 9px 28px}.map-pin:before{left:10px}.pin-varenna{left:44%;top:29%}.pin-bellagio{left:52%;top:46%}.pin-menaggio{left:10%;top:50%}.pin-monastero{left:43%;top:15%}.pin-carlotta{left:8%;top:68%}.pin-balbianello{left:55%;top:78%}.pin-san-marco{left:55%;top:54%}.pin-rialto{left:43%;top:40%}.pin-dorsoduro{left:20%;top:70%}.pin-cannaregio{left:12%;top:22%}.pin-accademia{left:34%;top:58%}.pin-islands{left:66%;top:18%}.pin-monterosso{left:4%;top:15%}.pin-vernazza{left:18%;top:34%}.pin-corniglia{left:37%;top:45%}.pin-manarola{left:55%;top:57%}.pin-riomaggiore{left:69%;top:70%}.companion-toolbar{width:calc(100% - 20px);justify-content:space-around;border-radius:16px}.companion-toolbar a{min-width:0;flex:1;padding-inline:4px}}
+@media(prefers-reduced-motion:reduce){.map-pin{transition:none}}
