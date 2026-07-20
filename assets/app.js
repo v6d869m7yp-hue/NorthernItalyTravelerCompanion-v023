@@ -173,7 +173,7 @@
   syncBackToTop();
 
 
-  // v036.0: editorial reveal and active chapter navigation.
+  // v037.0: editorial reveal and active chapter navigation.
   document.documentElement.classList.add('js');
   const revealTargets = document.querySelectorAll([
     '.dashboard-card','.guide-card','.quick-card','.route-card','.reference-card',
@@ -207,7 +207,7 @@
   }
 
 
-  // v036.0: persistent trip toolbar.
+  // v037.0: persistent trip toolbar.
   if (!document.querySelector('.companion-toolbar')) {
     const toolbar = document.createElement('nav');
     toolbar.className = 'companion-toolbar'; toolbar.setAttribute('aria-label', 'Trip companion shortcuts');
@@ -215,7 +215,43 @@
     toolbar.innerHTML = `<a class="tool-today" href="itinerary.html">Today</a><a class="tool-map" href="${hasMap ? '#interactive-map' : 'map.html'}">Map</a><a class="tool-hotels" href="hotels.html">Hotels</a><a class="tool-practical" href="practical.html">Practical</a><a class="tool-check" href="index.html#reservations">Checklist</a>`;
     document.body.appendChild(toolbar);
   }
-  // v036.0: synchronized map markers and accessible full-screen gallery.
+
+  // v037.0: Venice route selector with live map highlighting.
+  document.querySelectorAll('[data-route-planner]').forEach(planner => {
+    const buttons = [...planner.querySelectorAll('[data-route]')];
+    const routeLines = [...planner.querySelectorAll('[data-route-line]')];
+    const stops = [...planner.querySelectorAll('[data-route-stop]')];
+    const title = planner.querySelector('[data-route-title]');
+    const description = planner.querySelector('[data-route-description]');
+    const routeLink = planner.querySelector('[data-route-link]');
+    const routeDetails = {
+      icons: { title: 'Icons morning', description: 'Begin at Piazza San Marco before the crowds, then walk toward Rialto for the Grand Canal and market lanes.', href: '#perfect-day' },
+      dorsoduro: { title: 'Art afternoon', description: 'Cross the Accademia Bridge, continue through Dorsoduro and finish along the Zattere when the light softens.', href: '#dorsoduro' },
+      cannaregio: { title: 'Quiet evening', description: 'Start near the Jewish Ghetto, follow the northern canals and finish among the bacari on Fondamenta della Misericordia.', href: '#cannaregio' }
+    };
+    const selectRoute = route => {
+      const details = routeDetails[route];
+      if (!details) return;
+      buttons.forEach(button => {
+        const active = button.dataset.route === route;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      routeLines.forEach(line => line.classList.toggle('is-active', line.dataset.routeLine === route));
+      stops.forEach(stop => {
+        const active = (stop.dataset.routeStop || '').split(/\s+/).includes(route);
+        stop.classList.toggle('is-route-stop', active);
+      });
+      title.textContent = details.title;
+      description.textContent = details.description;
+      routeLink.href = details.href;
+      routeLink.setAttribute('aria-label', `Open ${details.title} route`);
+    };
+    buttons.forEach(button => button.addEventListener('click', () => selectRoute(button.dataset.route)));
+    selectRoute(buttons.find(button => button.classList.contains('is-active'))?.dataset.route || 'icons');
+  });
+
+  // v037.0: synchronized map markers and accessible full-screen gallery.
   const mapPins = [...document.querySelectorAll('.route-map .map-pin[href^="#"]')];
   if (mapPins.length) {
     const pinSections = mapPins

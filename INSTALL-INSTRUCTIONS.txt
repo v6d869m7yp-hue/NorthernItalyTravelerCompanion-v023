@@ -1,11 +1,11 @@
-NORTHERN ITALY TRAVELER'S COMPANION — v036.0 FULL PROJECT
+NORTHERN ITALY TRAVELER'S COMPANION — v037.0 FULL PROJECT
 
 This archive contains the complete website, not a patch.
 
-1. Unzip NorthernItalyTravelerCompanion-v036.0-FULL.zip.
-2. Open the extracted NorthernItalyTravelerCompanion-v036.0 folder.
+1. Unzip NorthernItalyTravelerCompanion-v037.0-FULL.zip.
+2. Open the extracted NorthernItalyTravelerCompanion-v037.0 folder.
 3. Delete the existing files in the GitHub repository only after confirming this full package is ready.
 4. Upload everything INSIDE the extracted folder to the repository root.
-5. Commit with: v036.0 – Normalize full repository and restore natural image brightness
+5. Commit with: v037.0 – Normalize full repository and restore natural image brightness
 6. Wait for GitHub Pages to finish publishing, then hard-refresh the site.
-7. If an installed/offline copy still shows the old appearance, close it and reopen it so the v036.0 service-worker cache replaces the prior cache.
+7. If an installed/offline copy still shows the old appearance, close it and reopen it so the v037.0 service-worker cache replaces the prior cache.

@@ -1898,7 +1898,7 @@ p{max-width:74ch}
 }
 @media(prefers-reduced-motion:reduce){.js .reveal-on-scroll{opacity:1;transform:none;transition:none}.destination-tile img,.explorer-tile img,.guide-image img,.villa-signature-grid img,.gallery-grid img{transition:none}}
 
-/* v036.0 — layout alignment and illustrated-page fidelity */
+/* v037.0 — layout alignment and illustrated-page fidelity */
 :root{
   --content-max:1180px;
   --page-gutter:clamp(18px,3vw,40px);
@@ -1989,7 +1989,7 @@ p{max-width:74ch}
 }
 
 
-/* v036.0 — Interactive Companion */
+/* v037.0 — Interactive Companion */
 .interactive-map-section{padding:clamp(46px,6vw,78px) 0 18px;scroll-margin-top:112px}
 .interactive-map-copy{display:grid;grid-template-columns:minmax(0,.8fr) minmax(280px,1.2fr);gap:28px;align-items:end;margin-bottom:26px}
 .interactive-map-copy h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(2.1rem,4.8vw,4rem);line-height:.98;margin:.25rem 0 0;color:var(--ink,#163342)}
@@ -2014,7 +2014,7 @@ body{padding-bottom:78px}
 @media(prefers-reduced-motion:reduce){.map-pin{transition:none}}
 
 
-/* v036.0 — Engineering release: map state + complete gallery controls */
+/* v037.0 — Engineering release: map state + complete gallery controls */
 .map-pin.is-active,.map-pin[aria-current="location"]{transform:translateY(-5px) scale(1.035);background:#173746;color:#fff;box-shadow:0 16px 34px rgba(20,58,70,.34);z-index:4}
 .map-pin.is-active span,.map-pin[aria-current="location"] span{color:rgba(255,255,255,.78)}
 .map-pin.is-active:before,.map-pin[aria-current="location"]:before{background:#ffd58f;box-shadow:0 0 0 6px rgba(255,213,143,.22)}
@@ -2029,3 +2029,24 @@ body{padding-bottom:78px}
 .companion-lightbox .lightbox-nav:hover,.companion-lightbox .lightbox-nav:focus-visible{background:rgba(255,255,255,.22);transform:scale(1.06);outline:3px solid rgba(255,255,255,.24);outline-offset:3px}
 @media(max-width:680px){.companion-lightbox{grid-template-columns:46px minmax(0,1fr) 46px;gap:4px;padding-inline:8px}.companion-lightbox .lightbox-nav{width:42px;height:42px;font-size:2rem}.companion-lightbox img{max-height:76svh}.companion-lightbox figcaption{font-size:.82rem;gap:8px}.lightbox-caption{max-width:75%}}
 @media(prefers-reduced-motion:reduce){.companion-lightbox.open{animation:none}.companion-lightbox .lightbox-nav{transition:none}}
+
+
+/* v037.0 — Venice route planner */
+.venice-route-planner{display:grid;gap:16px}
+.route-choice-bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.route-choice{appearance:none;text-align:left;border:1px solid rgba(27,73,83,.15);border-radius:16px;background:#fff;color:#173746;padding:14px 16px;box-shadow:0 6px 18px rgba(20,58,70,.08);cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.route-choice b,.route-choice span{display:block}.route-choice b{font-size:.93rem}.route-choice span{margin-top:3px;color:#64757c;font-size:.78rem}
+.route-choice:hover,.route-choice:focus-visible{transform:translateY(-2px);border-color:rgba(49,93,103,.55);outline:3px solid rgba(49,93,103,.15);outline-offset:2px}
+.route-choice.is-active{background:#315d67;color:#fff;border-color:#315d67;box-shadow:0 12px 28px rgba(49,93,103,.24)}
+.route-choice.is-active span{color:rgba(255,255,255,.78)}
+.venice-walk{fill:none;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:14 11;opacity:0;transition:opacity .22s ease;filter:drop-shadow(0 2px 1px rgba(0,0,0,.18))}
+.venice-walk.is-active{opacity:1;animation:route-dash 18s linear infinite}
+.route-icons{stroke:#a34e3e}.route-dorsoduro{stroke:#376f77}.route-cannaregio{stroke:#7d6b3f}
+.map-pin.is-route-stop:not(.is-active){border-color:rgba(49,93,103,.52);box-shadow:0 10px 26px rgba(49,93,103,.22)}
+.map-pin.is-route-stop:not(.is-active):before{background:#315d67;box-shadow:0 0 0 6px rgba(49,93,103,.18)}
+.route-summary{display:grid;grid-template-columns:minmax(170px,.55fr) minmax(260px,1.35fr) auto;gap:20px;align-items:center;padding:19px 22px;border:1px solid rgba(27,73,83,.13);border-radius:18px;background:#fff;box-shadow:0 10px 28px rgba(20,58,70,.08)}
+.route-summary-kicker{display:block;color:#75858c;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.route-summary h3{margin:3px 0 0;font-family:Georgia,'Times New Roman',serif;font-size:1.45rem}.route-summary p{margin:0;color:#52656d;line-height:1.55}.route-start{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border-radius:999px;background:#8c493d;color:#fff;text-decoration:none;font-weight:800;white-space:nowrap}.route-start:hover,.route-start:focus-visible{background:#71382f;outline:3px solid rgba(140,73,61,.2);outline-offset:3px}
+.anchor-target{position:relative;top:-110px}
+@keyframes route-dash{to{stroke-dashoffset:-250}}
+@media(max-width:760px){.route-choice-bar{grid-template-columns:1fr}.route-choice{display:grid;grid-template-columns:1fr auto;align-items:center}.route-choice span{margin-top:0}.route-summary{grid-template-columns:1fr;gap:10px}.route-start{justify-self:start}.venice-walk{stroke-width:10}}
+@media(prefers-reduced-motion:reduce){.venice-walk.is-active{animation:none}.route-choice{transition:none}}
