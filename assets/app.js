@@ -173,7 +173,7 @@
   syncBackToTop();
 
 
-  // v035.0: editorial reveal and active chapter navigation.
+  // v036.0: editorial reveal and active chapter navigation.
   document.documentElement.classList.add('js');
   const revealTargets = document.querySelectorAll([
     '.dashboard-card','.guide-card','.quick-card','.route-card','.reference-card',
@@ -207,7 +207,7 @@
   }
 
 
-  // v035.0: persistent trip toolbar.
+  // v036.0: persistent trip toolbar.
   if (!document.querySelector('.companion-toolbar')) {
     const toolbar = document.createElement('nav');
     toolbar.className = 'companion-toolbar'; toolbar.setAttribute('aria-label', 'Trip companion shortcuts');
@@ -215,14 +215,114 @@
     toolbar.innerHTML = `<a class="tool-today" href="itinerary.html">Today</a><a class="tool-map" href="${hasMap ? '#interactive-map' : 'map.html'}">Map</a><a class="tool-hotels" href="hotels.html">Hotels</a><a class="tool-practical" href="practical.html">Practical</a><a class="tool-check" href="index.html#reservations">Checklist</a>`;
     document.body.appendChild(toolbar);
   }
-  // v035.0: unified full-screen image viewer.
+  // v036.0: synchronized map markers and accessible full-screen gallery.
+  const mapPins = [...document.querySelectorAll('.route-map .map-pin[href^="#"]')];
+  if (mapPins.length) {
+    const pinSections = mapPins
+      .map(pin => ({ pin, section: document.querySelector(pin.getAttribute('href')) }))
+      .filter(item => item.section);
+    const activatePin = (activePin) => {
+      mapPins.forEach(pin => {
+        const active = pin === activePin;
+        pin.classList.toggle('is-active', active);
+        if (active) pin.setAttribute('aria-current', 'location');
+        else pin.removeAttribute('aria-current');
+      });
+    };
+    mapPins.forEach(pin => pin.addEventListener('click', () => activatePin(pin)));
+    if ('IntersectionObserver' in window) {
+      const mapObserver = new IntersectionObserver(entries => {
+        const visible = entries.filter(entry => entry.isIntersecting)
+          .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const match = pinSections.find(item => item.section === visible.target);
+        if (match) activatePin(match.pin);
+      }, { rootMargin: '-28% 0px -55% 0px', threshold: [0.05, 0.2, 0.45] });
+      pinSections.forEach(item => mapObserver.observe(item.section));
+    }
+  }
+
   const zoomImages = [...document.querySelectorAll('.gallery-grid img, .villa-signature-grid img, .feature-split > img')];
   if (zoomImages.length) {
-    const viewer = document.createElement('div'); viewer.className='companion-lightbox'; viewer.setAttribute('aria-hidden','true'); viewer.innerHTML='<button type="button" aria-label="Close image">×</button><img alt="">'; document.body.appendChild(viewer);
-    const viewerImage=viewer.querySelector('img'), viewerClose=viewer.querySelector('button'); let previousFocus=null;
-    const closeViewer=()=>{viewer.classList.remove('open');viewer.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open');previousFocus?.focus?.({preventScroll:true});};
-    zoomImages.forEach(image=>{image.tabIndex=0;image.setAttribute('role','button');image.setAttribute('aria-label',`View larger: ${image.alt||'travel photograph'}`);const openViewer=()=>{previousFocus=image;viewerImage.src=image.currentSrc||image.src;viewerImage.alt=image.alt||'Travel photograph';viewer.classList.add('open');viewer.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');viewerClose.focus({preventScroll:true});};image.addEventListener('click',openViewer);image.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openViewer();}});});
-    viewerClose.addEventListener('click',closeViewer); viewer.addEventListener('click',e=>{if(e.target===viewer)closeViewer();}); document.addEventListener('keydown',e=>{if(e.key==='Escape'&&viewer.classList.contains('open'))closeViewer();});
+    const viewer = document.createElement('div');
+    viewer.className = 'companion-lightbox';
+    viewer.setAttribute('aria-hidden','true');
+    viewer.setAttribute('role','dialog');
+    viewer.setAttribute('aria-modal','true');
+    viewer.setAttribute('aria-label','Image gallery');
+    viewer.innerHTML = `
+      <button class="lightbox-close" type="button" aria-label="Close image">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">‹</button>
+      <figure><img alt=""><figcaption><span class="lightbox-caption"></span><span class="lightbox-count"></span></figcaption></figure>
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">›</button>`;
+    document.body.appendChild(viewer);
+    const viewerImage = viewer.querySelector('img');
+    const viewerClose = viewer.querySelector('.lightbox-close');
+    const previousButton = viewer.querySelector('.lightbox-prev');
+    const nextButton = viewer.querySelector('.lightbox-next');
+    const caption = viewer.querySelector('.lightbox-caption');
+    const count = viewer.querySelector('.lightbox-count');
+    let currentIndex = 0;
+    let previousFocus = null;
+
+    const imageCaption = image => image.closest('figure')?.querySelector('figcaption')?.textContent?.trim() || image.alt || 'Travel photograph';
+    const showImage = index => {
+      currentIndex = (index + zoomImages.length) % zoomImages.length;
+      const image = zoomImages[currentIndex];
+      viewerImage.src = image.currentSrc || image.src;
+      viewerImage.alt = image.alt || 'Travel photograph';
+      caption.textContent = imageCaption(image);
+      count.textContent = `${currentIndex + 1} of ${zoomImages.length}`;
+    };
+    const openViewer = (image, index) => {
+      previousFocus = image;
+      showImage(index);
+      viewer.classList.add('open');
+      viewer.setAttribute('aria-hidden','false');
+      document.body.classList.add('lightbox-open');
+      viewerClose.focus({preventScroll:true});
+    };
+    const closeViewer = () => {
+      viewer.classList.remove('open');
+      viewer.setAttribute('aria-hidden','true');
+      document.body.classList.remove('lightbox-open');
+      viewerImage.src = '';
+      previousFocus?.focus?.({preventScroll:true});
+    };
+    zoomImages.forEach((image,index) => {
+      image.tabIndex = 0;
+      image.setAttribute('role','button');
+      image.setAttribute('aria-label',`View larger: ${imageCaption(image)}`);
+      image.addEventListener('click',() => openViewer(image,index));
+      image.addEventListener('keydown',event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openViewer(image,index);
+        }
+      });
+    });
+    viewerClose.addEventListener('click',closeViewer);
+    previousButton.addEventListener('click',() => showImage(currentIndex - 1));
+    nextButton.addEventListener('click',() => showImage(currentIndex + 1));
+    viewer.addEventListener('click',event => { if (event.target === viewer) closeViewer(); });
+    let touchStartX = 0;
+    viewer.addEventListener('touchstart',event => { touchStartX = event.changedTouches[0].clientX; }, {passive:true});
+    viewer.addEventListener('touchend',event => {
+      const delta = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(delta) > 55) showImage(currentIndex + (delta < 0 ? 1 : -1));
+    }, {passive:true});
+    document.addEventListener('keydown',event => {
+      if (!viewer.classList.contains('open')) return;
+      if (event.key === 'Escape') closeViewer();
+      if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+      if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+      if (event.key === 'Tab') {
+        const controls = [viewerClose, previousButton, nextButton];
+        const position = controls.indexOf(document.activeElement);
+        if (event.shiftKey && position <= 0) { event.preventDefault(); nextButton.focus(); }
+        else if (!event.shiftKey && position === controls.length - 1) { event.preventDefault(); viewerClose.focus(); }
+      }
+    });
   }
 
 })();

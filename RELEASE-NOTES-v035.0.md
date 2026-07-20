@@ -1,4 +1,4 @@
-# Northern Italy Traveler’s Companion v035.0
+# Northern Italy Traveler’s Companion v036.0
 
 ## Interactive Companion release
 
