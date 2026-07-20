@@ -1,4 +1,4 @@
-# Northern Italy Traveler Companion — v1.0 Beta 1.2
+# Northern Italy Traveler Companion — v1.0 Beta 1.3
 
 ## Full-Site Visual QA and Editorial Refinement
 
