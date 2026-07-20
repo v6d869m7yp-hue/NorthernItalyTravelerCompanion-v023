@@ -451,7 +451,7 @@
   updateProgress();
 
 
-  // v042.0 — home journey command center.
+  // v043.0 — home journey command center.
   const homeProgress = document.querySelector('[data-home-progress]');
   if (homeProgress) {
     const progressKeys = ['venice','dolomites','cinque-terre','lake-como','lake-maggiore','malpensa'];
@@ -504,7 +504,7 @@
 
 })();
 
-  // v042.0: focused travel-day mode with persistent checklist and notes.
+  // v043.0: integrated travel-day mode with persistent checklist and notes.
   const todaySelect = document.querySelector('[data-today-select]');
   if (todaySelect) {
     const tripDays = [
@@ -533,6 +533,30 @@
     const checklist = document.querySelector('[data-today-checklist]');
     const notes = document.querySelector('[data-today-notes]');
     const status = document.querySelector('[data-today-save-status]');
+    const bookings = document.querySelector('[data-today-bookings]');
+    const addReservation = document.querySelector('[data-today-add-reservation]');
+    const reservationKey = 'nitc-reservations-v1';
+    const tripISODate = index => `2026-${index === 0 ? '08-31' : `09-${String(index).padStart(2,'0')}`}`;
+    const escapeTodayHTML = value => String(value || '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const renderBookings = index => {
+      if (!bookings) return;
+      let items = [];
+      try { items = JSON.parse(localStorage.getItem(reservationKey) || '[]'); } catch (_) {}
+      const date = tripISODate(index);
+      const matches = items.filter(item => item.date === date).sort((a,b) => (a.time || '').localeCompare(b.time || ''));
+      if (addReservation) addReservation.href = `reservations.html?date=${date}&return=today.html&day=${index}`;
+      if (!matches.length) {
+        bookings.innerHTML = `<div class="today-bookings-empty"><p>No saved bookings for this date.</p><a href="reservations.html?date=${date}&return=today.html&day=${index}">Add a reservation →</a></div>`;
+        return;
+      }
+      bookings.innerHTML = matches.map(item => {
+        const statusClass = String(item.status || '').toLowerCase().replace(/\s+/g,'-');
+        const time = item.time ? `<time>${escapeTodayHTML(item.time)}</time>` : '<time>Any time</time>';
+        const location = item.location ? `<span>${escapeTodayHTML(item.location)}</span>` : '';
+        const confirmation = item.confirmation ? `<code>${escapeTodayHTML(item.confirmation)}</code>` : '';
+        return `<article class="today-booking"><div>${time}<span class="reservation-badge ${statusClass}">${escapeTodayHTML(item.status || 'Saved')}</span></div><h4>${escapeTodayHTML(item.name)}</h4><p>${escapeTodayHTML(item.type)}${location ? ` · ${location}` : ''}</p>${confirmation}<a href="reservations.html">View booking →</a></article>`;
+      }).join('');
+    };
     tripDays.forEach((day,index) => {
       const option = document.createElement('option');
       option.value = String(index); option.textContent = `Day ${index + 1} · ${day.date} · ${day.title}`;
@@ -554,13 +578,14 @@
       timeline.innerHTML=''; day.steps.forEach((step,stepIndex)=>{const item=document.createElement('article');item.className='today-step'+(state.steps?.[stepIndex]?' is-done':'');item.innerHTML=`<div class="today-time">${step[0]}</div><input class="today-step-check" type="checkbox" aria-label="Mark ${step[1]} complete" ${state.steps?.[stepIndex]?'checked':''}><div><h3>${step[1]}</h3><p>${step[2]}</p><a href="${step[3]}">Open guidance →</a></div>`;item.querySelector('input').addEventListener('change',event=>{const current=readState(index);current.steps=current.steps||{};current.steps[stepIndex]=event.target.checked;saveState(index,current);item.classList.toggle('is-done',event.target.checked)});timeline.appendChild(item)});
       checklist.innerHTML=''; day.checks.forEach((text,checkIndex)=>{const label=document.createElement('label');label.innerHTML=`<input type="checkbox" ${state.checks?.[checkIndex]?'checked':''}><span>${text}</span>`;label.querySelector('input').addEventListener('change',event=>{const current=readState(index);current.checks=current.checks||{};current.checks[checkIndex]=event.target.checked;saveState(index,current)});checklist.appendChild(label)});
       notes.value=state.notes||''; notes.oninput=()=>{const current=readState(index);current.notes=notes.value;saveState(index,current)};
+      renderBookings(index);
     };
     todaySelect.addEventListener('change',()=>renderDay(Number(todaySelect.value)));
     document.querySelectorAll('[data-day-shift]').forEach(button=>button.addEventListener('click',()=>renderDay(Number(todaySelect.value)+Number(button.dataset.dayShift))));
     renderDay(inferTripDay());
   }
 
-// v042.0 — Private reservation wallet stored locally in the browser.
+// v043.0 — Private reservation wallet stored locally in the browser.
 (() => {
   const form = document.querySelector('[data-reservation-form]');
   if (!form) return;
@@ -608,6 +633,12 @@
     if (index >= 0) items[index] = item; else items.push(item);
     save(items); resetForm(); status.textContent = 'Reservation saved on this device.'; render();
   });
+  const params = new URLSearchParams(location.search);
+  const requestedDate = params.get('date');
+  if (requestedDate && /^\d{4}-\d{2}-\d{2}$/.test(requestedDate)) {
+    form.elements.date.value = requestedDate;
+    status.textContent = 'Date filled from Today mode.';
+  }
   reset.addEventListener('click', resetForm);
   filter.addEventListener('change', render);
   list.addEventListener('click', event => {
@@ -624,7 +655,7 @@
   render();
 })();
 
-// v042.0: synchronize the adaptive app toolbar with the open page.
+// v043.0: synchronize the adaptive app toolbar with the open page.
 (() => {
   const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const markCurrent = () => {
