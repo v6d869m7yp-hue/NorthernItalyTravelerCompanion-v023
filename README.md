@@ -1,8 +1,8 @@
-# Northern Italy Traveler’s Companion — v1.0 Beta 1.3
+# Northern Italy Traveler’s Companion — v1.0 Beta 1.1
 
 A complete offline-capable travel website for the August 31–September 10 Northern Italy itinerary.
 
-## v1.0 Beta 1.3 highlight: Integrated Day Planner
+## v1.0 Beta 1.1 highlight: Integrated Day Planner
 
 - Today mode displays bookings saved for the selected travel date.
 - Same-day bookings are ordered by time and show status, location, and confirmation details.
