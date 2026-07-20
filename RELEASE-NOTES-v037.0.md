@@ -1,4 +1,4 @@
-# v037.0 — Venice Route Planner
+# v038.0 — Venice Route Planner
 
 - Added three selectable Venice walking routes: Icons morning, Art afternoon, and Quiet evening.
 - Added animated route traces and route-specific map-stop highlighting.

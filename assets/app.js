@@ -173,7 +173,7 @@
   syncBackToTop();
 
 
-  // v037.0: editorial reveal and active chapter navigation.
+  // v038.0: editorial reveal and active chapter navigation.
   document.documentElement.classList.add('js');
   const revealTargets = document.querySelectorAll([
     '.dashboard-card','.guide-card','.quick-card','.route-card','.reference-card',
@@ -207,16 +207,16 @@
   }
 
 
-  // v037.0: persistent trip toolbar.
+  // v038.0: persistent trip toolbar.
   if (!document.querySelector('.companion-toolbar')) {
     const toolbar = document.createElement('nav');
     toolbar.className = 'companion-toolbar'; toolbar.setAttribute('aria-label', 'Trip companion shortcuts');
     const hasMap = document.getElementById('interactive-map');
-    toolbar.innerHTML = `<a class="tool-today" href="itinerary.html">Today</a><a class="tool-map" href="${hasMap ? '#interactive-map' : 'map.html'}">Map</a><a class="tool-hotels" href="hotels.html">Hotels</a><a class="tool-practical" href="practical.html">Practical</a><a class="tool-check" href="index.html#reservations">Checklist</a>`;
+    toolbar.innerHTML = `<a class="tool-today" href="itinerary.html">Today</a><a class="tool-map" href="${hasMap ? '#interactive-map' : 'map.html'}">Map</a><a class="tool-hotels" href="hotels.html">Hotels</a><a class="tool-practical" href="practical.html">Practical</a><a class="tool-check" href="my-trip.html">My Trip</a>`;
     document.body.appendChild(toolbar);
   }
 
-  // v037.0: Venice route selector with live map highlighting.
+  // v038.0: Venice route selector with live map highlighting.
   document.querySelectorAll('[data-route-planner]').forEach(planner => {
     const buttons = [...planner.querySelectorAll('[data-route]')];
     const routeLines = [...planner.querySelectorAll('[data-route-line]')];
@@ -251,7 +251,7 @@
     selectRoute(buttons.find(button => button.classList.contains('is-active'))?.dataset.route || 'icons');
   });
 
-  // v037.0: synchronized map markers and accessible full-screen gallery.
+  // v038.0: synchronized map markers and accessible full-screen gallery.
   const mapPins = [...document.querySelectorAll('.route-map .map-pin[href^="#"]')];
   if (mapPins.length) {
     const pinSections = mapPins
@@ -360,5 +360,94 @@
       }
     });
   }
+
+
+  // v038.0: locally saved favorites and trip progress.
+  const FAVORITES_KEY = 'nitc-favorites-v1';
+  const readFavorites = () => {
+    try { return JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]'); }
+    catch (error) { return []; }
+  };
+  const writeFavorites = items => {
+    try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(items)); }
+    catch (error) {}
+    window.dispatchEvent(new CustomEvent('nitc:favorites-changed'));
+  };
+  const favoriteId = (page, anchor, title) => `${page}#${anchor || title.toLowerCase().replace(/[^a-z0-9]+/g,'-')}`;
+  const pageTitle = document.querySelector('h1')?.textContent?.trim() || document.title.split('|')[0].trim();
+  const favoriteTargets = [...document.querySelectorAll('.signature-section[id], .milan-section[id], .villa-card[id], .island-card[id], .guide-card[id]')]
+    .filter(section => section.querySelector('h2,h3'));
+  favoriteTargets.forEach(section => {
+    if (section.querySelector('.favorite-toggle')) return;
+    const heading = section.querySelector('h2,h3');
+    const title = heading.textContent.trim();
+    const page = location.pathname.split('/').pop() || 'index.html';
+    const anchor = section.id;
+    const id = favoriteId(page, anchor, title);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'favorite-toggle';
+    button.dataset.favoriteId = id;
+    const sync = () => {
+      const active = readFavorites().some(item => item.id === id);
+      button.classList.toggle('is-saved', active);
+      button.setAttribute('aria-pressed', String(active));
+      button.setAttribute('aria-label', active ? `Remove ${title} from favorites` : `Save ${title} to favorites`);
+      button.innerHTML = `<span aria-hidden="true">${active ? '★' : '☆'}</span>${active ? 'Saved' : 'Save'}`;
+    };
+    button.addEventListener('click', () => {
+      const items = readFavorites();
+      const index = items.findIndex(item => item.id === id);
+      if (index >= 0) items.splice(index, 1);
+      else items.push({ id, title, pageTitle, href: `${page}#${anchor}`, savedAt: Date.now() });
+      writeFavorites(items);
+      sync();
+    });
+    heading.insertAdjacentElement('afterend', button);
+    sync();
+    window.addEventListener('nitc:favorites-changed', sync);
+  });
+
+  const favoriteList = document.querySelector('[data-favorites-list]');
+  if (favoriteList) {
+    const renderFavorites = () => {
+      const items = readFavorites();
+      favoriteList.innerHTML = '';
+      const count = document.querySelector('[data-favorites-count]');
+      if (count) count.textContent = String(items.length);
+      if (!items.length) {
+        favoriteList.innerHTML = '<div class="empty-state"><h3>No saved places yet</h3><p>Open a destination guide and tap <strong>Save</strong> beside any featured section.</p><a class="cta" href="index.html#destinations">Browse destinations</a></div>';
+        return;
+      }
+      items.sort((a,b) => b.savedAt - a.savedAt).forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'saved-place-card';
+        card.innerHTML = `<div><span>${item.pageTitle}</span><h3><a href="${item.href}">${item.title}</a></h3></div><button type="button" aria-label="Remove ${item.title}">Remove</button>`;
+        card.querySelector('button').addEventListener('click', () => writeFavorites(readFavorites().filter(saved => saved.id !== item.id)));
+        favoriteList.appendChild(card);
+      });
+    };
+    renderFavorites();
+    window.addEventListener('nitc:favorites-changed', renderFavorites);
+  }
+
+  document.querySelectorAll('[data-progress-item]').forEach(item => {
+    const key = `nitc-progress-${item.dataset.progressItem}`;
+    try { item.checked = localStorage.getItem(key) === '1'; } catch(error) {}
+    item.addEventListener('change', () => {
+      try { localStorage.setItem(key, item.checked ? '1' : '0'); } catch(error) {}
+      updateProgress();
+    });
+  });
+  function updateProgress() {
+    const boxes = [...document.querySelectorAll('[data-progress-item]')];
+    if (!boxes.length) return;
+    const complete = boxes.filter(box => box.checked).length;
+    const percent = Math.round((complete / boxes.length) * 100);
+    document.querySelectorAll('[data-progress-value]').forEach(el => el.textContent = `${complete} of ${boxes.length}`);
+    document.querySelectorAll('[data-progress-percent]').forEach(el => el.textContent = `${percent}%`);
+    document.querySelectorAll('[data-progress-bar]').forEach(el => el.style.width = `${percent}%`);
+  }
+  updateProgress();
 
 })();
