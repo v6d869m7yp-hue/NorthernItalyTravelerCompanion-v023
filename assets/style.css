@@ -2373,3 +2373,397 @@ img,svg,video,canvas{max-width:100%}
   .signature-facts{grid-template-columns:1fr}
   .signature-hero{min-height:520px}
 }
+
+/* v1.0 Beta 1.3 — full-site visual QA and editorial refinement */
+:root{
+  --qa-reading:68ch;
+  --qa-section-gap:clamp(52px,7vw,92px);
+  --qa-card-gap:clamp(16px,2.2vw,28px);
+}
+
+/* Content integrity: no component may force the document wider than its viewport. */
+body{min-width:0}
+main,section,article,figure,header,footer,nav,aside,div{min-width:0}
+pre,code{white-space:pre-wrap;overflow-wrap:anywhere}
+a,button,label,strong,span,p,h1,h2,h3,h4,h5,h6{min-width:0}
+h1,h2,h3,h4{overflow-wrap:normal;word-break:normal;hyphens:none}
+p,li,dd{overflow-wrap:break-word}
+
+/* Editorial typography with reliable wrapping at every supported width. */
+.page-masthead h1,
+.destination-copy h1,
+.signature-hero-copy h1,
+.cover-copy h1,
+.dashboard-hero-copy h1{
+  max-width:100%;
+  text-wrap:balance;
+  line-height:.9;
+}
+.page-masthead h1{font-size:clamp(3rem,8vw,6.6rem)}
+.destination-copy h1{font-size:clamp(3.2rem,8.4vw,7rem)}
+.section-title,
+.section-heading h2,
+.signature-heading h2,
+.editorial-intro h2,
+.briefing-head h2,
+.traveler-strip h2{
+  max-width:18ch;
+  text-wrap:balance;
+}
+.editorial-section>p,
+.signature-heading>p,
+.briefing-head>p,
+.feature-split p,
+.destination-copy p{max-width:var(--qa-reading)}
+
+/* Normalize section rhythm without disturbing page-specific storytelling. */
+.signature-section,.editorial-section{padding-block:var(--qa-section-gap)}
+.signature-section+ .signature-section,
+.editorial-section+ .editorial-section{border-top:1px solid rgba(35,62,73,.08)}
+.gallery-grid,.decision-grid,.experience-grid,.villa-signature-grid,
+.destination-deck,.guide-grid,.feature-grid,.quick-actions,.hike-grid,
+.village-grid,.transport-grid,.ferry-grid,.island-grid{
+  gap:var(--qa-card-gap);
+}
+
+/* Shared card integrity and complete media presentation. */
+.guide-card,.feature,.dashboard-card,.reference-card,.morning-card,
+.village-card,.hotel-card,.island-card,.villa-card,.day-card,
+.decision-grid article,.experience-grid article,.villa-signature-grid article{
+  min-width:0;
+  overflow:hidden;
+}
+.guide-card img,.feature img,.gallery-grid img,.page-spread img,.spread img,
+.villa-signature-grid img,.feature-split img{
+  display:block;
+}
+.page-spread,.spread,.gallery-grid figure{background:#f2eee5}
+.page-spread img,.spread img{width:100%;height:auto;object-fit:contain!important}
+figcaption{overflow-wrap:break-word}
+
+/* Legacy split layouts now collapse before the columns become cramped. */
+.briefing-head,.editorial-intro,.signature-heading,
+.feature-split,.feature-split.reverse,.perfect-day-grid{
+  min-width:0;
+}
+.feature-split>* ,.briefing-head>* ,.editorial-intro>* ,.signature-heading>*{min-width:0}
+
+/* Tables and ledgers stay readable rather than creating horizontal overflow. */
+.table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{max-width:100%}
+.fact-table{display:table;table-layout:fixed}
+.fact-table th,.fact-table td{overflow-wrap:break-word;word-break:normal}
+.practical-ledger b,.practical-ledger p{min-width:0}
+
+/* Navigation labels may wrap only where the mobile menu needs them to. */
+.topbar-inner{min-width:0}
+.brand{flex:0 1 auto;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.nav{min-width:0}
+.chapter-nav,.chapter-jumps{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.chapter-nav a,.chapter-jumps a{flex:0 0 auto}
+
+/* Reserve safe title zones on photographic heroes. */
+.destination-copy,.signature-hero-copy,.cover-copy,.dashboard-hero-copy{
+  box-sizing:border-box;
+  max-width:100%;
+}
+.destination-copy h1,.signature-hero-copy h1{margin-right:auto}
+
+/* Laptop and landscape-tablet QA breakpoint. */
+@media(max-width:1100px){
+  .morning-grid{grid-template-columns:1.2fr 1fr}
+  .morning-card.primary{grid-column:1/-1;min-height:220px}
+  .journey-summary{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .decision-grid,.experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .destination-copy{max-width:min(760px,82%)}
+  .cover-copy h1{font-size:clamp(4.2rem,12vw,8rem)}
+}
+
+/* Tablet: stack all editorial pairs before any overlap can occur. */
+@media(max-width:900px){
+  .briefing-head,.editorial-intro,.signature-heading,
+  .feature-split,.feature-split.reverse,.perfect-day-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .feature-split.reverse img{order:0}
+  .feature-split>img,.feature-split.reverse>img{max-width:100%;height:auto!important}
+  .destination-copy{max-width:100%}
+  .destination-copy h1,.signature-hero-copy h1,.page-masthead h1{max-width:11ch}
+  .journey-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .destination-deck{grid-template-columns:1fr}
+  .destination-tile.large{grid-column:auto}
+  .traveler-strip{align-items:flex-start;flex-direction:column}
+  .traveler-strip h2{font-size:clamp(2.3rem,8vw,3.5rem)}
+  .ferry-route{grid-template-columns:1fr!important}
+}
+
+/* Phone: protect long names, form controls and image captions. */
+@media(max-width:620px){
+  .page-masthead h1,.destination-copy h1,.signature-hero-copy h1,
+  .cover-copy h1,.dashboard-hero-copy h1{
+    max-width:100%;
+    font-size:clamp(2.75rem,14vw,4.5rem);
+    line-height:.92;
+  }
+  .section-title,.section-heading h2,.signature-heading h2,
+  .editorial-intro h2,.briefing-head h2,.traveler-strip h2{
+    max-width:100%;font-size:clamp(2.05rem,10.5vw,3.25rem)
+  }
+  .morning-grid,.journey-summary,.decision-grid,.experience-grid,
+  .villa-signature-grid,.field-grid{grid-template-columns:1fr!important}
+  .destination-tile,.destination-tile.large{min-height:310px}
+  .destination-tile>div{left:18px;right:18px;bottom:18px}
+  .cover-dates{position:relative;right:auto;bottom:auto;margin-top:18px}
+  .signature-itinerary article{grid-template-columns:1fr;gap:8px}
+  .fact-table{display:block;overflow-x:auto;table-layout:auto}
+  input,select,textarea,button{max-width:100%}
+  .form-grid{grid-template-columns:1fr!important}
+}
+
+/* Tiny phones: remove remaining fixed presentation assumptions. */
+@media(max-width:390px){
+  .wrap,.signature-wrap,.editorial-wrap,.v026-wrap{padding-left:14px;padding-right:14px}
+  .brand small{display:none}
+  .destination-tile h3{font-size:clamp(1.9rem,11vw,2.8rem)}
+  .bottomnav a,.companion-toolbar a{min-width:62px}
+}
+
+/* v1.0 Beta 1.3 — consolidated responsive typography system */
+:root{
+  --type-display-xl:clamp(3.6rem,6.2vw,6rem);
+  --type-display-lg:clamp(3.1rem,5.4vw,5.25rem);
+  --type-display-md:clamp(2.55rem,4.4vw,4.2rem);
+  --type-heading:clamp(2rem,3.2vw,3.2rem);
+  --type-card:clamp(1.65rem,2.35vw,2.55rem);
+}
+
+/* Home hero has its own deliberate scale and line rhythm. */
+.dashboard-home .dashboard-hero-copy h1{
+  max-width:11.5ch;
+  font-size:var(--type-display-xl);
+  line-height:.96;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+
+/* Destination and editorial displays use a less aggressive leading. */
+.page-masthead h1,
+.destination-copy h1,
+.signature-hero-copy h1,
+.cover-copy h1{
+  line-height:.96;
+  letter-spacing:-.035em;
+}
+
+/* Compact destination cards need a card scale, not hero typography. */
+.destination-deck.compact .destination-tile h3{
+  max-width:11ch;
+  font-size:var(--type-card);
+  line-height:1;
+  letter-spacing:-.025em;
+  text-wrap:balance;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.destination-deck.compact .destination-tile.large h3{
+  max-width:12ch;
+  font-size:clamp(2.4rem,3.8vw,4rem);
+}
+.destination-deck.compact .destination-tile p{
+  max-width:34ch;
+  line-height:1.38;
+}
+
+/* Keep overlay copy clear of card edges and navigation artwork. */
+.destination-deck.compact .destination-tile>div{
+  left:clamp(18px,2vw,28px);
+  right:clamp(18px,2vw,28px);
+  bottom:clamp(18px,2vw,28px);
+}
+
+@media(max-width:1100px){
+  .dashboard-home .dashboard-hero-copy h1{
+    max-width:10.5ch;
+    font-size:clamp(3.4rem,7.4vw,5.4rem);
+    line-height:.98;
+  }
+  .destination-deck.compact .destination-tile h3{
+    font-size:clamp(1.75rem,3.2vw,2.65rem);
+  }
+}
+
+@media(max-width:900px){
+  .dashboard-home .dashboard-hero-copy h1{
+    max-width:11ch;
+    font-size:clamp(3.15rem,9.5vw,5rem);
+    line-height:.98;
+  }
+  .destination-deck.compact .destination-tile h3,
+  .destination-deck.compact .destination-tile.large h3{
+    max-width:12ch;
+    font-size:clamp(2rem,5.5vw,3rem);
+    line-height:1.02;
+  }
+}
+
+@media(max-width:620px){
+  .dashboard-home .dashboard-hero-copy h1{
+    max-width:10ch;
+    font-size:clamp(3rem,15vw,4.35rem);
+    line-height:.98;
+    letter-spacing:-.03em;
+  }
+  .destination-deck.compact .destination-tile h3,
+  .destination-deck.compact .destination-tile.large h3{
+    max-width:100%;
+    font-size:clamp(2rem,10vw,3rem);
+  }
+}
+
+
+/* v1.0 Beta 1.3.1 — home hero and destination tile structural repair */
+.dashboard-home .dashboard-hero-copy{
+  display:grid;
+  justify-items:start;
+  align-content:end;
+  gap:0;
+}
+.dashboard-home .dashboard-hero-copy h1{
+  display:grid;
+  gap:.02em;
+  width:min(720px,58vw);
+  max-width:none;
+  margin:.22em 0 .2em;
+  font-size:clamp(3.35rem,6.15vw,6.1rem);
+  line-height:.94;
+  letter-spacing:-.035em;
+  text-wrap:initial;
+}
+.dashboard-home .dashboard-hero-copy h1 span{
+  display:block;
+  white-space:nowrap;
+}
+.dashboard-home .dashboard-hero-copy h1 span:last-child{
+  font-size:.88em;
+}
+.dashboard-home .dashboard-hero-copy>p{
+  margin-top:.2rem;
+}
+
+/* The illustrated chapter artwork already contains its own titles. Keep it complete,
+   then place the clickable chapter label below rather than duplicating it over the art. */
+.dashboard-home .destination-deck.compact{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:auto;
+  align-items:start;
+}
+.dashboard-home .destination-deck.compact .destination-tile,
+.dashboard-home .destination-deck.compact .destination-tile.large,
+.dashboard-home .destination-deck.compact .destination-tile:nth-child(4),
+.dashboard-home .destination-deck.compact .destination-tile:nth-child(5){
+  grid-column:auto;
+  grid-row:auto;
+  display:grid;
+  grid-template-rows:auto auto;
+  min-height:0;
+  overflow:hidden;
+  border-radius:24px;
+  background:#fffdf8;
+  color:var(--editorial-ink);
+  border:1px solid var(--editorial-rule);
+  box-shadow:0 16px 44px rgba(18,52,67,.09);
+}
+.dashboard-home .destination-deck.compact .destination-tile.large{
+  grid-column:1/-1;
+}
+.dashboard-home .destination-deck.compact .destination-tile:after{
+  display:none;
+}
+.dashboard-home .destination-deck.compact .destination-tile>img{
+  position:static;
+  inset:auto;
+  width:100%;
+  height:auto;
+  max-height:none;
+  aspect-ratio:auto;
+  object-fit:contain;
+  object-position:center;
+  transform:none!important;
+  background:#eee9df;
+}
+.dashboard-home .destination-deck.compact .destination-tile>div{
+  position:static;
+  inset:auto;
+  z-index:auto;
+  padding:18px 22px 21px;
+  color:var(--editorial-ink);
+  background:#fffdf8;
+}
+.dashboard-home .destination-deck.compact .destination-tile h3,
+.dashboard-home .destination-deck.compact .destination-tile.large h3{
+  max-width:none;
+  margin:.15rem 0 .25rem;
+  font-size:clamp(1.6rem,2.25vw,2.3rem);
+  line-height:1.05;
+  letter-spacing:-.025em;
+  color:var(--editorial-ink);
+  text-shadow:none;
+}
+.dashboard-home .destination-deck.compact .destination-tile p{
+  margin:0;
+  max-width:48ch;
+  color:var(--editorial-muted);
+  line-height:1.45;
+  text-shadow:none;
+}
+.dashboard-home .destination-deck.compact .destination-tile small{
+  color:#8b6228;
+  text-shadow:none;
+}
+.dashboard-home .destination-deck.compact .tile-number{
+  top:14px;
+  right:14px;
+  left:auto;
+  bottom:auto;
+  color:#fff;
+  background:rgba(7,39,61,.82);
+  border:1px solid rgba(255,255,255,.45);
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  font-size:.75rem;
+  text-shadow:none;
+}
+
+@media(max-width:1100px){
+  .dashboard-home .dashboard-hero-copy h1{
+    width:min(650px,64vw);
+    font-size:clamp(3.15rem,6.8vw,5.25rem);
+    line-height:.96;
+  }
+}
+@media(max-width:760px){
+  .dashboard-home .dashboard-hero-copy h1{
+    width:100%;
+    font-size:clamp(2.9rem,12.2vw,4.5rem);
+    line-height:.97;
+  }
+  .dashboard-home .dashboard-hero-copy h1 span{
+    white-space:normal;
+  }
+  .dashboard-home .destination-deck.compact{
+    grid-template-columns:1fr;
+  }
+  .dashboard-home .destination-deck.compact .destination-tile.large{
+    grid-column:auto;
+  }
+}
+@media(max-width:420px){
+  .dashboard-home .dashboard-hero-copy h1{
+    font-size:clamp(2.65rem,13.5vw,3.65rem);
+  }
+}
