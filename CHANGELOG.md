@@ -17,3 +17,10 @@
 
 ### Preserved
 - Existing illustrated destination chapters, saved booking workspace, maps and daily guide.
+
+
+## 3.1.0 — Venice Accommodation Concierge
+- Rebuilt the Venice stay section around the confirmed Hotel Al Sotoportego reservation.
+- Added hotel photography, stay facts, quick actions, arrival concierge, neighborhood shortcuts and a first-evening route.
+- Added resilient image fallbacks for offline or blocked third-party photography.
+- Updated responsive styling, version labels and service-worker cache.
