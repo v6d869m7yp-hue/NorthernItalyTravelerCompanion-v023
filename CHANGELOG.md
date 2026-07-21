@@ -1,3 +1,14 @@
+# Changelog
+
+## v3.7.0
+- Visual-refinement-only release.
+- Brightened hero and editorial imagery for outdoor viewing.
+- Reduced overly dark overlays while retaining readable text.
+- Standardized image cropping across desktop, tablet and phone.
+- Unified typography, spacing, card radii and shadows.
+- Refined transitions and responsive page rhythm.
+- No functionality, page or itinerary changes.
+
 ## 3.6.0 — Departure correction
 - Confirmed September 10 departure from Milan Linate (LIN) on KLM.
 - Replaced obsolete Malpensa directions and rail guidance with Linate transfer guidance.

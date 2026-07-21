@@ -1735,7 +1735,7 @@ body{overflow-x:hidden}.journey-home{background:var(--paper2)}
 @media(max-width:650px){.lake-timeline li{grid-template-columns:72px 1fr;gap:14px}.lake-timeline>li>span{font-size:1.05rem}}
 
 /* =========================================================
-   VERSION 3.6.0 — POLISH PASS ONLY
+   VERSION 3.7.0 — POLISH PASS ONLY
    Visual consistency, responsiveness and accessibility.
    No new pages or features.
    ========================================================= */
@@ -1807,7 +1807,7 @@ footer{padding-bottom:112px}
   .bottomnav a{flex:1 0 auto;justify-content:center;padding-inline:10px}
 }
 
-/* v3.6.0 — photography and visual polish only; no feature expansion */
+/* v3.7.0 — photography and visual polish only; no feature expansion */
 /* Keep destination photography clear and inviting in bright outdoor viewing. */
 .book-window img,
 .magazine-cover > img,
@@ -1856,4 +1856,122 @@ footer{padding-bottom:112px}
   .hotel-card img {
     filter:brightness(1.10) saturate(1.03) contrast(1.02);
   }
+}
+
+/* =========================================================
+   VERSION 3.7.0 — VISUAL REFINEMENT ONLY
+   Brighter imagery, lighter overlays, consistent crops,
+   unified rhythm and responsive polish. No content changes.
+   ========================================================= */
+:root{
+  --space-section:clamp(56px,7vw,82px);
+  --space-card:clamp(20px,2.5vw,28px);
+  --radius-card:20px;
+  --shadow-card-refined:0 14px 38px rgba(8,45,74,.095);
+  --shadow-card-hover:0 20px 48px rgba(8,45,74,.14);
+}
+
+/* Global rhythm and typography */
+body{font-size:16px;line-height:1.58}
+p,li,dd{line-height:1.62}
+.wrap,.journey-main{padding-top:var(--space-section)}
+.section-heading,.hotel-heading,.route-head{gap:clamp(18px,3vw,34px)}
+.section-heading h2,.section-title,.hotel-heading h2,.concierge-intro h2,.evening-copy h2{
+  letter-spacing:-.025em;
+}
+.feature-body,.guide-body,.day-copy,.reference-card,.arrival-grid article{padding:var(--space-card)}
+.feature,.guide-card,.day-card,.today-card,.notes-card,.decision-card,.walk-card,.checklist-card,.stop,
+.reference-card,.arrival-grid article,.neighborhood-grid a,.command-actions>a,.route-destination{
+  border-radius:var(--radius-card);
+  box-shadow:var(--shadow-card-refined);
+}
+.feature:hover,.guide-card:hover,.day-card:hover,.command-actions>a:hover,.route-destination:hover{
+  box-shadow:var(--shadow-card-hover);
+}
+
+/* Bright photography for outdoor phone use */
+.journey-hero>img,.magazine-cover>img,.hotel-hero>img,.showcase-large>img,
+.book-window img,.maggiore-cover img,.signature-hero img,
+.feature-media img,.guide-image img,.hotel-photo img,.stay-hub>img,.spread img,.viewer img{
+  filter:brightness(1.18) saturate(1.055) contrast(.96);
+}
+.journey-hero>img,.magazine-cover>img,.hotel-hero>img,.showcase-large>img{
+  filter:brightness(1.22) saturate(1.06) contrast(.95);
+}
+
+/* Keep text readable by shading only the copy area, not the whole photograph. */
+.journey-veil{
+  background:
+    linear-gradient(90deg,rgba(4,25,34,.40) 0%,rgba(4,25,34,.12) 50%,rgba(4,25,34,0) 74%),
+    linear-gradient(0deg,rgba(4,25,34,.22),transparent 46%);
+}
+.cover-shade,.magazine-cover .cover-shade{
+  background:
+    linear-gradient(90deg,rgba(4,25,34,.28) 0%,rgba(4,25,34,.08) 46%,rgba(4,25,34,0) 72%),
+    linear-gradient(0deg,rgba(4,25,34,.12),transparent 42%)!important;
+}
+.hotel-hero-shade{
+  background:linear-gradient(0deg,rgba(4,25,34,.62) 0%,rgba(4,25,34,.13) 48%,rgba(4,25,34,0) 72%);
+}
+.signature-hero-shade{
+  background:linear-gradient(90deg,rgba(4,25,34,.38),rgba(4,25,34,.07) 68%,transparent);
+}
+.destination-tile:after{
+  background:linear-gradient(0deg,rgba(3,22,36,.72) 0%,rgba(3,22,36,.2) 42%,transparent 72%);
+}
+.showcase-large>div{
+  background:linear-gradient(transparent 0%,rgba(5,29,39,.68) 72%,rgba(5,29,39,.8) 100%);
+}
+.hotel-photo figcaption{
+  background:linear-gradient(transparent,rgba(3,20,28,.72));
+}
+
+/* Predictable editorial crops */
+.journey-hero>img,.magazine-cover>img,.hotel-hero>img,.showcase-large>img,
+.book-window img,.maggiore-cover img,.feature-media img,.guide-image img{
+  object-fit:cover;
+  object-position:center 48%;
+}
+.journey-hero>img{object-position:center 44%}
+.venice-complete-hero .book-window img{object-position:center 46%}
+.dolomites-complete-hero .book-window img,.dolomites-hero .book-window img{object-position:center 42%}
+.cinque-hero .book-window img{object-position:center 48%}
+.como-hero .book-window img,.maggiore-hero .book-window img,.maggiore-cover img{object-position:center 45%}
+.hotel-hero>img{object-position:center 46%}
+
+/* Smoother, restrained interaction */
+.feature,.guide-card,.day-card,.command-actions>a,.route-destination,.destination-tile,
+.book-window,.hotel-photo,.neighborhood-grid a{
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background-color .22s ease;
+}
+.feature:hover,.guide-card:hover,.day-card:hover,.command-actions>a:hover,.route-destination:hover{
+  transform:translateY(-2px);
+}
+.destination-tile img,.hotel-photo img{transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+
+/* Responsive page rhythm and crop control */
+@media(max-width:980px){
+  .wrap,.journey-main{padding-top:clamp(46px,6vw,62px)}
+  .journey-hero>img{object-position:58% 45%}
+  .hotel-hero>img{object-position:center 44%}
+}
+@media(max-width:740px){
+  body{font-size:15.75px}
+  .wrap,.journey-main{padding-top:42px}
+  .section-heading,.hotel-heading{margin-bottom:24px}
+  .journey-veil{
+    background:
+      linear-gradient(90deg,rgba(4,25,34,.44) 0%,rgba(4,25,34,.13) 74%),
+      linear-gradient(0deg,rgba(4,25,34,.18),transparent 48%);
+  }
+  .hotel-hero-shade{background:linear-gradient(0deg,rgba(4,25,34,.60),rgba(4,25,34,.08) 70%)}
+  .journey-hero>img{object-position:60% 45%}
+  .hotel-hero>img{object-position:center 43%}
+  .book-window img,.feature-media img,.guide-image img{aspect-ratio:4/3}
+}
+@media(max-width:460px){
+  .feature-body,.guide-body,.day-copy,.reference-card,.arrival-grid article{padding:19px}
+  .journey-hero>img{object-position:62% 45%}
+  .destination-tile{min-height:320px}
+  .destination-tile.large{min-height:390px}
 }

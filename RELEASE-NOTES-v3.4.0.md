@@ -1,4 +1,4 @@
-# Northern Italy Traveler Companion v3.6.0
+# Northern Italy Traveler Companion v3.7.0
 
 ## Polish release
 
