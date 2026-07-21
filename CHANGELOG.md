@@ -24,3 +24,8 @@
 - Added hotel photography, stay facts, quick actions, arrival concierge, neighborhood shortcuts and a first-evening route.
 - Added resilient image fallbacks for offline or blocked third-party photography.
 - Updated responsive styling, version labels and service-worker cache.
+
+
+## v3.3.0
+- Personalized Lake Maggiore and Milan concierge pages.
+- Corrected lodging links and Malpensa departure details.
