@@ -1,4 +1,4 @@
-# Northern Italy Traveler Companion v3.5.0
+# Northern Italy Traveler Companion v3.6.0
 
 ## Corrected
 - Confirmed the September 10 flight departure from Milan Linate Airport (LIN) on KLM.
@@ -7,4 +7,4 @@
 
 ## Release discipline
 - No new pages or features.
-- Version and offline-cache identifiers updated to v3.5.0.
+- Version and offline-cache identifiers updated to v3.6.0.

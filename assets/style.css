@@ -1735,7 +1735,7 @@ body{overflow-x:hidden}.journey-home{background:var(--paper2)}
 @media(max-width:650px){.lake-timeline li{grid-template-columns:72px 1fr;gap:14px}.lake-timeline>li>span{font-size:1.05rem}}
 
 /* =========================================================
-   VERSION 3.5.0 — POLISH PASS ONLY
+   VERSION 3.6.0 — POLISH PASS ONLY
    Visual consistency, responsiveness and accessibility.
    No new pages or features.
    ========================================================= */
@@ -1805,4 +1805,55 @@ footer{padding-bottom:112px}
   .cta-row .cta{flex:1 1 100%}
   .bottomnav{bottom:max(8px,env(safe-area-inset-bottom));width:calc(100% - 16px);overflow-x:auto;justify-content:flex-start}
   .bottomnav a{flex:1 0 auto;justify-content:center;padding-inline:10px}
+}
+
+/* v3.6.0 — photography and visual polish only; no feature expansion */
+/* Keep destination photography clear and inviting in bright outdoor viewing. */
+.book-window img,
+.magazine-cover > img,
+.feature-media img,
+.guide-image img,
+.page-spread img,
+.spread img,
+.viewer img,
+.gallery img,
+.photo-card img,
+.hotel-card img {
+  filter: brightness(1.13) saturate(1.06) contrast(.98);
+}
+
+/* Hero photographs get a slightly stronger lift without bleaching highlights. */
+.destination-hero .book-window img,
+.venice-complete-hero .book-window img,
+.dolomites-complete-hero .book-window img,
+.dolomites-hero .book-window img,
+.cinque-hero .book-window img,
+.como-hero .book-window img,
+.maggiore-hero .book-window img {
+  filter: brightness(1.18) saturate(1.07) contrast(.97);
+}
+
+/* Lighter framing and shadow make photos feel less visually enclosed. */
+.book-window {
+  background:#f4efe6;
+  box-shadow:0 22px 54px rgba(0,0,0,.24);
+}
+.feature-media,
+.guide-image {
+  background:#f1ece3;
+}
+
+@media (prefers-contrast: more) {
+  .book-window img,
+  .magazine-cover > img,
+  .feature-media img,
+  .guide-image img,
+  .page-spread img,
+  .spread img,
+  .viewer img,
+  .gallery img,
+  .photo-card img,
+  .hotel-card img {
+    filter:brightness(1.10) saturate(1.03) contrast(1.02);
+  }
 }
