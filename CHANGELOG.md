@@ -1,3 +1,9 @@
+## 3.4.0 — Polish release
+- Visual consistency and responsive refinement only; no new features.
+- Normalized hero brightness, overlays, cards, buttons, typography spacing and mobile navigation.
+- Added accessibility focus and reduced-motion refinements.
+- Corrected stale Varenna wording to Lenno.
+
 # Northern Italy Traveler’s Companion
 
 ## Version 3.0.0
@@ -26,6 +32,6 @@
 - Updated responsive styling, version labels and service-worker cache.
 
 
-## v3.3.0
+## v3.4.0
 - Personalized Lake Maggiore and Milan concierge pages.
 - Corrected lodging links and Malpensa departure details.
