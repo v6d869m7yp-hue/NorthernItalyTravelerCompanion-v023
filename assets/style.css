@@ -1807,7 +1807,7 @@ footer{padding-bottom:112px}
   .bottomnav a{flex:1 0 auto;justify-content:center;padding-inline:10px}
 }
 
-/* v4.0 Beta 1 — photography and visual polish only; no feature expansion */
+/* v4.0 Beta 2 — photography and visual polish only; no feature expansion */
 /* Keep destination photography clear and inviting in bright outdoor viewing. */
 .book-window img,
 .magazine-cover > img,
@@ -1975,3 +1975,6 @@ p,li,dd{line-height:1.62}
   .destination-tile{min-height:320px}
   .destination-tile.large{min-height:390px}
 }
+
+/* v4.0 Beta 2 — verified booking dossier */
+.verified-reservation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:30px 0 70px}.verified-reservation{position:relative;background:#fff;border:1px solid rgba(18,59,74,.14);border-radius:18px;padding:28px;box-shadow:0 14px 38px rgba(18,59,74,.08)}.verified-reservation small{display:block;text-transform:uppercase;letter-spacing:.12em;color:#55727b;margin-bottom:8px}.verified-reservation h3{font-family:var(--serif,Georgia,serif);font-size:1.65rem;margin:0 0 12px}.verified-reservation p{line-height:1.6}.verified-reservation dl{display:grid;grid-template-columns:max-content 1fr;gap:7px 16px;margin:18px 0 0;padding-top:16px;border-top:1px solid #e4eaeb}.verified-reservation dt{font-weight:700}.verified-reservation dd{margin:0}.verified-badge{position:absolute;right:20px;top:18px;background:#e5f3ec;color:#17613d;border-radius:999px;padding:6px 10px;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}@media(max-width:760px){.verified-reservation-grid{grid-template-columns:1fr}.verified-reservation{padding:24px 20px}.verified-badge{position:static;display:inline-block;margin-bottom:12px}}
