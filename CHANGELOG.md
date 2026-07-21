@@ -1,3 +1,9 @@
+## v4.0 Beta 1
+- Established feature-complete beta baseline.
+- Verified and completed Hotel Berna reservation essentials.
+- Updated versioning and offline cache.
+- No new features, pages, or itinerary changes.
+
 # Changelog
 
 ## v3.7.0
