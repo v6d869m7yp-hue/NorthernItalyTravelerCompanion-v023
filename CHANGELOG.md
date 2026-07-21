@@ -1,4 +1,9 @@
-## 3.4.0 — Polish release
+## 3.5.0 — Departure correction
+- Confirmed September 10 departure from Milan Linate (LIN) on KLM.
+- Replaced obsolete Malpensa directions and rail guidance with Linate transfer guidance.
+- Updated route map, departure checklist, visible version labels and offline cache.
+
+## 3.5.0 — Polish release
 - Visual consistency and responsive refinement only; no new features.
 - Normalized hero brightness, overlays, cards, buttons, typography spacing and mobile navigation.
 - Added accessibility focus and reduced-motion refinements.
@@ -32,6 +37,6 @@
 - Updated responsive styling, version labels and service-worker cache.
 
 
-## v3.4.0
+## v3.5.0
 - Personalized Lake Maggiore and Milan concierge pages.
 - Corrected lodging links and Malpensa departure details.

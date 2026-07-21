@@ -1735,7 +1735,7 @@ body{overflow-x:hidden}.journey-home{background:var(--paper2)}
 @media(max-width:650px){.lake-timeline li{grid-template-columns:72px 1fr;gap:14px}.lake-timeline>li>span{font-size:1.05rem}}
 
 /* =========================================================
-   VERSION 3.4.0 — POLISH PASS ONLY
+   VERSION 3.5.0 — POLISH PASS ONLY
    Visual consistency, responsiveness and accessibility.
    No new pages or features.
    ========================================================= */
