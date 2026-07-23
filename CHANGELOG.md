@@ -1,3 +1,34 @@
+# v4.7 — Trip Readiness & Route Corrections
+
+- Added a persistent pre-trip readiness dashboard with local checklists and private notes.
+- Added a dedicated final-departure card for KL1612 from Milan Linate at 6:40 AM on September 11.
+- Corrected Urban Hive → LIN map launch links from walking to driving directions.
+- Added Trip Readiness to the shared breadcrumb and travel-drawer navigation.
+- Updated cache, manifest and release metadata to v4.7.
+
+## v4.6.0 — September 2026
+- Shared context-aware breadcrumbs across the guide.
+- Four hotel-centered schematic route maps with live Apple/Google directions.
+- Improved cross-links between stays, routes and destination guides.
+- Updated offline cache and release metadata.
+
+# Northern Italy Traveler’s Companion v4.4
+
+## Premium travel controls and field-use polish
+
+- Added a persistent travel dock on every page with one-tap access to Trip Mode, maps, stays and the travel desk.
+- Added a slide-up quick-access drawer linking the daily guide, reservations, practical reference and core destinations.
+- Added online/offline status messaging so travelers know when external map links are available.
+- Expanded the stays workspace with destination-guide links, Apple Maps shortcuts and arrival-focus reminders for every overnight base.
+- Expanded the practical reference with fast-scanning ZTL, fuel, parking, ferry, payment and coffee guidance.
+- Added a compact Italian phrase panel for parking, transport, dining and taxi situations.
+- Updated the manifest, service-worker cache, asset versions, footer labels and release metadata to v4.4.
+- Preserved the September 11 KL1612 departure from Milan Linate and all v4.3 Trip Mode data.
+
+## v4.2 — September 2026
+- Major Milan, Piedmont, Verona, and Lake Garda content expansion.
+- Version/cache metadata updated.
+
 ## v4.0 Beta 1
 - Established feature-complete beta baseline.
 - Verified and completed Hotel Berna reservation essentials.
@@ -57,3 +88,21 @@
 ## v3.6.0
 - Personalized Lake Maggiore and Milan concierge pages.
 - Corrected lodging links and Malpensa departure details.
+
+
+# Northern Italy Traveler’s Companion v4.3
+
+## Traveler Experience release
+
+- Added a working Trip Mode daily dashboard for all 12 trip days.
+- Added automatic current-day selection during August 31–September 11, 2026.
+- Added previous/next day navigation, daily timelines, priorities, bookings and destination links.
+- Added private per-day notes and checklists stored locally on the device.
+- Added online/offline status and service-worker registration.
+- Added a contextual Trip Mode card to the home page.
+- Corrected the itinerary to show a full Milan day on September 10 and KL1612 departure from LIN on September 11.
+- Updated manifest, cache, asset versions and footer labels to v4.3.
+
+
+## v4.5
+- Added basic breadcrumb navigation scaffold across HTML pages.

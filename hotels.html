@@ -1,36 +1,39 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<link rel="stylesheet" href="assets/style.css?v=4.0-september2026"><meta name="theme-color" content="#082d4a">
-<title>Hotels · Northern Italy</title></head>
+<link rel="stylesheet" href="assets/style.css?v=4.6-september2026"><meta name="theme-color" content="#082d4a">
+<title>Hotels · Northern Italy</title>
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html">THE TRAVELER’S COMPANION <small>September 2026 Edition</small></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">Menu</button><nav class="nav"><a href="index.html">Home</a><a href="itinerary.html">Daily guide</a><a href="map.html">Maps</a><a href="hotels.html">Stays</a><a href="practical.html">Practical</a><div class="nav-destinations"><a href="venice.html">Venice</a><a href="lake-como.html">Lake Como</a><a href="lake-maggiore.html">Stresa</a><a href="milan.html">Milan</a><a href="piedmont.html">Piedmont day trip</a><a href="dolomites.html">More destinations</a></div></nav></div></header>
 <main class="wrap" id="main">
 <section class="section-heading"><div><div class="kicker" style="color:#496a55">Private trip details</div><h2>Your confirmed-stay workspace.</h2></div>
 <p>Enter booking details here. They stay only in this browser and are not published back to GitHub.</p></section>
+<section class="hotel-route-cta"><div><h3>Around your stays</h3><p>Open four hotel-centered route maps with nearby anchors and one-tap live directions.</p></div><a href="hotel-routes.html">Open route maps</a></section>
 <div class="hotel-grid" id="hotelGrid">
 </div>
 <div class="callout"><h3>Privacy note</h3><p>Do not enter passport numbers or payment-card details. Hotel names, addresses, parking notes and confirmation reminders are appropriate.</p></div>
 </main>
 <div class="bottomnav"><a href="index.html">Home</a><a href="itinerary.html">Plan</a><a href="map.html">Map</a><a href="hotels.html">Hotels</a></div>
-<footer>Northern Italy Traveler’s Companion · September 2026 Edition · v4.0</footer>
+<footer>Northern Italy Traveler’s Companion · September 2026 Edition · v4.7</footer>
 <script>
 const stops=[
-  ['ship','Viking ship · Marghera','Aug 31–Sept 1',''],
-  ['venice','Hotel al Sotoportego · Venice','Sept 1–3',''],
-  ['como','Lake Front Apartment · Lenno','Sept 3–6','https://www.airbnb.com/rooms/7332996'],
-  ['stresa','Il Dipinto Sul Lago · Stresa','Sept 6–9','https://www.happy.rentals/vacation-rental/11526-il-dipinto-sul-lago-stresa-center'],
-  ['milan','Urban Hive Milano · Brera','Sept 9–11','https://maps.apple.com/?q=Urban+Hive+Milano+Corso+Garibaldi+84']
+  {key:'ship',title:'Viking ship · Marghera',dates:'Aug 31–Sept 1',source:'',guide:'venice.html',maps:'https://maps.apple.com/?q=Marghera+Venice',essentials:'Confirm Fusina disembarkation details and keep luggage-transfer instructions accessible.'},
+  {key:'venice',title:'Hotel al Sotoportego · Venice',dates:'Sept 1–3',source:'',guide:'venice.html',maps:'https://maps.apple.com/?q=Hotel+Al+Sotoportego+Venice',essentials:'Cannaregio base: vaporetto stops, pharmacy and dinner options are best checked before leaving Wi-Fi.'},
+  {key:'como',title:'Lake Front Apartment · Lenno',dates:'Sept 3–6',source:'https://www.airbnb.com/rooms/7332996',guide:'lake-como.html',maps:'https://maps.apple.com/?q=Lenno+Lake+Como',essentials:'Save parking instructions, ferry timetable screenshots and the host contact before arrival.'},
+  {key:'stresa',title:'Il Dipinto Sul Lago · Stresa',dates:'Sept 6–9',source:'https://www.happy.rentals/vacation-rental/11526-il-dipinto-sul-lago-stresa-center',guide:'lake-maggiore.html',maps:'https://maps.apple.com/?q=Stresa+Italy',essentials:'Keep garage directions, island-boat information and the Milan transfer plan together.'},
+  {key:'milan',title:'Urban Hive Milano · Brera',dates:'Sept 9–11',source:'https://maps.apple.com/?q=Urban+Hive+Milano+Corso+Garibaldi+84',guide:'milan.html',maps:'https://maps.apple.com/?q=Urban+Hive+Milano+Corso+Garibaldi+84',essentials:'Confirm the pre-dawn taxi to LIN, complete KLM check-in and pack before the final evening.'}
 ];
 const grid=document.getElementById('hotelGrid');
-stops.forEach(([key,title,dates,source])=>{
+stops.forEach(({key,title,dates,source,guide,maps,essentials})=>{
   const card=document.createElement('article');card.className='hotel-card';
   card.innerHTML=`<div class="kicker" style="color:#496a55">${dates}</div><h3>${title}</h3>
   <label>Hotel name</label><input data-field="name" placeholder="Enter hotel">
   <label>Address or directions</label><input data-field="address" placeholder="Address, dock, parking or arrival note">
   <label>Booking notes</label><textarea data-field="notes" placeholder="Confirmation reminder, breakfast, check-in time…"></textarea>
-  ${source?`<a class="action" href="${source}" target="_blank" rel="noopener">Open supplied booking link</a>`:''}<div class="hotel-save">Saved locally on this device.</div>`;
+  <div class="stay-essentials"><strong>Arrival focus</strong><p>${essentials}</p></div>
+  <div class="stay-actions"><a class="action" href="${guide}">Open destination guide</a><a class="action secondary-action" href="hotel-routes.html#${key === 'como' ? 'como' : key === 'ship' ? 'venice' : key}">Nearby routes</a><a class="action secondary-action" href="${maps}" target="_blank" rel="noopener">Open in Apple Maps</a>${source?`<a class="text-action" href="${source}" target="_blank" rel="noopener">Booking source ↗</a>`:''}</div><div class="hotel-save">Saved locally on this device.</div>`;
   grid.appendChild(card);
   const storageKey='nitc-hotel-'+key;
   const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');
@@ -44,4 +47,19 @@ stops.forEach(([key,title,dates,source])=>{
   });
 });
 </script>
-<script src="assets/app.js?v=4.0-september2026"></script></body></html>
+<script src="assets/app.js?v=4.6-september2026"></script>
+<div class="travel-dock" aria-label="Travel shortcuts">
+  <a href="today.html" class="dock-today"><span>Today</span><strong>Trip mode</strong></a>
+  <a href="map.html" aria-label="Open maps">Map</a>
+  <a href="hotels.html" aria-label="Open stays">Stays</a>
+  <button type="button" class="dock-more" aria-expanded="false" aria-controls="travelDrawer">More</button>
+</div>
+<aside class="travel-drawer" id="travelDrawer" aria-hidden="true">
+  <div class="drawer-head"><div><small>Travel desk</small><strong>Quick access</strong></div><button type="button" class="drawer-close" aria-label="Close travel desk">×</button></div>
+  <nav class="drawer-links" aria-label="Quick destination links">
+    <a href="itinerary.html">Full daily guide</a><a href="reservations.html">Reservations</a><a href="readiness.html">Trip readiness</a><a href="practical.html">Practical reference</a><a href="hotel-routes.html">Around your stays</a><a href="venice.html">Venice</a><a href="lake-como.html">Lake Como</a><a href="lake-maggiore.html">Stresa</a><a href="milan.html">Milan</a><a href="piedmont.html">Piedmont</a>
+  </nav>
+  <div class="drawer-status"><span class="connection-dot"></span><span data-connection-label>Checking connection…</span></div>
+</aside>
+<div class="drawer-scrim" hidden></div>
+</body></html>
