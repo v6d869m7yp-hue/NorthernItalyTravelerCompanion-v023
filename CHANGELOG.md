@@ -1,3 +1,7 @@
+## v5.0.0 — Professional Traveler’s Edition
+- Global quick jump, reading progress, page stepper, v5 cache/version promotion.
+- Preserves all v4.7 trip content and logistics.
+
 # v4.7 — Trip Readiness & Route Corrections
 
 - Added a persistent pre-trip readiness dashboard with local checklists and private notes.

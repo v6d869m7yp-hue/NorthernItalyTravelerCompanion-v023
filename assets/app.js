@@ -1,6 +1,6 @@
 (() => {
 
-  // v4.7 shared breadcrumb navigation.
+  // v5.0 shared breadcrumb navigation and traveler experience.
   const pageName = (location.pathname.split('/').pop() || 'index.html').split('?')[0];
   const crumbMap = {
     'index.html': ['Home'],
@@ -231,4 +231,54 @@
   const notes=document.querySelector('[data-readiness-notes]');
   if(notes){notes.value=localStorage.getItem('nitc-readiness-notes')||'';notes.addEventListener('input',()=>{localStorage.setItem('nitc-readiness-notes',notes.value);document.querySelector('[data-readiness-status]').textContent='Saved on this device.'})}
   update();
+
+
+  // v5.0 traveler experience layer: reading progress, page-to-page navigation, and quick jump.
+  const pageOrder = [
+    ['index.html','Home'],['today.html','Today'],['itinerary.html','Daily guide'],['reservations.html','Reservations'],
+    ['hotels.html','Stays'],['hotel-routes.html','Around your stays'],['map.html','Maps'],['venice.html','Venice'],
+    ['lake-como.html','Lake Como'],['lake-maggiore.html','Lake Maggiore'],['milan.html','Milan'],['piedmont.html','Piedmont'],
+    ['practical.html','Practical'],['readiness.html','Trip readiness'],['help.html','Help']
+  ];
+
+  const progress = document.createElement('div');
+  progress.className = 'reading-progress';
+  progress.setAttribute('aria-hidden','true');
+  progress.innerHTML = '<span></span>';
+  document.body.prepend(progress);
+  const progressBar = progress.firstElementChild;
+  const updateProgress = () => {
+    const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+    progressBar.style.transform = `scaleX(${Math.min(1, scrollY / max)})`;
+  };
+  addEventListener('scroll', updateProgress, {passive:true});
+  addEventListener('resize', updateProgress, {passive:true});
+  updateProgress();
+
+  if (pageName !== 'index.html' && document.querySelector('main')) {
+    const idx = pageOrder.findIndex(([file]) => file === pageName);
+    if (idx >= 0) {
+      const nav = document.createElement('nav');
+      nav.className = 'chapter-stepper';
+      nav.setAttribute('aria-label','Continue through the companion');
+      const prev = pageOrder[idx-1], next = pageOrder[idx+1];
+      nav.innerHTML = `${prev ? `<a class="step-prev" href="${prev[0]}"><small>Previous</small><strong>← ${prev[1]}</strong></a>` : '<span></span>'}${next ? `<a class="step-next" href="${next[0]}"><small>Continue</small><strong>${next[1]} →</strong></a>` : '<a class="step-next" href="index.html"><small>Return</small><strong>Home →</strong></a>'}`;
+      document.querySelector('main').insertAdjacentElement('afterend', nav);
+    }
+  }
+
+  const quickButton = document.createElement('button');
+  quickButton.type='button'; quickButton.className='quick-jump-button';
+  quickButton.setAttribute('aria-label','Open quick jump'); quickButton.textContent='Jump';
+  document.body.appendChild(quickButton);
+  const quickPanel = document.createElement('div');
+  quickPanel.className='quick-jump-panel'; quickPanel.hidden=true;
+  quickPanel.innerHTML=`<div class="quick-jump-head"><div><small>Traveler Companion</small><strong>Jump anywhere</strong></div><button type="button" aria-label="Close quick jump">×</button></div><input type="search" placeholder="Search pages…" aria-label="Search companion pages"><div class="quick-jump-links">${pageOrder.map(([file,label])=>`<a href="${file}">${label}</a>`).join('')}</div>`;
+  document.body.appendChild(quickPanel);
+  const qInput=quickPanel.querySelector('input'), qClose=quickPanel.querySelector('button');
+  const setQuick=open=>{quickPanel.hidden=!open;quickButton.setAttribute('aria-expanded',String(open));if(open)setTimeout(()=>qInput.focus(),0)};
+  quickButton.addEventListener('click',()=>setQuick(quickPanel.hidden)); qClose.addEventListener('click',()=>setQuick(false));
+  qInput.addEventListener('input',()=>{const q=qInput.value.toLowerCase();quickPanel.querySelectorAll('a').forEach(a=>a.hidden=!a.textContent.toLowerCase().includes(q))});
+  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();setQuick(true)}if(e.key==='Escape')setQuick(false)});
+
 })();

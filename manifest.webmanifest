@@ -1,7 +1,7 @@
 {
-  "name": "Northern Italy Traveler’s Companion — September 2026 v4.7",
+  "name": "Northern Italy Traveler’s Companion — September 2026 v5.0",
   "short_name": "Italy Companion",
-  "start_url": "./index.html?v=4.7-september2026",
+  "start_url": "./index.html?v=5.0-september2026",
   "display": "standalone",
   "background_color": "#f7f2e8",
   "theme_color": "#082d4a",
@@ -13,7 +13,7 @@
       "purpose": "any maskable"
     }
   ],
-  "description": "A polished offline-first personal travel companion for Northern Italy, August 31–September 11, 2026.",
+  "description": "A polished offline-first personal travel companion for Northern Italy with trip mode, hotel routes, breadcrumbs, quick navigation, and daily logistics.",
   "scope": "./",
   "id": "./index.html"
 }
