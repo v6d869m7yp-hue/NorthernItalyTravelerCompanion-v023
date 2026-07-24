@@ -20,13 +20,14 @@
     'lake-maggiore.html': ['Destinations', 'Lake Maggiore'],
     'milan.html': ['Destinations', 'Milan'],
     'piedmont.html': ['Destinations', 'Piedmont'],
+    'more-destinations.html': ['More destinations'],
     'dolomites.html': ['More destinations', 'Dolomites'],
     'cinque-terre.html': ['More destinations', 'Cinque Terre']
   };
   const hrefFor = {
     'Home':'index.html','Trip':'itinerary.html','Daily guide':'itinerary.html','Trip mode':'today.html','My trip':'my-trip.html',
     'Reservations':'reservations.html','Trip readiness':'readiness.html','Maps':'map.html','Stays':'hotels.html','Around your stays':'hotel-routes.html','Practical':'practical.html','Help':'help.html',
-    'Destinations':'index.html#destinations','More destinations':'dolomites.html','Venice':'venice.html','Verona & Lake Garda':'verona.html',
+    'Destinations':'index.html#destinations','More destinations':'more-destinations.html','Venice':'venice.html','Verona & Lake Garda':'verona.html',
     'Lake Como':'lake-como.html','Lake Maggiore':'lake-maggiore.html','Milan':'milan.html','Piedmont':'piedmont.html','Dolomites':'dolomites.html','Cinque Terre':'cinque-terre.html'
   };
   const labels = crumbMap[pageName];
