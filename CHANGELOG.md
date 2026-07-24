@@ -1,3 +1,9 @@
+## v5.1.0 — Concierge Edition
+
+- Added day-specific concierge command center and contextual travel actions.
+- Added homepage concierge launch panel.
+- Refreshed offline cache and application metadata.
+
 ## v5.0.0 — Professional Traveler’s Edition
 - Global quick jump, reading progress, page stepper, v5 cache/version promotion.
 - Preserves all v4.7 trip content and logistics.

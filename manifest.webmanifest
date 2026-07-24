@@ -1,7 +1,7 @@
 {
-  "name": "Northern Italy Traveler’s Companion — September 2026 v5.0",
+  "name": "Northern Italy Traveler’s Companion — September 2026 v5.1",
   "short_name": "Italy Companion",
-  "start_url": "./index.html?v=5.0-september2026",
+  "start_url": "./index.html?v=5.1-september2026",
   "display": "standalone",
   "background_color": "#f7f2e8",
   "theme_color": "#082d4a",
@@ -13,7 +13,7 @@
       "purpose": "any maskable"
     }
   ],
-  "description": "A polished offline-first personal travel companion for Northern Italy with trip mode, hotel routes, breadcrumbs, quick navigation, and daily logistics.",
+  "description": "Offline-first Northern Italy concierge companion with daily command center, arrival intelligence, hotel routes, reservations, and departure playbook.",
   "scope": "./",
   "id": "./index.html"
 }

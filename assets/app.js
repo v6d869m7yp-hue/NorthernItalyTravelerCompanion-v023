@@ -149,6 +149,31 @@
     {date:'2026-09-11',label:'Friday, September 11',title:'Depart Milan Linate',summary:'Leave Urban Hive before dawn for KLM KL1612 at 6:40 AM.',overnight:'Flight home',travel:'Urban Hive → LIN → AMS',priority:'Be at LIN with ample time',guide:'practical.html#departure',timeline:[['Before dawn','Taxi or prearranged car from Urban Hive to LIN.'],['6:40 AM','KL1612 departs Milan Linate.'],['8:30 AM','Scheduled arrival in Amsterdam.']],checklist:['Passports','Phones and chargers','All bags checked','Hotel room sweep'],bookings:['KLM KL1612 · LIN 6:40 AM → AMS 8:30 AM']}
   ];
 
+
+  // v5.1 concierge intelligence: compact, trip-specific action guidance.
+  const conciergeByDate = {
+    '2026-08-31':{start:'On arrival',startNote:'Keep the evening deliberately light.',arrival:'Viking · Marghera',arrivalNote:'Confirm tomorrow’s Fusina instructions.',food:'Dinner aboard',foodNote:'Avoid adding a complicated transfer.',weather:'Indoor ship evening',weatherNote:'Organize luggage and documents.'},
+    '2026-09-01':{start:'After disembarkation',startNote:'Keep luggage transfer as the first priority.',arrival:'Hotel after 3 PM',arrivalNote:'Hotel Al Sotoportego · Cannaregio.',food:'Dinner near hotel',foodNote:'Choose an easy first-night table.',weather:'Churches + bacari',weatherNote:'Cannaregio works well in showers.'},
+    '2026-09-02':{start:'Before 8 AM',startNote:'Reach San Marco before peak crowds.',arrival:'San Marco first',arrivalNote:'Then move toward quieter sestieri.',food:'Cicchetti lunch',foodNote:'Reserve dinner only if it matters.',weather:'Dorsoduro museums',weatherNote:'Use Accademia or Peggy Guggenheim.'},
+    '2026-09-03':{start:'Early morning',startNote:'Car collection and westbound transfer.',arrival:'Lenno after 3 PM',arrivalNote:'Protect apartment check-in timing.',food:'Verona only if easy',foodNote:'Skip the stop if traffic slips.',weather:'Direct to Lenno',weatherNote:'Make Verona optional, not obligatory.'},
+    '2026-09-04':{start:'First useful ferry',startNote:'Use the clearest forecast window.',arrival:'Bellagio or Varenna',arrivalNote:'Choose one priority villa.',food:'Lakeside lunch',foodNote:'Eat before the busiest ferry return.',weather:'Villa interiors',weatherNote:'Shorten the ferry circuit.'},
+    '2026-09-05':{start:'Flexible morning',startNote:'Let energy and weather decide.',arrival:'One unhurried highlight',arrivalNote:'Avoid trying to repeat everything.',food:'Long local lunch',foodNote:'Stay close to Lenno if tired.',weather:'Villa Carlotta',weatherNote:'Gardens can wait for a dry interval.'},
+    '2026-09-06':{start:'Check out by 10',startNote:'Load the car and leave calmly.',arrival:'Stresa afternoon',arrivalNote:'Park before exploring the promenade.',food:'Transfer-day lunch',foodNote:'Choose easy parking over prestige.',weather:'Early Stresa check-in',weatherNote:'Use the waterfront between showers.'},
+    '2026-09-07':{start:'First island boat',startNote:'Begin with the island you value most.',arrival:'Isola Bella',arrivalNote:'Then Pescatori and Madre as energy allows.',food:'Pescatori lunch',foodNote:'Confirm service before committing.',weather:'Palace interiors',weatherNote:'Reduce garden time if rain is steady.'},
+    '2026-09-08':{start:'Decision by breakfast',startNote:'Lake day or Piedmont—do not split both.',arrival:'Stresa or Langhe',arrivalNote:'Driving appetite is the deciding factor.',food:'Book winery lunch',foodNote:'Only if choosing Piedmont.',weather:'Lake towns + cafés',weatherNote:'Keep the day local in poor visibility.'},
+    '2026-09-09':{start:'Comfortable morning',startNote:'Avoid Milan’s busiest arrival period.',arrival:'Urban Hive after 3 PM',arrivalNote:'Brera is the evening anchor.',food:'Brera aperitivo',foodNote:'Keep dinner walkable from the hotel.',weather:'Brera galleries',weatherNote:'Use covered central Milan sights.'},
+    '2026-09-10':{start:'Duomo opening',startNote:'Front-load the major sight.',arrival:'Back to hotel early',arrivalNote:'Pack before dinner.',food:'Early final dinner',foodNote:'Protect sleep before LIN departure.',weather:'Museums + Galleria',weatherNote:'Keep the route compact and central.'},
+    '2026-09-11':{start:'About 3:45–4:00 AM',startNote:'Prearranged car from Urban Hive.',arrival:'LIN by about 4:40 AM',arrivalNote:'KL1612 departs at 6:40 AM.',food:'Airport coffee',foodNote:'Do not rely on a full hotel breakfast.',weather:'No change needed',weatherNote:'Road transfer is short; leave buffer.'}
+  };
+  const actionLinksByGuide={
+    'venice.html':[['Hotel route','hotel-routes.html#venice'],['Venice guide','venice.html'],['Reservations','reservations.html']],
+    'lake-como.html':[['Around the stay','hotel-routes.html#como'],['Lake Como guide','lake-como.html'],['Maps','map.html']],
+    'lake-maggiore.html':[['Around the stay','hotel-routes.html#stresa'],['Lake Maggiore guide','lake-maggiore.html'],['Maps','map.html']],
+    'piedmont.html':[['Piedmont option','piedmont.html'],['Stresa alternative','lake-maggiore.html'],['Reservations','reservations.html']],
+    'milan.html':[['Urban Hive route','hotel-routes.html#milan'],['Milan guide','milan.html'],['Departure plan','practical.html#departure']],
+    'practical.html#departure':[['Departure playbook','practical.html#departure'],['Reservations','reservations.html'],['Trip readiness','readiness.html']]
+  };
+
   const parseLocalDate = value => { const [y,m,d]=value.split('-').map(Number); return new Date(y,m-1,d); };
   const tripStart=parseLocalDate(tripDays[0].date), tripEnd=parseLocalDate(tripDays[tripDays.length-1].date);
   const todayNow=new Date(); todayNow.setHours(0,0,0,0);
@@ -160,6 +185,8 @@
     const set=(sel,val)=>{const el=document.querySelector(sel); if(el) el.textContent=val};
     set('[data-today-date]',day.label);set('[data-today-title]',day.title);set('[data-today-summary]',day.summary);set('[data-today-overnight]',day.overnight);set('[data-today-travel]',day.travel);set('[data-today-priority]',day.priority);
     const guide=document.querySelector('[data-today-guide]'); if(guide) guide.href=day.guide;
+    const concierge=conciergeByDate[day.date]||{}; [['start','start'],['arrival','arrival'],['food','food'],['weather','weather']].forEach(([key,attr])=>{set(`[data-concierge-${attr}]`,concierge[key]||'Flexible');set(`[data-concierge-${attr}-note]`,concierge[key+'Note']||'');});
+    const actions=document.querySelector('[data-today-actions]'); if(actions){const links=actionLinksByGuide[day.guide]||[['Open guide',day.guide],['Maps','map.html'],['Reservations','reservations.html']];actions.innerHTML=links.map(([label,href],i)=>`<a class="${i===0?'primary':''}" href="${href}">${label}</a>`).join('');}
     const timeline=document.querySelector('[data-today-timeline]'); if(timeline) timeline.innerHTML=day.timeline.map(([time,text])=>`<article><span>${time}</span><p>${text}</p></article>`).join('');
     const bookings=document.querySelector('[data-today-bookings]'); if(bookings) bookings.innerHTML=day.bookings.length?day.bookings.map(x=>`<div class="today-booking"><strong>${x}</strong></div>`).join(''):'<p class="empty-state">No fixed reservation entered for this day.</p>';
     const checklist=document.querySelector('[data-today-checklist]'); if(checklist){ checklist.innerHTML=day.checklist.map((x,i)=>`<label><input type="checkbox" data-check="${i}"><span>${x}</span></label>`).join(''); const saved=JSON.parse(localStorage.getItem(`nitc-check-${day.date}`)||'[]'); checklist.querySelectorAll('input').forEach((el,i)=>{el.checked=!!saved[i];el.addEventListener('change',()=>{localStorage.setItem(`nitc-check-${day.date}`,JSON.stringify([...checklist.querySelectorAll('input')].map(x=>x.checked)))})}) }
